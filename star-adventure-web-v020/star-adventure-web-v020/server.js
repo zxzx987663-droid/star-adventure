@@ -39,6 +39,7 @@ function botAssist(r,host){
 }
 
 io.on('connection',s=>{
+  s.on('pingCheck',(_,cb)=>cb?.({ok:true}));
   s.on('create',({name,playerToken}={},cb)=>{let c;do c=roomCode();while(rooms.has(c));const t=playerToken||token();const p={token:t,name:cleanName(name||'Ollie'),char:null,x:120,y:360,bot:false,connected:true,down:false,socketId:s.id};const r={code:c,hostToken:t,started:false,momoToken:null,stage:newStage(),players:new Map([[t,p]])};rooms.set(c,r);attachSocket(s,r,p);emit(r);cb?.({ok:true,code:c,playerToken:t});});
   s.on('join',({code,name,playerToken}={},cb)=>{const c=String(code||'').trim().toUpperCase(),r=rooms.get(c);if(!r)return cb?.({ok:false,error:'找不到房間'});if(playerToken&&r.players.has(playerToken)){const p=r.players.get(playerToken);p.name=cleanName(name||p.name);attachSocket(s,r,p);emit(r);return cb?.({ok:true,playerToken:p.token,rejoined:true,started:r.started});}const humans=[...r.players.values()].filter(p=>!p.bot);if(humans.length>=6)return cb?.({ok:false,error:'房間已滿'});const t=playerToken||token(),p={token:t,name:cleanName(name),char:null,x:120,y:360,bot:false,connected:true,down:false,socketId:s.id};r.players.set(t,p);attachSocket(s,r,p);emit(r);cb?.({ok:true,playerToken:t,started:r.started});});
   s.on('char',(ch,cb)=>{const {r,p}=getPlayer(s);if(!r||!p||!chars.includes(ch))return cb?.({ok:false});if([...r.players.values()].some(q=>q.token!==p.token&&q.char===ch))return cb?.({ok:false,error:'這個角色已經有人選了'});p.char=ch;if(ch==='小桃')r.momoToken=p.token;else if(r.momoToken===p.token)r.momoToken=null;emit(r);cb?.({ok:true});});
