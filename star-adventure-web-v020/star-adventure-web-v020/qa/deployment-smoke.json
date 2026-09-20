@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "source": "complete ZIP extracted into deploycheck041",
+  "install": "npm ci --omit=dev",
+  "productionPackages": 90,
+  "health": {
+    "ok": true,
+    "service": "star-adventure",
+    "version": "0.4.1",
+    "rooms": 0
+  },
+  "static": {
+    "/": 200,
+    "/client.js": 200,
+    "/geometry.js": 200,
+    "/asset-registry.js": 200,
+    "/assets/manifest.json": 200,
+    "/assets/ui/adventure-ui.woff2": 200,
+    "/assets/ui/adventure-symbols.woff2": 200
+  },
+  "node": "v24.19.0"
+}

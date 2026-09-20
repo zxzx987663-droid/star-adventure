@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "browser": "Chromium",
+  "contexts": 6,
+  "mobileViewport": "844x390 touch emulation",
+  "whiteDurationMs": 5070,
+  "pageErrors": [],
+  "httpErrors": [],
+  "screenshots": [
+    "birthday.png",
+    "level1.png",
+    "level2.png",
+    "level3.png",
+    "level4.png",
+    "level5.png",
+    "mobile-controls.png",
+    "mountain-slope.png",
+    "party-mobile.png",
+    "party.png",
+    "white-blank.png",
+    "white-friends.png",
+    "white-momo.png"
+  ]
+}
