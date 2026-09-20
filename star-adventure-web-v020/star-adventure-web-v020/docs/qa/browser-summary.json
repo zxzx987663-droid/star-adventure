@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "errors": [],
+  "checks": [
+    "create",
+    "L1 traversal",
+    "L2 paired DEV",
+    "L3 physical cargo",
+    "L4 three cannon shots",
+    "L5 remix",
+    "L5 reload",
+    "3-second chest",
+    "5 stars",
+    "party",
+    "credits",
+    "mobile controls",
+    "offline reconnect"
+  ],
+  "at": "2026-09-20T02:05:37.296Z"
+}

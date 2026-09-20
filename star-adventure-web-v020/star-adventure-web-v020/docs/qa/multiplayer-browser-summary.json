@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "errors": [],
+  "checks": [
+    "PC + mobile same room",
+    "touch movement",
+    "DEV hidden from non-host",
+    "momo L5 reload",
+    "momo reveal reconnect",
+    "target cannot send",
+    "five-star completion",
+    "mobile party",
+    "offline/online",
+    "no horizontal overflow"
+  ],
+  "at": "2026-09-20T02:04:29.153Z"
+}

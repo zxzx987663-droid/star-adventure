@@ -1,0 +1,30 @@
+
+> star-adventure-web@0.4.0-alpha.1 test
+> node --test test/*.test.js
+
+✔ six slots, unique character picks and momo identity (5.073666ms)
+✔ L1 pressure plates are spatially distinct; gate closes until far lever latches (8.714022ms)
+✔ L1 bridge breaks at fourth distinct crossing, not first (4.935687ms)
+✔ L1 completion requires gathered active players and preserves fragment (4.185615ms)
+✔ moving planks provide actual collision support and falling respawns in ~3 seconds (15.351131ms)
+✔ L2 correct paired operator, wrong symbol BOING and all three two-step solutions (1.952483ms)
+✔ L3 cargo responds to pushing, rolls and supports riding (6.819053ms)
+✔ L3 slope rolls back without support, seesaw loses cargo and recovers (10.796149ms)
+✔ L3 fan needs three distinct switches; destination has mushroom then fragment (4.732151ms)
+✔ L4 holds two mechanisms, two ammo deliveries per cannon, three distinct shots and fake-out (6.066104ms)
+✔ L4 cannot fire without two live mechanisms and nearby boss (0.74881ms)
+✔ teammate rescue is held for two seconds, automatic respawn at three (5.298129ms)
+✔ L5 paired clue, star, four sockets, shared three-second hold and reveal ordering (19.97242ms)
+✔ ending target cannot send, five independent idempotent stars, party unlock (11.661755ms)
+✔ offline momo identity persists through L5 and ending without replacing the target (0.527701ms)
+✔ DEV authorization, jumps, fragments, bots, momo and deterministic pair assistance (1.687634ms)
+✔ six Socket.IO clients: capacity, hidden credentials, private clues, host transfer and target rejoin (637.406138ms)
+✔ server restart restores saved room, fragments, stage and original resume identity (47.701898ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1453.872062
