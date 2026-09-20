@@ -1,0 +1,93 @@
+{
+  "description": "Optional replaceable artwork. Empty entries use the Full Alpha canvas placeholders.",
+  "characters": {
+    "吉伊卡哇": {
+      "idle": null,
+      "run": null,
+      "jump": null,
+      "fall": null,
+      "down": null,
+      "rescue": null,
+      "happy": null,
+      "emote": null
+    },
+    "小八": {
+      "idle": null,
+      "run": null,
+      "jump": null,
+      "fall": null,
+      "down": null,
+      "rescue": null,
+      "happy": null,
+      "emote": null
+    },
+    "兔兔": {
+      "idle": null,
+      "run": null,
+      "jump": null,
+      "fall": null,
+      "down": null,
+      "rescue": null,
+      "happy": null,
+      "emote": null
+    },
+    "小桃": {
+      "idle": null,
+      "run": null,
+      "jump": null,
+      "fall": null,
+      "down": null,
+      "rescue": null,
+      "happy": null,
+      "emote": null
+    },
+    "栗子饅頭": {
+      "idle": null,
+      "run": null,
+      "jump": null,
+      "fall": null,
+      "down": null,
+      "rescue": null,
+      "happy": null,
+      "emote": null
+    },
+    "海獺師傅": {
+      "idle": null,
+      "run": null,
+      "jump": null,
+      "fall": null,
+      "down": null,
+      "rescue": null,
+      "happy": null,
+      "emote": null
+    },
+    "風獅爺": {
+      "idle": null,
+      "run": null,
+      "jump": null,
+      "fall": null,
+      "down": null,
+      "rescue": null,
+      "happy": null,
+      "emote": null
+    },
+    "古本屋": {
+      "idle": null,
+      "run": null,
+      "jump": null,
+      "fall": null,
+      "down": null,
+      "rescue": null,
+      "happy": null,
+      "emote": null
+    }
+  },
+  "backgrounds": {
+    "1": null,
+    "2": null,
+    "3": null,
+    "4": null,
+    "5": null,
+    "party": null
+  }
+}
