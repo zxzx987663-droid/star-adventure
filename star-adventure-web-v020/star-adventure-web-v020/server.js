@@ -1,55 +1,62 @@
-const express=require('express');
-const http=require('http');
-const crypto=require('crypto');
-const {Server}=require('socket.io');
-const path=require('path');
-
-const app=express();
-const server=http.createServer(app);
-const io=new Server(server,{cors:{origin:true,credentials:false},pingTimeout:20000,pingInterval:10000});
-app.use(express.static(path.join(__dirname,'public')));
-app.get('/health',(req,res)=>res.json({ok:true,service:'star-adventure',version:'0.3.1'}));
-
-const rooms=new Map();
-const chars=['吉伊卡哇','小八','兔兔','小桃','栗子饅頭','海獺師傅','風獅爺','古本屋'];
-const roomCode=()=>{const a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let o='';for(let i=0;i<4;i++)o+=a[Math.floor(Math.random()*a.length)];return o};
-const token=()=>crypto.randomBytes(12).toString('hex');
-const cleanName=v=>String(v||'玩家').trim().slice(0,16)||'玩家';
-function newStage(){return {id:1,gateOpen:false,leverOn:false,bridgeBroken:false,fragment:false,cleared:false,checkpoint:120};}
-function publicRoom(r){return {code:r.code,hostToken:r.hostToken,started:r.started,momoToken:r.momoToken,stage:r.stage,players:[...r.players.values()].map(p=>({token:p.token,name:p.name,char:p.char,x:p.x,y:p.y,bot:p.bot,connected:p.connected,down:p.down}))};}
-function emit(r){io.to(r.code).emit('room',publicRoom(r));}
-function attachSocket(s,r,p){p.socketId=s.id;p.connected=true;s.join(r.code);s.data.room=r.code;s.data.token=p.token;}
-function getPlayer(s){const r=rooms.get(s.data.room);return {r,p:r?.players.get(s.data.token)};}
-function resetPositions(r){let i=0;for(const p of r.players.values()){p.x=120+i*48;p.y=360;p.down=false;i++;}}
-function plateCount(r){return [...r.players.values()].filter(p=>p.connected&&!p.down&&p.x>=620&&p.x<=880&&p.y>=320).length;}
-function updateStage(r){
-  if(!r.started)return false;
-  let changed=false;
-  const n=plateCount(r);
-  if(n>=3&&!r.stage.gateOpen){r.stage.gateOpen=true;changed=true;io.to(r.code).emit('toast','三個壓力板同時亮了！門打開了！');}
-  if(!r.stage.bridgeBroken&&[...r.players.values()].some(p=>p.x>1450)){r.stage.bridgeBroken=true;changed=true;io.to(r.code).emit('toast','喀啦……橋是不是有點不妙？');}
-  if(r.stage.leverOn&&r.stage.checkpoint!==1780){r.stage.checkpoint=1780;changed=true;}
-  return changed;
+// Express / HTTP / Socket.IO baseline retained from Web Build 0.3.2.
+const express=require('express'),http=require('http'),path=require('path'),fs=require('fs');
+const {Server}=require('socket.io');const G=require('./engine');
+const VERSION=require('./package.json').version;
+function createGameServer(options={}){
+ const app=express(),server=http.createServer(app),io=new Server(server,{pingTimeout:20000,pingInterval:10000,maxHttpBufferSize:16384});
+ const rooms=new Map(),savePath=options.savePath??process.env.SAVE_PATH;let ticking;
+ app.get('/health',(_,res)=>res.json({ok:true,service:'star-adventure',version:VERSION,rooms:rooms.size}));
+ app.use(express.static(path.join(__dirname,'public')));
+ if(savePath&&fs.existsSync(savePath)){try{for(const data of JSON.parse(fs.readFileSync(savePath,'utf8'))){data.players=new Map(data.players.map(p=>{p.connected=p.bot;p.socketId=null;p.input={};return [p.token,p]}));data.events=[];rooms.set(data.code,data);}}catch(e){console.error('Save recovery failed:',e.message);}}
+ function save(){if(!savePath)return;try{fs.mkdirSync(path.dirname(savePath),{recursive:true});const data=[...rooms.values()].map(r=>({...r,players:[...r.players.values()],events:[]}));fs.writeFileSync(savePath+'.tmp',JSON.stringify(data));fs.renameSync(savePath+'.tmp',savePath);}catch(e){console.error('Save failed:',e.message);}}
+ const ack=(cb,value)=>{if(typeof cb==='function')cb(value)};
+ const get=s=>{const r=rooms.get(s.data.room),p=r?.players.get(s.data.token);return {r,p:p?.socketId===s.id?p:null};};
+ function publicStage(s){const copy=JSON.parse(JSON.stringify(s));if(copy.pairs)copy.pairs.forEach(q=>delete q.seq);return copy;}
+ function full(r){const v=G.snapshot(r);v.devEnabled=process.env.ENABLE_DEV!=='false';v.stage=publicStage(r.stage);v.players.forEach(p=>delete p.resumeKey);return v;}
+ function clues(r){for(const p of r.players.values()){if(!p.socketId)continue;const s=r.stage;let clue=null;
+ if(s.id===2){const i=s.pairs.findIndex(q=>q.members.includes(p.token)),q=s.pairs[i];if(q)clue={pair:i,role:q.members[0]===p.token?'reader':'operator',sequence:q.members[0]===p.token?q.seq:null,first:q.members[0]===p.token?'不要相信黃色。':'藍色在說謊。',environment:'第三塊石碑：只有紅色牌說真話。紅牌：出口是紅色；黃牌：出口是藍色；藍牌：出口是黃色。'};}
+ if(s.id===5){const a=G.active(r),reader=a[0];clue={role:reader?.token===p.token?'reader':a[1]?.token===p.token?'operator':'observer',sequence:reader?.token===p.token?[3,1,0]:null};}
+ io.to(p.socketId).emit('clue',clue);}}
+ function emit(r){io.to(r.code).emit('room',full(r));clues(r);}
+ function attach(s,r,p){
+  if(p.socketId&&p.socketId!==s.id){const old=io.sockets.sockets.get(p.socketId);if(old){old.emit('superseded');old.leave(r.code);old.data={};}}
+  p.socketId=s.id;p.connected=true;p.input={};p.lastInput=r.time;s.join(r.code);s.data.room=r.code;s.data.token=p.token;r.emptySince=null;
+  if(!r.players.get(r.hostToken)?.connected)r.hostToken=p.token;
+ }
+ function detach(s){const {r,p}=get(s);if(!r||!p)return;p.connected=false;p.socketId=null;p.input={};p.disconnectedAt=r.time;s.leave(r.code);s.data={};const next=G.active(r).find(q=>!q.bot);if(p.token===r.hostToken&&next)r.hostToken=next.token;emit(r);save();}
+ const code=()=>{const a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let s='';for(let i=0;i<4;i++)s+=a[Math.floor(Math.random()*a.length)];return s;};
+ io.on('connection',s=>{
+  const limited=(key,ms)=>{const now=Date.now();s.data.limits??={};if(now-(s.data.limits[key]||0)<ms)return true;s.data.limits[key]=now;return false;};
+  s.on('pingCheck',(_,cb)=>ack(cb,{ok:true}));
+  s.on('create',(data={},cb)=>{if(limited('create',1000))return ack(cb,{ok:false,error:'請稍等一秒。'});detach(s);let c;do c=code();while(rooms.has(c));const p=G.player(data?.name||'Ollie');p.resumeKey=G.uid();const r=G.room(c,p);rooms.set(c,r);attach(s,r,p);ack(cb,{ok:true,code:c,playerToken:p.resumeKey,id:p.token});emit(r);save();});
+  s.on('join',(data={},cb)=>{if(limited('join',150))return ack(cb,{ok:false,error:'請稍等再連線。'});const c=String(data?.code||'').trim().toUpperCase(),r=rooms.get(c);if(!r)return ack(cb,{ok:false,error:'找不到房間，可能伺服器已重新啟動。'});
+   let p=[...r.players.values()].find(p=>!p.bot&&p.resumeKey===data?.playerToken);
+   if(!p){if(r.started)return ack(cb,{ok:false,error:'冒險已開始，只能用原裝置身分重連。'});if(r.players.size>=6){const bot=[...r.players.values()].find(p=>p.bot);if(bot){r.players.delete(bot.token);if(r.momoToken===bot.token)r.momoToken=null;}else return ack(cb,{ok:false,error:'房間已滿（包含保留的離線位置）。'});}
+    p=G.player(data?.name);p.resumeKey=G.uid();r.players.set(p.token,p);
+   }const rejoined=!!p.socketId||!p.connected||r.started;detach(s);attach(s,r,p);ack(cb,{ok:true,code:c,playerToken:p.resumeKey,id:p.token,rejoined,started:r.started});emit(r);save();
+  });
+  s.on('leave',(_,cb)=>{const {r,p}=get(s);if(r&&p&&!r.started){detach(s);r.players.delete(p.token);if(r.momoToken===p.token)r.momoToken=null;emit(r);}else detach(s);ack(cb,{ok:true});});
+  s.on('char',(ch,cb)=>{const {r,p}=get(s);if(!r||!p||r.started||!G.W.CHARS.includes(ch))return ack(cb,{ok:false,error:'現在無法換角色。'});if([...r.players.values()].some(q=>q.token!==p.token&&q.char===ch))return ack(cb,{ok:false,error:'這個角色已經有人選了。'});p.char=ch;if(ch==='小桃')r.momoToken=p.token;else if(r.momoToken===p.token)r.momoToken=null;emit(r);save();ack(cb,{ok:true});});
+  s.on('start',(_,cb)=>{const {r,p}=get(s);if(!r||!p||p.token!==r.hostToken||r.started)return ack(cb,{ok:false,error:'只有房主能從大廳開始。'});if(G.active(r).some(p=>!p.char))return ack(cb,{ok:false,error:'請大家先選好角色。'});if(!r.momoToken)return ack(cb,{ok:false,error:'本次冒險請保留一位小桃；可選角色或用 DEV 補滿假人。'});G.enter(r,1);emit(r);save();ack(cb,{ok:true});});
+  s.on('input',data=>{const {r,p}=get(s);if(r&&p&&r.started&&!limited('input',10))G.input(r,p,data);});
+  s.on('interact',(_,cb)=>{const {r,p}=get(s);if(!r||!p||limited('interact',150))return ack(cb,{ok:false});ack(cb,G.interact(r,p));});
+  s.on('puzzle',(data,cb)=>{const {r,p}=get(s);if(!r||!p||limited('puzzle',130))return ack(cb,{ok:false});ack(cb,G.puzzle(r,p,data));});
+  s.on('sendStar',(_,cb)=>{const {r,p}=get(s);ack(cb,r&&p?G.sendStar(r,p.token):{ok:false});});
+  s.on('emote',emoji=>{const {r,p}=get(s);if(r&&p&&!limited('emote',500))io.to(r.code).emit('emote',{token:p.token,emoji:['✨','😂','💦','⭐','🎉'].includes(emoji)?emoji:'✨'});});
+  s.on('dev',(data,cb)=>{const {r,p}=get(s);if(!r||!p)return ack(cb,{ok:false});if(process.env.ENABLE_DEV==='false')return ack(cb,{ok:false,error:'此部署已停用 DEV。'});const result=G.dev(r,p,data);if(result.ok){emit(r);save();}ack(cb,result);});
+  s.on('disconnect',()=>detach(s));
+ });
+ let frame=0,last=Date.now();ticking=setInterval(()=>{const now=Date.now(),dt=Math.min((now-last)/1000,.075);last=now;frame++;
+ for(const [c,r] of rooms){const humans=G.active(r).filter(p=>!p.bot);if(!humans.length){r.emptySince??=now;if(now-r.emptySince>86400000)rooms.delete(c);continue;}r.emptySince=null;
+ const prev=r.stage.epoch;G.tick(r,dt);
+ if(r.stage.epoch!==prev){emit(r);save();}
+ // Movement is a compact packet at 20 Hz. Stage mechanics travel separately at 5 Hz.
+ if(frame%2===0&&r.started)io.to(c).emit('frame',{time:r.time,epoch:r.stage.epoch,p:G.active(r).map(p=>({t:p.token,x:+p.x.toFixed(2),y:+p.y.toFixed(2),vx:p.vx,vy:p.vy,d:p.down,w:p.warp,c:p.carry,g:p.grounded,q:p.seq,rescue:p.rescue||0}))});
+ if(frame%8===0&&r.started){io.to(c).emit('stage',{time:r.time,stage:publicStage(r.stage),fragments:r.fragments});clues(r);}
+ for(const e of r.events.splice(0))io.to(c).emit(e.type,e.text);
+ }},25);
+ const saver=setInterval(save,5000);saver.unref();
+ return {app,server,io,rooms,save,close:async()=>{clearInterval(ticking);clearInterval(saver);save();await new Promise(resolve=>io.close(resolve));}};
 }
-function botAssist(r,host){
-  const bots=[...r.players.values()].filter(p=>p.bot);
-  if(!bots.length)return;
-  if(!r.stage.gateOpen){const spots=[670,750,830];bots.slice(0,3).forEach((b,i)=>{b.x=spots[i];b.y=360;});}
-  else {bots.forEach((b,i)=>{b.x=Math.max(120,Math.min(2480,host.x-120+i*48));b.y=360;});}
-}
-
-io.on('connection',s=>{
-  s.on('pingCheck',(_,cb)=>cb?.({ok:true}));
-  s.on('create',({name,playerToken}={},cb)=>{let c;do c=roomCode();while(rooms.has(c));const t=playerToken||token();const p={token:t,name:cleanName(name||'Ollie'),char:null,x:120,y:360,bot:false,connected:true,down:false,socketId:s.id};const r={code:c,hostToken:t,started:false,momoToken:null,stage:newStage(),players:new Map([[t,p]])};rooms.set(c,r);attachSocket(s,r,p);emit(r);cb?.({ok:true,code:c,playerToken:t});});
-  s.on('join',({code,name,playerToken}={},cb)=>{const c=String(code||'').trim().toUpperCase(),r=rooms.get(c);if(!r)return cb?.({ok:false,error:'找不到房間'});if(playerToken&&r.players.has(playerToken)){const p=r.players.get(playerToken);p.name=cleanName(name||p.name);attachSocket(s,r,p);emit(r);return cb?.({ok:true,playerToken:p.token,rejoined:true,started:r.started});}const humans=[...r.players.values()].filter(p=>!p.bot);if(humans.length>=6)return cb?.({ok:false,error:'房間已滿'});const t=playerToken||token(),p={token:t,name:cleanName(name),char:null,x:120,y:360,bot:false,connected:true,down:false,socketId:s.id};r.players.set(t,p);attachSocket(s,r,p);emit(r);cb?.({ok:true,playerToken:t,started:r.started});});
-  s.on('char',(ch,cb)=>{const {r,p}=getPlayer(s);if(!r||!p||!chars.includes(ch))return cb?.({ok:false});if([...r.players.values()].some(q=>q.token!==p.token&&q.char===ch))return cb?.({ok:false,error:'這個角色已經有人選了'});p.char=ch;if(ch==='小桃')r.momoToken=p.token;else if(r.momoToken===p.token)r.momoToken=null;emit(r);cb?.({ok:true});});
-  s.on('start',(_,cb)=>{const {r,p}=getPlayer(s);if(!r||!p||r.hostToken!==p.token)return cb?.({ok:false,error:'只有房主可以開始'});const humans=[...r.players.values()].filter(x=>!x.bot);if(humans.some(x=>!x.char))return cb?.({ok:false,error:'還有人沒有選角色'});r.started=true;r.stage=newStage();resetPositions(r);emit(r);io.to(r.code).emit('start');cb?.({ok:true});});
-  s.on('move',pos=>{const {r,p}=getPlayer(s);if(!r||!p||p.down)return;const x=Math.max(0,Math.min(2580,Number(pos?.x)||0)),y=Math.max(0,Math.min(700,Number(pos?.y)||0));p.x=x;p.y=y;s.to(r.code).emit('move',{token:p.token,x,y});if(p.token===r.hostToken){botAssist(r,p);for(const b of r.players.values())if(b.bot)io.to(r.code).emit('move',{token:b.token,x:b.x,y:b.y});}if(updateStage(r))emit(r);});
-  s.on('interact',(_,cb)=>{const {r,p}=getPlayer(s);if(!r||!p)return;let msg='這裡沒有可以互動的東西。';if(p.x>=1110&&p.x<=1300&&r.stage.gateOpen&&!r.stage.leverOn){r.stage.leverOn=true;r.stage.checkpoint=1320;msg='喀！遠端開關啟動，後面的路打開了！';io.to(r.code).emit('toast',msg);emit(r);return cb?.({ok:true});}if(p.x>=2320&&p.x<=2550&&!r.stage.fragment){const active=[...r.players.values()].filter(q=>q.connected);const gathered=active.every(q=>q.x>=2180);if(!gathered)return cb?.({ok:false,error:'要等所有冒險者一起到終點！'});r.stage.fragment=true;r.stage.cleared=true;msg='⭐ 星星碎片① GET！';io.to(r.code).emit('stageClear',{stage:1});emit(r);return cb?.({ok:true});}cb?.({ok:false,error:msg});});
-  s.on('fall',()=>{const {r,p}=getPlayer(s);if(!r||!p||p.down)return;p.down=true;io.to(r.code).emit('down',{token:p.token});emit(r);setTimeout(()=>{const rr=rooms.get(r.code),pp=rr?.players.get(p.token);if(!rr||!pp)return;pp.down=false;pp.x=rr.stage.checkpoint;pp.y=360;io.to(rr.code).emit('respawn',{token:pp.token,x:pp.x,y:pp.y});emit(rr);},3000);});
-  s.on('emote',emoji=>{const {r,p}=getPlayer(s);if(!r||!p)return;io.to(r.code).emit('emote',{token:p.token,emoji:['✨','😂','💦','⭐'].includes(emoji)?emoji:'✨'});});
-  s.on('addbots',(_,cb)=>{const {r,p}=getPlayer(s);if(!r||!p||r.hostToken!==p.token)return;let i=1;while(r.players.size<6){const id='bot-'+token(),used=new Set([...r.players.values()].map(x=>x.char)),ch=chars.find(x=>!used.has(x))||null;r.players.set(id,{token:id,name:'測試假人 '+i,char:ch,x:150+i*45,y:360,bot:true,connected:true,down:false,socketId:null});if(ch==='小桃'&&!r.momoToken)r.momoToken=id;i++;}emit(r);cb?.({ok:true});});
-  s.on('devTeleport',()=>{const {r,p}=getPlayer(s);if(!r||!p||r.hostToken!==p.token)return;for(const q of r.players.values()){q.x=p.x+(Math.random()*80-40);q.y=360;q.down=false;}emit(r);});
-  s.on('disconnect',()=>{const {r,p}=getPlayer(s);if(!r||!p)return;p.connected=false;p.socketId=null;emit(r);setTimeout(()=>{const rr=rooms.get(r.code),pp=rr?.players.get(p.token);if(!rr||!pp||pp.connected)return;if(!rr.started){rr.players.delete(pp.token);if(rr.momoToken===pp.token)rr.momoToken=null;if(rr.hostToken===pp.token){const next=[...rr.players.values()].find(x=>!x.bot);rr.hostToken=next?.token||null;}if(!rr.players.size)rooms.delete(rr.code);else emit(rr);}},30000);});
-});
-const PORT=process.env.PORT||3000;server.listen(PORT,()=>console.log(`Star Adventure Web v0.3.1 listening on ${PORT}`));
+if(require.main===module){const game=createGameServer();const PORT=process.env.PORT||3000;game.server.listen(PORT,()=>console.log(`Star Adventure ${VERSION} listening on ${PORT}`));for(const signal of ['SIGINT','SIGTERM'])process.on(signal,async()=>{await game.close();process.exit(0);});}
+module.exports={createGameServer};

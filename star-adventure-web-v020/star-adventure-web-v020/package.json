@@ -1,8 +1,22 @@
 {
   "name": "star-adventure-web",
-  "version": "0.3.0",
+  "version": "0.4.0-alpha.1",
   "private": true,
-  "scripts": {"start": "node server.js"},
-  "engines": {"node": ">=20"},
-  "dependencies": {"express": "^4.21.2", "socket.io": "^4.8.1"}
+  "description": "星星大冒險 Full Alpha — based on Web Build 0.3.2",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/*.test.js",
+    "test:browser": "node test/browser.cjs",
+    "test:multiplayer": "node test/browser-multiplayer.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "socket.io-client": "^4.8.1"
+  }
 }
