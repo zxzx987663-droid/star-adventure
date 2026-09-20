@@ -1,13 +1,14 @@
 {
   "name": "star-adventure-web",
-  "version": "0.4.0-alpha.1",
+  "version": "0.4.1",
   "private": true,
-  "description": "星星大冒險 Full Alpha — based on Web Build 0.3.2",
+  "description": "星星大冒險 Build 0.4.1 — incremental upgrade of Full Alpha 0.4.0",
   "scripts": {
     "start": "node server.js",
-    "test": "node --test test/*.test.js",
+    "test": "node --test test/l1.test.js test/mechanics.test.js test/network.test.js",
     "test:browser": "node test/browser.cjs",
-    "test:multiplayer": "node test/browser-multiplayer.cjs"
+    "test:multiplayer": "node test/browser.cjs",
+    "test:assets-mobile": "node test/browser-extra.cjs"
   },
   "engines": {
     "node": ">=20"
