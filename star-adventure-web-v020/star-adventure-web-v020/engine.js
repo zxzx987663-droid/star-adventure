@@ -37,13 +37,13 @@ function ensureMomo(r){if(r.momoToken&&r.players.has(r.momoToken))return;
 function grant(r,id){if(!r.fragments.includes(id))r.fragments.push(id);r.fragments.sort();}
 function clear(r,id){if(r.stage.cleared)return;grant(r,id);r.stage.cleared=true;r.stage.clearAt=r.time;event(r,`⭐ 星星碎片${['','①','②','③','④'][id]} GET！`);}
 function gather(r,x,d=160){const a=active(r);return a.length>0&&a.every(p=>!p.down&&near(p,x,d));}
-function input(r,p,data){if(!data||typeof data!=='object')return;p.seq=Number.isSafeInteger(data.seq)?data.seq:p.seq;p.input={left:!!data.left,right:!!data.right,jump:!!data.jump,interact:!!data.interact};p.lastInput=r.time;}
+function input(r,p,data){if(!data||typeof data!=='object')return;p.seq=Number.isSafeInteger(data.seq)?data.seq:p.seq;if(!data.interact)p.interactArmed=true;p.input={left:!!data.left,right:!!data.right,jump:!!data.jump,interact:!!data.interact};p.lastInput=r.time;}
 function puzzle(r,p,data={}){return L.action(r,p,data,module.exports);}
 function interact(r,p){
  const s=r.stage;if(p.down)return {ok:false,error:'等待救援或三秒復活。'};
  if(s.cleared){if(p.token!==r.hostToken)return {ok:false,error:'等房主按下一關。'};enter(r,s.id+1);return {ok:true};}
  if(s.id===1&&near(p,1200)&&s.gateOpen){s.leverOn=true;event(r,'喀！遠端拉桿鎖住大門，壓板的夥伴可以通過！');}
- if(s.id===4)return L.action(r,p,{},module.exports);
+ if([2,3,4].includes(s.id))return L.action(r,p,{},module.exports);
  if(s.id==='ending')return sendStar(r,p.token);
  return {ok:true};
 }
@@ -55,19 +55,19 @@ function bots(r,dt){
  if(r.dev.assist&&s.id!==1&&Math.abs(b.x-host.x)>700)warp(b,host.x-40-i*12,host.y);
  }
  if(!r.dev.assist)return;
- if(s.id===2){if(s.mode==='waiting'){const b=bs.find(p=>s.readers.includes(p.token));if(b)L.action(r,b,{kind:'startLeg'},module.exports);}const b=r.players.get(s.executors[s.leg]);if(b?.bot&&['discussion','input'].includes(s.mode)&&r.time-(s.botStep||0)>.45){const pad=W.D.caves[s.cave-1].pads[s._legs[s.leg].truth[s.entered.length]];warp(b,s.padContact===null?pad:pad+40);b.input={};s.botStep=r.time;}}
- if(s.id===3){bs.forEach((b,i)=>{if(s.finalCheckpoint){warp(b,s.cargo.x-82-i*3,W.floor(s,s.cargo.x-82));b.input={right:!!host.input.right};}else if(i<3){const obstacle=s.obstacles.findIndex(x=>!x);if(obstacle>=0){const x=W.D.cargo.obstacles[obstacle].plates[i];warp(b,x,W.floor(s,x));b.input={};}}else{warp(b,s.cargo.x-82-i*3,W.floor(s,s.cargo.x-82));b.input={right:!!host.input.right};}});}
- if(s.id===4)for(const b of bs){const fallen=active(r).find(p=>p.flat);if(fallen){warp(b,fallen.x+40,fallen.y);b.input={interact:true};}else if(host.x>3500){warp(b,3580);L.action(r,b,{},module.exports);}}
+ if(s.id===2){if(s.mode==='waiting'){const ri=s.readers.findIndex(t=>r.players.get(t)?.bot);if(ri>=0){const b=r.players.get(s.readers[ri]);warp(b,W.D.caves[s.cave-1].readers[ri]);L.action(r,b,{},module.exports);}}const b=r.players.get(s.executors[s.leg]);if(b?.bot&&['discussion','input'].includes(s.mode)&&r.time-(s.botStep||0)>.4){warp(b,W.D.caves[s.cave-1].pads[s._legs[s.leg].truth[s.entered.length]]);L.action(r,b,{},module.exports);s.botStep=r.time;}}
+ if(s.id===3){bs.forEach((b,i)=>{if(s.finalCheckpoint){warp(b,s.cargo.x-82-i*3,W.floor(s,s.cargo.x-82));b.input={right:!!host.input.right};}else if(i<3){const k=W.D.cargo.switches.filter(k=>!s.switches[k.id])[i];if(k){warp(b,k.x,k.y);L.action(r,b,{},module.exports);b.input={};}}else{warp(b,s.cargo.x-82-i*3,W.floor(s,s.cargo.x-82));b.input={right:!!host.input.right};}});}
+ if(s.id===4)for(const b of bs){const fallen=active(r).find(p=>p.flat);if(fallen){warp(b,fallen.x+40,fallen.y);b.input={interact:true};}else if(host.x>3500){warp(b,W.D.boss.buttons[s.participants.indexOf(b.token)]);L.action(r,b,{},module.exports);}}
  if(s.id===5&&host.x>5390)bs.forEach((b,i)=>{warp(b,5450+i*30,350);b.input={interact:!!host.input.interact};});
  if(s.id==='ending'&&s.phase==='send')s.stars.forEach((st,i)=>{const p=r.players.get(st.token);if((p?.bot||st.simulated)&&r.time-s.at>18+i*.65&&st.sentAt===null)st.sentAt=r.time;});
 }
 function tick(r,dt){
  r.time+=dt;if(!r.started)return;const s=r.stage;
  for(const p of r.players.values()){if(p.down&&!p.respawnAt){const rescuers=alive(r).filter(q=>q.token!==p.token&&held(q)&&Math.abs(q.x-p.x)<80&&Math.abs(q.y-p.y)<85);p.rescue=rescuers.length?(p.rescue||0)+dt:0;if(p.rescue>=2||r.time>=p.downUntil)revive(p);}if(!p.bot&&r.time-(p.lastInput||0)>.8)p.input={};}
- if([4,5].includes(s.id))L.survival(r,dt,module.exports);
+ if([3,4,5].includes(s.id))L.survival(r,dt,module.exports);
  bots(r,dt);
- for(const p of active(r)){W.step(p,p.input,s,dt,r.time);if(p.cargoHit&&!p.down)down(r,p,'被滾動貨物壓扁了 😂');
- if(p.y>680){if([4,5].includes(s.id)){if(!p.down)L.die(r,p,module.exports);}else down(r,p,'咻——掉下去了，三秒後回到檢查點。');}}
+ for(const p of active(r)){W.step(p,p.input,s,dt,r.time);if(p.cargoHit&&!p.down){L.flatten(r,p,module.exports);p.kick=Math.sign(s.cargo.vx)*120;}
+ if(p.y>680){if([3,4,5].includes(s.id)){if(!p.down)L.die(r,p,module.exports);}else down(r,p,'咻——掉下去了，三秒後回到檢查點。');}}
  if(s.cleared)return;
  if(s.id===1){s.plates=[650,770,890].map(x=>plate(r,x));s.gateOpen=s.leverOn||s.plates.every(Boolean);
  for(const p of alive(r)){if(p.x>1100)p.checkpoint=Math.max(p.checkpoint,1180);if(p.x>1695)p.checkpoint=1740;
