@@ -1,0 +1,6 @@
+/* Visual-only registry. Missing or invalid art uses the caller's placeholder. */
+window.Art={data:{characters:{},backgrounds:{},boss:{},enemies:{},cargo:{},platforms:{},effects:{},ui:{},ending:{}},cache:new Map(),
+ load(){return fetch('/assets/manifest.json').then(r=>r.json()).then(d=>this.data=d).catch(()=>this.data);},
+ image(entry){const src=typeof entry==='string'?entry:entry?.src;if(!src)return null;if(!this.cache.has(src)){const img=new Image();img.src=src;this.cache.set(src,img);}const img=this.cache.get(src);return img.complete&&img.naturalWidth?img:null;},
+ draw(ctx,group,key,state,x,y,time,scale=1){const def=this.data[group]?.[key]||{},entry=def.animations?.[state]||def[state]||def.animations?.idle||def.idle;const img=this.image(entry);if(!img)return false;const v={width:64,height:76,scale:1,anchorX:.5,anchorY:1,...def.visual,...entry.visual};const sheet=entry.sheet||{},sw=sheet.frameWidth||img.naturalWidth/(entry.frames||1),sh=sheet.frameHeight||img.naturalHeight,columns=sheet.columns||Math.max(1,Math.floor(img.naturalWidth/sw)),count=sheet.count||entry.frames||1,frame=(sheet.start||0)+Math.floor(time*(entry.fps||8))%count,w=v.width*v.scale*scale,h=v.height*v.scale*scale;ctx.drawImage(img,frame%columns*sw,Math.floor(frame/columns)*sh,sw,sh,x-w*v.anchorX,y-h*v.anchorY,w,h);return true;}
+};

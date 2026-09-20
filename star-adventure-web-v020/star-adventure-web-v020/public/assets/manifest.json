@@ -9,7 +9,21 @@
       "down": null,
       "rescue": null,
       "happy": null,
-      "emote": null
+      "emote": null,
+      "visual": {
+        "width": 64,
+        "height": 76,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "flattened": {
+        "src": "",
+        "visual": {
+          "width": 64,
+          "height": 18
+        }
+      }
     },
     "小八": {
       "idle": null,
@@ -19,7 +33,21 @@
       "down": null,
       "rescue": null,
       "happy": null,
-      "emote": null
+      "emote": null,
+      "visual": {
+        "width": 64,
+        "height": 76,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "flattened": {
+        "src": "",
+        "visual": {
+          "width": 64,
+          "height": 18
+        }
+      }
     },
     "兔兔": {
       "idle": null,
@@ -29,7 +57,21 @@
       "down": null,
       "rescue": null,
       "happy": null,
-      "emote": null
+      "emote": null,
+      "visual": {
+        "width": 64,
+        "height": 76,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "flattened": {
+        "src": "",
+        "visual": {
+          "width": 64,
+          "height": 18
+        }
+      }
     },
     "小桃": {
       "idle": null,
@@ -39,7 +81,21 @@
       "down": null,
       "rescue": null,
       "happy": null,
-      "emote": null
+      "emote": null,
+      "visual": {
+        "width": 64,
+        "height": 76,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "flattened": {
+        "src": "",
+        "visual": {
+          "width": 64,
+          "height": 18
+        }
+      }
     },
     "栗子饅頭": {
       "idle": null,
@@ -49,7 +105,21 @@
       "down": null,
       "rescue": null,
       "happy": null,
-      "emote": null
+      "emote": null,
+      "visual": {
+        "width": 64,
+        "height": 76,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "flattened": {
+        "src": "",
+        "visual": {
+          "width": 64,
+          "height": 18
+        }
+      }
     },
     "海獺師傅": {
       "idle": null,
@@ -59,7 +129,21 @@
       "down": null,
       "rescue": null,
       "happy": null,
-      "emote": null
+      "emote": null,
+      "visual": {
+        "width": 64,
+        "height": 76,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "flattened": {
+        "src": "",
+        "visual": {
+          "width": 64,
+          "height": 18
+        }
+      }
     },
     "風獅爺": {
       "idle": null,
@@ -69,7 +153,21 @@
       "down": null,
       "rescue": null,
       "happy": null,
-      "emote": null
+      "emote": null,
+      "visual": {
+        "width": 64,
+        "height": 76,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "flattened": {
+        "src": "",
+        "visual": {
+          "width": 64,
+          "height": 18
+        }
+      }
     },
     "古本屋": {
       "idle": null,
@@ -79,7 +177,21 @@
       "down": null,
       "rescue": null,
       "happy": null,
-      "emote": null
+      "emote": null,
+      "visual": {
+        "width": 64,
+        "height": 76,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "flattened": {
+        "src": "",
+        "visual": {
+          "width": 64,
+          "height": 18
+        }
+      }
     }
   },
   "backgrounds": {
@@ -89,5 +201,327 @@
     "4": null,
     "5": null,
     "party": null
-  }
+  },
+  "boss": {
+    "bridge": {
+      "visual": {
+        "width": 140,
+        "height": 130,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "crouch": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "leap": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "slamWarning": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "slam": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "chargeWarning": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "charge": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "fall": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        }
+      }
+    }
+  },
+  "enemies": {
+    "mushroom": {
+      "visual": {
+        "width": 48,
+        "height": 40,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "move": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "warning": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "charge": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "jump": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "slam": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        }
+      }
+    }
+  },
+  "cargo": {
+    "pink": {
+      "visual": {
+        "width": 110,
+        "height": 110,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        }
+      }
+    }
+  },
+  "platforms": {
+    "hop": {
+      "visual": {
+        "width": 65,
+        "height": 14,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "",
+          "frames": 1
+        },
+        "falling": {
+          "src": "",
+          "frames": 1
+        }
+      }
+    },
+    "moving1": {
+      "visual": {
+        "width": 110,
+        "height": 14,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "",
+          "frames": 1
+        },
+        "falling": {
+          "src": "",
+          "frames": 1
+        }
+      }
+    },
+    "narrow": {
+      "visual": {
+        "width": 70,
+        "height": 14,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "",
+          "frames": 1
+        },
+        "falling": {
+          "src": "",
+          "frames": 1
+        }
+      }
+    },
+    "moving2": {
+      "visual": {
+        "width": 100,
+        "height": 14,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "",
+          "frames": 1
+        },
+        "falling": {
+          "src": "",
+          "frames": 1
+        }
+      }
+    },
+    "fall1": {
+      "visual": {
+        "width": 95,
+        "height": 14,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "",
+          "frames": 1
+        },
+        "falling": {
+          "src": "",
+          "frames": 1
+        }
+      }
+    },
+    "fall2": {
+      "visual": {
+        "width": 85,
+        "height": 14,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "",
+          "frames": 1
+        },
+        "falling": {
+          "src": "",
+          "frames": 1
+        }
+      }
+    }
+  },
+  "effects": {},
+  "ui": {
+    "⭐": {
+      "visual": {
+        "width": 32,
+        "height": 32,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "idle": {
+        "src": ""
+      }
+    },
+    "🌸": {
+      "visual": {
+        "width": 32,
+        "height": 32,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "idle": {
+        "src": ""
+      }
+    },
+    "🍄": {
+      "visual": {
+        "width": 32,
+        "height": 32,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "idle": {
+        "src": ""
+      }
+    },
+    "🌙": {
+      "visual": {
+        "width": 32,
+        "height": 32,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "idle": {
+        "src": ""
+      }
+    },
+    "🐹": {
+      "visual": {
+        "width": 32,
+        "height": 32,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "idle": {
+        "src": ""
+      }
+    },
+    "🎂": {
+      "visual": {
+        "width": 32,
+        "height": 32,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "idle": {
+        "src": ""
+      }
+    },
+    "⚑": {
+      "visual": {
+        "width": 32,
+        "height": 32,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "idle": {
+        "src": ""
+      }
+    },
+    "✦": {
+      "visual": {
+        "width": 32,
+        "height": 32,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "idle": {
+        "src": ""
+      }
+    }
+  },
+  "ending": {}
 }
