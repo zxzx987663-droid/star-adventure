@@ -1,0 +1,35 @@
+/* Browser QA. Install playwright separately or set PLAYWRIGHT_MODULE / CHROMIUM_PATH. */
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const assert=require('node:assert/strict'),fs=require('fs'),path=require('path');
+const {createGameServer}=require('../server');
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+(async()=>{
+ const game=createGameServer();await new Promise(r=>game.server.listen(0,r));
+ const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox','--disable-dev-shm-usage','--disable-gpu']});
+ const out=path.join(__dirname,'../test-results');fs.mkdirSync(out,{recursive:true});const errors=[];const desktop=await browser.newContext({viewport:{width:1280,height:950}}),page=await desktop.newPage();page.on('pageerror',e=>errors.push(e.message));
+ const url=`http://127.0.0.1:${game.server.address().port}`;
+ let roomCode;
+ async function state(){return page.evaluate(()=>({s:room?.stage,p:room?.players.find(p=>p.token===myId),time:room?.time,clue,code:room?.code,fragments:room?.fragments}));}
+ async function drive(want){for(const k of ['left','right','jump','interact']){const key={left:'a',right:'d',jump:'Space',interact:'e'}[k];if(want[k])await page.keyboard.down(key);else await page.keyboard.up(key);}}
+ async function until(test,controller,limit=120000){const end=Date.now()+limit;while(Date.now()<end){const st=await state();fs.writeFileSync(path.join(out,'progress.json'),JSON.stringify(st));if(test(st)){await drive({});return st;}await controller?.(st);await sleep(80);}throw Error('Browser flow timed out: '+JSON.stringify(await state()));}
+ async function shot(name){await page.screenshot({path:path.join(out,name+'.png'),fullPage:true});}
+ try{
+ await page.goto(url);await page.evaluate(()=>document.fonts.ready);await page.click('#create');await page.getByRole('button',{name:'吉伊卡哇',exact:true}).click();await page.click('#bots');await page.click('#start');await until(st=>st.s?.id===1);roomCode=(await state()).code;console.log('browser: created room',roomCode);await shot('01-grassland-desktop');
+ await until(st=>st.s?.cleared,async({p,s})=>{const pit=await page.evaluate(x=>World.floor(room.stage,x+60)>700,p.x);await drive({right:true,jump:p.grounded&&pit});if(p.x>1100&&p.x<1270)await page.evaluate(()=>call('interact'));});console.log('browser: Level 1 physically cleared');
+ await page.click('#next');await until(st=>st.s?.id===2);await shot('02-cave-desktop');
+ await until(st=>st.s?.cleared,async()=>drive({right:true}));console.log('browser: Level 2 paired bot assistance cleared');
+ await page.waitForTimeout(1050);await page.click('#next');await until(st=>st.s?.id===3);await shot('03-cargo-desktop');
+ await until(st=>st.s?.cleared,async({p,s})=>drive({right:p.x<s.cargo.x-70,left:p.x>s.cargo.x+65}));console.log('browser: Level 3 physically delivered cargo');
+ await page.waitForTimeout(1050);await page.click('#next');await until(st=>st.s?.id===4);await shot('04-boss-desktop');let lastFire=0;
+ await until(st=>st.s?.cleared,async({p,s})=>{const c=s.cannons.find(c=>!c.fired);if(!c)return;await drive({right:p.x<c.x-25,left:p.x>c.x+25});if(Math.abs(p.x-c.x)<70&&Date.now()-lastFire>300){await page.keyboard.press('e');lastFire=Date.now();}});console.log('browser: Level 4 three cannons and fake-out cleared');
+ await page.waitForTimeout(1050);await page.click('#next');await until(st=>st.s?.id===5);assert.deepEqual((await state()).fragments,[1,2,3,4]);await shot('05-tower-desktop');
+ // Original browser reload during L5 preserves identity and stage.
+ const original=await page.evaluate(()=>({id:myId,key:secret,epoch:room.stage.epoch}));await page.reload();await page.waitForFunction(()=>room?.stage.id===5&&!!own);assert.equal(await page.evaluate(()=>myId),original.id);assert.equal(await page.evaluate(()=>room.stage.epoch),original.epoch);console.log('browser: Level 5 reload rejoined');
+ await until(st=>st.s?.chest&&st.p.x>2620,async({p,s})=>drive({right:s.starDone||p.x<s.star.x-45,left:!s.starDone&&p.x>s.star.x+45,jump:p.grounded&&((s.hazardAwake&&Math.abs(p.x-(s.hazardX||1800))<90)||(s.starDone&&Math.abs(p.x-s.star.x)<100))}));await shot('05-chest-desktop');
+ await drive({});await page.locator('#chestPanel [data-k="interact"]').scrollIntoViewIfNeeded();await page.keyboard.down('e');await until(st=>st.s?.id==='ending',undefined,15000);console.log('browser: shared chest held three seconds');
+ await until(st=>st.s?.phase==='send',undefined,16000);await shot('06-five-stars');await page.click('#sendStar');await until(st=>st.s?.id==='party',undefined,20000);assert.equal(await page.evaluate(()=>localStorage.getItem('star.cleared')),'true');await shot('07-party-desktop');await page.click('#partyCredits');assert.ok((await page.locator('#modalBody').textContent()).includes('因為生日過了才想到要做生日禮物。'));await page.click('#closeModal');console.log('browser: five stars, party and producer unlock');
+ // Touch layout and browser offline/online recovery use the same retained identity.
+ const mobile=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:1});await mobile.addInitScript(({key,code})=>{localStorage.setItem('star.playerToken',key);localStorage.setItem('star.roomCode',code);},{key:original.key,code:roomCode});const phone=await mobile.newPage();phone.on('pageerror',e=>errors.push(e.message));await phone.goto(url);await phone.waitForFunction(()=>room?.stage.id==='party'&&!!own);assert.equal(await phone.evaluate(()=>myId),original.id);await phone.screenshot({path:path.join(out,'08-party-mobile.png'),fullPage:true});const before=await phone.evaluate(()=>own.x);await phone.locator('[data-k="right"]').first().scrollIntoViewIfNeeded();const bb=await phone.locator('[data-k="right"]').first().boundingBox();const cdp=await mobile.newCDPSession(phone);await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:bb.x+bb.width/2,y:bb.y+bb.height/2}]});await phone.waitForTimeout(450);await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});assert.ok(await phone.evaluate(()=>own.x)>before);await mobile.setOffline(true);await sleep(600);await mobile.setOffline(false);await phone.waitForFunction(()=>socket.connected&&room?.stage.id==='party');await phone.reload();await phone.waitForFunction(()=>room?.stage.id==='party');assert.equal(await phone.evaluate(()=>myId),original.id);assert.equal(await phone.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);console.log('browser: mobile controls, offline/online and reload');
+ assert.deepEqual(errors,[]);fs.writeFileSync(path.join(out,'browser-summary.json'),JSON.stringify({ok:true,errors,checks:['create','L1 traversal','L2 paired DEV','L3 physical cargo','L4 three cannon shots','L5 remix','L5 reload','3-second chest','5 stars','party','credits','mobile controls','offline reconnect'],at:new Date().toISOString()},null,2));
+ }catch(e){await shot('failure');console.error(e);fs.writeFileSync(path.join(out,'browser-error.txt'),String(e.stack));process.exitCode=1;}finally{await browser.close();await game.close();}
+})();
