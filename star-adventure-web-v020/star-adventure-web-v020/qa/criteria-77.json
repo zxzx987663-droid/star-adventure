@@ -1,0 +1,464 @@
+[
+  {
+    "id": 1,
+    "requirement": "Create Room",
+    "status": "automated_or_scripted_pass",
+    "evidence": "network.test.js／mechanics.test.js：六個 Socket.IO client、權限、身分、重連、Reset"
+  },
+  {
+    "id": 2,
+    "requirement": "Join Room",
+    "status": "automated_or_scripted_pass",
+    "evidence": "network.test.js／mechanics.test.js：六個 Socket.IO client、權限、身分、重連、Reset"
+  },
+  {
+    "id": 3,
+    "requirement": "six simultaneous connections / bots",
+    "status": "automated_or_scripted_pass",
+    "evidence": "network.test.js／mechanics.test.js：六個 Socket.IO client、權限、身分、重連、Reset"
+  },
+  {
+    "id": 4,
+    "requirement": "duplicate character prevention",
+    "status": "automated_or_scripted_pass",
+    "evidence": "network.test.js／mechanics.test.js：六個 Socket.IO client、權限、身分、重連、Reset"
+  },
+  {
+    "id": 5,
+    "requirement": "momo identity",
+    "status": "automated_or_scripted_pass",
+    "evidence": "network.test.js／mechanics.test.js：六個 Socket.IO client、權限、身分、重連、Reset"
+  },
+  {
+    "id": 6,
+    "requirement": "reconnect",
+    "status": "automated_or_scripted_pass",
+    "evidence": "network.test.js／mechanics.test.js：六個 Socket.IO client、權限、身分、重連、Reset"
+  },
+  {
+    "id": 7,
+    "requirement": "Reset Current Level",
+    "status": "automated_or_scripted_pass",
+    "evidence": "network.test.js／mechanics.test.js：六個 Socket.IO client、權限、身分、重連、Reset"
+  },
+  {
+    "id": 8,
+    "requirement": "RESET GAME",
+    "status": "automated_or_scripted_pass",
+    "evidence": "network.test.js／mechanics.test.js：六個 Socket.IO client、權限、身分、重連、Reset"
+  },
+  {
+    "id": 9,
+    "requirement": "Level Intro Modal appears correctly",
+    "status": "automated_or_scripted_pass",
+    "evidence": "browser.cjs＋visual-qa.cjs：Intro/X、無常駐敘述、三尺寸 DOM 邊界／截圖"
+  },
+  {
+    "id": 10,
+    "requirement": "Intro X closes and does not leave permanent description panel",
+    "status": "automated_or_scripted_pass",
+    "evidence": "browser.cjs＋visual-qa.cjs：Intro/X、無常駐敘述、三尺寸 DOM 邊界／截圖"
+  },
+  {
+    "id": 11,
+    "requirement": "PC + mobile HUD responsive",
+    "status": "scripted_pass_manual_followup",
+    "evidence": "browser.cjs＋visual-qa.cjs：Intro/X、無常駐敘述、三尺寸 DOM 邊界／截圖"
+  },
+  {
+    "id": 12,
+    "requirement": "Level 1 complete",
+    "status": "automated_or_scripted_pass",
+    "evidence": "l1.test.js＋qa-fix.test.js：壓板／拉桿／第四人斷橋／掉落／集合"
+  },
+  {
+    "id": 13,
+    "requirement": "falling / respawn still works",
+    "status": "automated_or_scripted_pass",
+    "evidence": "l1.test.js＋qa-fix.test.js：壓板／拉桿／第四人斷橋／掉落／集合"
+  },
+  {
+    "id": 14,
+    "requirement": "cooperation gate still works",
+    "status": "automated_or_scripted_pass",
+    "evidence": "l1.test.js＋qa-fix.test.js：壓板／拉桿／第四人斷橋／掉落／集合"
+  },
+  {
+    "id": 15,
+    "requirement": "bridge comedy event still works",
+    "status": "automated_or_scripted_pass",
+    "evidence": "l1.test.js＋qa-fix.test.js：壓板／拉桿／第四人斷橋／掉落／集合"
+  },
+  {
+    "id": 16,
+    "requirement": "Cave 1–5 clear",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 17,
+    "requirement": "four Executors unique per attempt",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 18,
+    "requirement": "only authorized Reader can activate Reader stone",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 19,
+    "requirement": "non-Reader E on stone does nothing",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 20,
+    "requirement": "Reader answer visible only to Reader",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 21,
+    "requirement": "Reader answer + countdown begin simultaneously",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 22,
+    "requirement": "answer disappears and cannot be reopened",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 23,
+    "requirement": "other players never receive / render private answer",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 24,
+    "requirement": "Executor symbol does NOT trigger by walking / jumping / collision",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 25,
+    "requirement": "E / mobile interact submits symbol",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 26,
+    "requirement": "Executor timer starts only on first valid symbol input",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 27,
+    "requirement": "failure reshuffles current Cave only",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 28,
+    "requirement": "Cave 4/5 both Readers receive private answers simultaneously",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 29,
+    "requirement": "Cave 4/5 exactly one sequence satisfies rule",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 30,
+    "requirement": "true Reader can change between legs",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：20 棒、實體 E、真假與時間鎖；network.test.js 私有封包；browser.cjs 實際 UI"
+  },
+  {
+    "id": 31,
+    "requirement": "3-player push = intended controlled speed",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 32,
+    "requirement": "1–2 players = slow",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 33,
+    "requirement": "4–6 players = dangerous acceleration",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 34,
+    "requirement": "Cargo rolls backward when unsupported on uphill",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 35,
+    "requirement": "deliberate route mechanism requires E",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 36,
+    "requirement": "proximity alone does not open mechanism",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 37,
+    "requirement": "Cargo / player major fall behavior correct",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 38,
+    "requirement": "nearest checkpoint respawn",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 39,
+    "requirement": "flattened player slow movement",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 40,
+    "requirement": "teammate rescue",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 41,
+    "requirement": "auto recovery after ~3 sec",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 42,
+    "requirement": "downhill Cargo acceleration is predictable",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 43,
+    "requirement": "final slope: 6 stable",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 44,
+    "requirement": "final slope: 5 barely moves / maintains",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 45,
+    "requirement": "final slope: <5 rolls backward",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 46,
+    "requirement": "final slope failure resets only final section",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：真實三人輸入、1–6 推手、坡度、E 機關、存點、壓扁／救援／自起／最终坡"
+  },
+  {
+    "id": 47,
+    "requirement": "bridge route visually / mechanically clear",
+    "status": "scripted_pass_manual_followup",
+    "evidence": "qa-fix.test.js＋mechanics.test.js：FSM 連續座標、跳越／下穿、個人按鈕、完成保留、6/6 與終點復活"
+  },
+  {
+    "id": 48,
+    "requirement": "Boss Charge telegraph → attack → recovery works",
+    "status": "automated_or_scripted_pass",
+    "evidence": "qa-fix.test.js＋mechanics.test.js：FSM 連續座標、跳越／下穿、個人按鈕、完成保留、6/6 與終點復活"
+  },
+  {
+    "id": 49,
+    "requirement": "Boss Jump / Slam works",
+    "status": "automated_or_scripted_pass",
+    "evidence": "qa-fix.test.js＋mechanics.test.js：FSM 連續座標、跳越／下穿、個人按鈕、完成保留、6/6 與終點復活"
+  },
+  {
+    "id": 50,
+    "requirement": "Boss does not jitter / teleport / float / instant-turn during attack",
+    "status": "scripted_pass_manual_followup",
+    "evidence": "qa-fix.test.js＋mechanics.test.js：FSM 連續座標、跳越／下穿、個人按鈕、完成保留、6/6 與終點復活"
+  },
+  {
+    "id": 51,
+    "requirement": "direct jump route is possible but non-trivial",
+    "status": "scripted_pass_manual_followup",
+    "evidence": "qa-fix.test.js＋mechanics.test.js：FSM 連續座標、跳越／下穿、個人按鈕、完成保留、6/6 與終點復活"
+  },
+  {
+    "id": 52,
+    "requirement": "Boss-airborne timing route is possible",
+    "status": "scripted_pass_manual_followup",
+    "evidence": "qa-fix.test.js＋mechanics.test.js：FSM 連續座標、跳越／下穿、個人按鈕、完成保留、6/6 與終點復活"
+  },
+  {
+    "id": 53,
+    "requirement": "Boss hit → flattened",
+    "status": "automated_or_scripted_pass",
+    "evidence": "qa-fix.test.js＋mechanics.test.js：FSM 連續座標、跳越／下穿、個人按鈕、完成保留、6/6 與終點復活"
+  },
+  {
+    "id": 54,
+    "requirement": "rescue works",
+    "status": "automated_or_scripted_pass",
+    "evidence": "qa-fix.test.js＋mechanics.test.js：FSM 連續座標、跳越／下穿、個人按鈕、完成保留、6/6 與終點復活"
+  },
+  {
+    "id": 55,
+    "requirement": "individual Finish Button requires E",
+    "status": "automated_or_scripted_pass",
+    "evidence": "qa-fix.test.js＋mechanics.test.js：FSM 連續座標、跳越／下穿、個人按鈕、完成保留、6/6 與終點復活"
+  },
+  {
+    "id": 56,
+    "requirement": "completion persists after returning to Boss zone",
+    "status": "automated_or_scripted_pass",
+    "evidence": "qa-fix.test.js＋mechanics.test.js：FSM 連續座標、跳越／下穿、個人按鈕、完成保留、6/6 與終點復活"
+  },
+  {
+    "id": 57,
+    "requirement": "6/6 opens bridge / drops Boss",
+    "status": "automated_or_scripted_pass",
+    "evidence": "qa-fix.test.js＋mechanics.test.js：FSM 連續座標、跳越／下穿、個人按鈕、完成保留、6/6 與終點復活"
+  },
+  {
+    "id": 58,
+    "requirement": "completed player falling with Boss respawns Finish Side",
+    "status": "automated_or_scripted_pass",
+    "evidence": "qa-fix.test.js＋mechanics.test.js：FSM 連續座標、跳越／下穿、個人按鈕、完成保留、6/6 與終點復活"
+  },
+  {
+    "id": 59,
+    "requirement": "checkpoints",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：四檢查點、個人死亡、救援、固定三種 AI、四相位缺口跳躍"
+  },
+  {
+    "id": 60,
+    "requirement": "cliff death",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：四檢查點、個人死亡、救援、固定三種 AI、四相位缺口跳躍"
+  },
+  {
+    "id": 61,
+    "requirement": "flatten >3 sec → death",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：四檢查點、個人死亡、救援、固定三種 AI、四相位缺口跳躍"
+  },
+  {
+    "id": 62,
+    "requirement": "rescue before 3 sec",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：四檢查點、個人死亡、救援、固定三種 AI、四相位缺口跳躍"
+  },
+  {
+    "id": 63,
+    "requirement": "Patrol enemy predictable",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：四檢查點、個人死亡、救援、固定三種 AI、四相位缺口跳躍"
+  },
+  {
+    "id": 64,
+    "requirement": "Hopper predictable",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：四檢查點、個人死亡、救援、固定三種 AI、四相位缺口跳躍"
+  },
+  {
+    "id": 65,
+    "requirement": "Charger telegraph / charge / recovery predictable",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：四檢查點、個人死亡、救援、固定三種 AI、四相位缺口跳躍"
+  },
+  {
+    "id": 66,
+    "requirement": "no obvious enemy wall jitter / weird drifting",
+    "status": "scripted_pass_manual_followup",
+    "evidence": "mechanics.test.js＋qa-fix.test.js：四檢查點、個人死亡、救援、固定三種 AI、四相位缺口跳躍"
+  },
+  {
+    "id": 67,
+    "requirement": "six-player final hold 3 sec",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋browser.cjs：六人 hold、白幕分身分、五個送星、Birthday／Party"
+  },
+  {
+    "id": 68,
+    "requirement": "momo-specific white screen",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋browser.cjs：六人 hold、白幕分身分、五個送星、Birthday／Party"
+  },
+  {
+    "id": 69,
+    "requirement": "non-momo white screen",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋browser.cjs：六人 hold、白幕分身分、五個送星、Birthday／Party"
+  },
+  {
+    "id": 70,
+    "requirement": "Birthday Ending",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋browser.cjs：六人 hold、白幕分身分、五個送星、Birthday／Party"
+  },
+  {
+    "id": 71,
+    "requirement": "five individual star sends",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋browser.cjs：六人 hold、白幕分身分、五個送星、Birthday／Party"
+  },
+  {
+    "id": 72,
+    "requirement": "Party Room",
+    "status": "automated_or_scripted_pass",
+    "evidence": "mechanics.test.js＋browser.cjs：六人 hold、白幕分身分、五個送星、Birthday／Party"
+  },
+  {
+    "id": 73,
+    "requirement": "reconnect during new mechanics",
+    "status": "scripted_pass_manual_followup",
+    "evidence": "network.test.js：L2/3/4/5 機制中斷線回房、Ending、磁碟重啟；browser.cjs：小桃 reload"
+  },
+  {
+    "id": 74,
+    "requirement": "no obvious high-frequency Socket.IO spam regression",
+    "status": "scripted_pass_manual_followup",
+    "evidence": "traffic.cjs／network-traffic.json：原版對比 20 Hz frame、5 Hz stage、內容變動才發 clue"
+  },
+  {
+    "id": 75,
+    "requirement": "no duplicated interaction events from holding / spamming E",
+    "status": "automated_or_scripted_pass",
+    "evidence": "network.test.js：長按偽造新 press、重送 press、舊 epoch 全拒絕；browser.cjs：四次手機 tap 有效"
+  },
+  {
+    "id": 76,
+    "requirement": "private Reader answer is not accidentally broadcast to unauthorized clients",
+    "status": "automated_or_scripted_pass",
+    "evidence": "network.test.js＋browser.cjs：非 Reader 不收答案／不顯示，publicStage 無 _legs，過期重連不能重看"
+  },
+  {
+    "id": 77,
+    "requirement": "full L1 → L5 → Birthday Ending clear",
+    "status": "scripted_pass_manual_followup",
+    "evidence": "qa-fix.test.js：順序從 L1 到 Party，沒有逐關 DEV jump；測試用位置安排，非真人自然跑圖"
+  }
+]

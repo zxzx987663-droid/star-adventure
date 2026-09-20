@@ -251,6 +251,21 @@
           "src": "",
           "frames": 1,
           "fps": 8
+        },
+        "recovery": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "stompWarning": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "stomp": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
         }
       }
     }
@@ -291,6 +306,94 @@
           "fps": 8
         },
         "slam": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        }
+      }
+    },
+    "patrol": {
+      "visual": {
+        "width": 48,
+        "height": 40,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "patrol": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "turn": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        }
+      }
+    },
+    "hopper": {
+      "visual": {
+        "width": 48,
+        "height": 40,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "crouch": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "jump": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "rest": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        }
+      }
+    },
+    "charger": {
+      "visual": {
+        "width": 48,
+        "height": 40,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "warning": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "charge": {
+          "src": "",
+          "frames": 1,
+          "fps": 8
+        },
+        "recovery": {
           "src": "",
           "frames": 1,
           "fps": 8

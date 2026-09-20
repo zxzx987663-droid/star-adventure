@@ -1,0 +1,142 @@
+{
+  "current": {
+    "2": {
+      "seconds": 1.501,
+      "counts": {
+        "frame": 30,
+        "stage": 8,
+        "clue": 0,
+        "room": 0
+      },
+      "bytes": {
+        "frame": 29331,
+        "stage": 7185,
+        "clue": 0,
+        "room": 0
+      },
+      "bytesPerSecond": 24328
+    },
+    "3": {
+      "seconds": 1.5,
+      "counts": {
+        "frame": 30,
+        "stage": 7,
+        "clue": 0,
+        "room": 0
+      },
+      "bytes": {
+        "frame": 29509,
+        "stage": 4228,
+        "clue": 0,
+        "room": 0
+      },
+      "bytesPerSecond": 22491
+    },
+    "4": {
+      "seconds": 1.501,
+      "counts": {
+        "frame": 29,
+        "stage": 8,
+        "clue": 0,
+        "room": 0
+      },
+      "bytes": {
+        "frame": 28359,
+        "stage": 4403,
+        "clue": 0,
+        "room": 0
+      },
+      "bytesPerSecond": 21827
+    },
+    "5": {
+      "seconds": 1.501,
+      "counts": {
+        "frame": 30,
+        "stage": 7,
+        "clue": 0,
+        "room": 0
+      },
+      "bytes": {
+        "frame": 29296,
+        "stage": 5698,
+        "clue": 0,
+        "room": 0
+      },
+      "bytesPerSecond": 23314
+    }
+  },
+  "baseline": {
+    "2": {
+      "seconds": 1.5,
+      "counts": {
+        "frame": 30,
+        "stage": 7,
+        "clue": 0,
+        "room": 0
+      },
+      "bytes": {
+        "frame": 29357,
+        "stage": 6035,
+        "clue": 0,
+        "room": 0
+      },
+      "bytesPerSecond": 23595
+    },
+    "3": {
+      "seconds": 1.501,
+      "counts": {
+        "frame": 30,
+        "stage": 8,
+        "clue": 0,
+        "room": 0
+      },
+      "bytes": {
+        "frame": 29356,
+        "stage": 4628,
+        "clue": 0,
+        "room": 0
+      },
+      "bytesPerSecond": 22641
+    },
+    "4": {
+      "seconds": 1.5,
+      "counts": {
+        "frame": 30,
+        "stage": 7,
+        "clue": 0,
+        "room": 0
+      },
+      "bytes": {
+        "frame": 29344,
+        "stage": 3443,
+        "clue": 0,
+        "room": 0
+      },
+      "bytesPerSecond": 21858
+    },
+    "5": {
+      "seconds": 1.5,
+      "counts": {
+        "frame": 29,
+        "stage": 7,
+        "clue": 0,
+        "room": 0
+      },
+      "bytes": {
+        "frame": 28340,
+        "stage": 4024,
+        "clue": 0,
+        "room": 0
+      },
+      "bytesPerSecond": 21576
+    }
+  },
+  "transport": "six independent real Socket.IO websocket clients; per-client outbound JSON payload, idle mechanisms",
+  "note": "20 Hz movement + 5 Hz stage unchanged. Excludes TLS/WebSocket overhead; short phase-change packets allowed.",
+  "ratios": {
+    "2": 1.031,
+    "3": 0.993,
+    "4": 0.999,
+    "5": 1.081
+  }
+}

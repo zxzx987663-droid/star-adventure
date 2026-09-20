@@ -1,0 +1,7 @@
+{
+  passed: true,
+  multitouch: true,
+  assets: { cached: true, drawn: true, unchanged: true, fallback: true },
+  emulatedFps: 60,
+  pageErrors: []
+}

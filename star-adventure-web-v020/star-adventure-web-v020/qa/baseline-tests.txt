@@ -1,0 +1,42 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> star-adventure-web@0.4.1 test
+> node --test test/l1.test.js test/mechanics.test.js test/network.test.js
+
+✔ six slots, unique character picks and momo identity (2.656781ms)
+✔ L1 pressure plates are spatially distinct; gate closes until far lever latches (5.398367ms)
+✔ L1 bridge breaks at fourth distinct crossing, not first (3.983877ms)
+✔ L1 completion requires gathered active players and preserves fragment (3.531903ms)
+✔ moving planks provide actual collision support and falling respawns in ~3 seconds (13.783227ms)
+✔ jump reaches 160–180px; all L2 gates block air movement (30.554381ms)
+✔ L2 every leg manual / distinct executors / reader excluded (29.671775ms)
+✔ L2 private timed display, discussion has no countdown, first physical input starts timer, timeout preserves prior caves (23.330216ms)
+✔ L2 5,000 generated true/fake pairs validate exactly one, differ by <=2; simultaneous reader starts lock (152.483169ms)
+✔ L2 all 20 physical-input legs and six-player exit; wrong input restarts cave only (28.257945ms)
+✔ L3 1..6 push profile: 3 normal, 4+ dangerous (13.821272ms)
+✔ L3 three distinct obstacle plates / premature delivery whole-level failure (1.476235ms)
+✔ L3 final slope reverses staffing and rollback resets to checkpoint only (8.719608ms)
+✔ L3 cargo supports rider; summit mushroom then fragment (5.5787ms)
+✔ L4 both jumping-over and waiting-under boss are feasible without flattening (12.641376ms)
+✔ L4 flattened slow movement/no automatic revive/0.5s rescue/0.1s protection (18.751828ms)
+✔ L4 per-person completion persists through hit; 6/6 bridge opens; falling player respawns far end (5.035784ms)
+✔ L5 cliff death restores personal checkpoint only (3.732394ms)
+✔ L5 flatten >3 seconds dies, rescue prevents death (18.93018ms)
+✔ L5 final hold needs all six alive/connected, releases reset; transitions directly white (12.693452ms)
+✔ ending five-second blank and personalized text; five idempotent senders; persistent party (42.826903ms)
+✔ Reset current preserves previous fragments; RESET GAME clears run, keeps identities/momo/room (1.363609ms)
+✔ DEV level actions host-only (1.259038ms)
+✔ L5 every gap and moving/falling platform has a physical jump path at multiple phases (16.1812ms)
+✔ L2 generated answers fit estimated physical traversal budget (36.670204ms)
+✔ all six flattened can slowly regroup and rescue each other without restarting L4 (1.783733ms)
+✔ six real sockets: capacity, uniqueness, private relay lock, six-level reconnect, host transfer, reset confirmation, rate budget (2252.883161ms)
+✔ disk restart restores relay answers/roles, personal life states, credentials and momo (32.494911ms)
+✔ legacy 0.4 level saves migrate current level while preserving room identity and fragments (6.802352ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2959.621912

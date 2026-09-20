@@ -1,0 +1,55 @@
+{
+  "files": {
+    "server.js": {
+      "originalSha256": "426d6af680291faefa6fad1361e43a6b078e1cd6dd22c5fd14d0982bd91a14ca",
+      "releaseSha256": "b7abb822807c78a25a2ab3cfb9d2b71d8c702e42d730524e759c9bea67482289",
+      "unchanged": false
+    },
+    "engine.js": {
+      "originalSha256": "f9dd13fb3a205ad6e97ef2af5e151cd0743b7187b9a50ea193775734e083edd8",
+      "releaseSha256": "7cacfdfeb356d27e14076d92416d671cdb2bda7e21daff3caee8232e310c1cbb",
+      "unchanged": false
+    },
+    "levels.js": {
+      "originalSha256": "168ce6428c1d698548426ba19ee63960c2847803e3f16f338ac08bd4d039b947",
+      "releaseSha256": "738e826d07d8c7ffa54873609adade8e117ed17cfad301d3cbd6ba7806162349",
+      "unchanged": false
+    },
+    "public/shared.js": {
+      "originalSha256": "8440ba1ce531faa75decb0c34eb420951a4b5eb8a239eb4eb8a46234079eb355",
+      "releaseSha256": "dd7d9cdebedadf841203ddd5b1040507325718868da3d3229a19397849a5b173",
+      "unchanged": false
+    },
+    "public/geometry.js": {
+      "originalSha256": "5ba87fdff7ade9f9a44e677dea8b40324ca267e398c37ca7fa645cdbf4948986",
+      "releaseSha256": "40b048ef485cf458989b6a0d9c1abd203ed779d1e530a0e3b5405f90800487e9",
+      "unchanged": false
+    },
+    "public/client.js": {
+      "originalSha256": "f2ffe7e3aa4c4634c721eadc6351df3cd50eefc5c45506b93bcaf02d83403ca7",
+      "releaseSha256": "4560f8f48ce193a4bb86dd30d009fabe738af186b15416d8513240f0d382c007",
+      "unchanged": false
+    },
+    "public/level-view.js": {
+      "originalSha256": "c06d3081819d153f2608a84eb6e7b039db39ad54c5def805be9a78f8a686a20a",
+      "releaseSha256": "7e8b08527136eed5d6f337916c7d27fc54a7d779cb711ef7f24642da91791b65",
+      "unchanged": false
+    },
+    "public/asset-registry.js": {
+      "originalSha256": "a7872d7c4329a6b3ef8936e95c05fabf0a37a6bf81a27fc6704f9577c0a6ac6f",
+      "releaseSha256": "a7872d7c4329a6b3ef8936e95c05fabf0a37a6bf81a27fc6704f9577c0a6ac6f",
+      "unchanged": true
+    },
+    "test/l1.test.js": {
+      "originalSha256": "157204c168ad9ae3627338cecbf933c362bdde7f56a98b0de465498fbc36929b",
+      "releaseSha256": "157204c168ad9ae3627338cecbf933c362bdde7f56a98b0de465498fbc36929b",
+      "unchanged": true
+    }
+  },
+  "unchangedEndingSections": {
+    "fiveIndividualSendLogic": true,
+    "endingLifecycle": true,
+    "birthdayCopyAndUI": true,
+    "partyAndStarsRendering": true
+  }
+}
