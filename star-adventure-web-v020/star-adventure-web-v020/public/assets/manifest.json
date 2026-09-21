@@ -111,7 +111,17 @@
       "down": null,
       "rescue": null,
       "happy": null,
-      "emote": null,
+      "emote": {
+        "src": "/assets/characters/momonga/emote.png",
+        "frames": 6,
+        "fps": 7,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 6,
+          "count": 6
+        }
+      },
       "visual": {
         "width": 64,
         "height": 76,
@@ -133,7 +143,7 @@
       "cry": {
         "src": "/assets/characters/momonga/cry.png",
         "frames": 6,
-        "fps": 8,
+        "fps": 6,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
