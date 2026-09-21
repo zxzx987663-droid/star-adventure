@@ -74,14 +74,54 @@
       }
     },
     "小桃": {
-      "idle": null,
-      "run": null,
-      "jump": null,
+      "idle": {
+        "src": "/assets/characters/momonga/idle.png",
+        "frames": 4,
+        "fps": 4,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 4,
+          "count": 4
+        }
+      },
+      "run": {
+        "src": "/assets/characters/momonga/run.png",
+        "frames": 6,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 6,
+          "count": 6
+        }
+      },
+      "jump": {
+        "src": "/assets/characters/momonga/jump.png",
+        "frames": 4,
+        "fps": 8,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 4,
+          "count": 4
+        }
+      },
       "fall": null,
       "down": null,
       "rescue": null,
       "happy": null,
-      "emote": null,
+      "emote": {
+        "src": "/assets/characters/momonga/emote.png",
+        "frames": 6,
+        "fps": 7,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 6,
+          "count": 6
+        }
+      },
       "visual": {
         "width": 64,
         "height": 76,
@@ -90,11 +130,32 @@
         "anchorY": 1
       },
       "flattened": {
-        "src": "",
-        "visual": {
-          "width": 64,
-          "height": 18
+        "src": "/assets/characters/momonga/flattened.png",
+        "frames": 2,
+        "fps": 4,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 2,
+          "count": 2
         }
+      },
+      "cry": {
+        "src": "/assets/characters/momonga/cry.png",
+        "frames": 6,
+        "fps": 6,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 6,
+          "count": 6
+        }
+      },
+      "portrait": {
+        "src": "/assets/characters/momonga/portrait.png"
+      },
+      "icon": {
+        "src": "/assets/characters/momonga/icon.png"
       }
     },
     "栗子饅頭": {
