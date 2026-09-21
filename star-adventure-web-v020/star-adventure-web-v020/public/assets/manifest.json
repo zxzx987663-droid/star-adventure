@@ -146,6 +146,28 @@
       },
       "icon": {
         "src": "/assets/characters/momonga/icon.png"
+      },
+      "runLeft": {
+        "src": "/assets/characters/momonga/run_left.png",
+        "frames": 6,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 6,
+          "count": 6
+        }
+      },
+      "jumpLeft": {
+        "src": "/assets/characters/momonga/jump_left.png",
+        "frames": 4,
+        "fps": 8,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 4,
+          "count": 4
+        }
       }
     },
     "栗子饅頭": {
