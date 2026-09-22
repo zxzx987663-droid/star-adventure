@@ -1,5 +1,5 @@
 {
-  "description": "STAR ADVENTURE character artwork integrated from the approved 8-character sprite sheets.",
+  "description": "STAR ADVENTURE character artwork integrated from the approved 8-character sprite sheets — corrected transparent PNG pass.",
   "characters": {
     "吉伊卡哇": {
       "idle": {
