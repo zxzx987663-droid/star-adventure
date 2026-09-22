@@ -8,7 +8,7 @@ let assets=Art.data;
 Art.load().then(a=>assets=a);
 const artwork=entry=>Art.image(entry);
 const facingByPlayer=new Map();
-function sprite(p,x,y,scale){const state=p.flat?'flattened':p.down?'down':emotes.get(p.token)?.until>performance.now()?(p.char==='小桃'?'cry':'emote'):room?.stage.id==='party'?'happy':!p.grounded?(p.vy<0?'jump':'fall'):Math.abs(p.vx||0)>20?'run':'idle';if((p.vx||0)>8)facingByPlayer.set(p.token,1);else if((p.vx||0)<-8)facingByPlayer.set(p.token,-1);const facing=facingByPlayer.get(p.token)||1;const flipX=(state==='run'||state==='jump'||state==='fall'||state==='idle')&&facing<0;if(!Art.draw(ctx,'characters',p.char,state,x,y,clientTime,scale,flipX))return false;text(p.char,x,y+20,12);return true;}
+function sprite(p,x,y,scale){let state=p.flat?'flattened':p.down?'down':emotes.get(p.token)?.until>performance.now()?'emote':room?.stage.id==='party'?'happy':!p.grounded?(p.vy<0?'jump':'fall'):Math.abs(p.vx||0)>20?'run':'idle';if((p.vx||0)>8)facingByPlayer.set(p.token,1);else if((p.vx||0)<-8)facingByPlayer.set(p.token,-1);const facing=facingByPlayer.get(p.token)||1;if(state==='run'&&facing<0)state='runLeft';if(!Art.draw(ctx,'characters',p.char,state,x,y,clientTime,scale,false))return false;text(p.char,x,y+20,12);return true;}
 let cameraY=0;
 const whitePhase=()=>room?.stage.id==='ending'&&['white','whiteText'].includes(room.stage.phase);
 function whiteUI(){show('whiteScreen',whitePhase());if(whitePhase()){for(const id of ['levelIntro','modal'])if($(id).open)$(id).close();$('whiteCopy').textContent=room.stage.phase==='whiteText'?(clue?.text||''):'';show('toast',false);if(audioCtx?.state==='running')audioCtx.suspend();}}
