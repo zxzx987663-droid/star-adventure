@@ -1,31 +1,53 @@
 {
-  "description": "Optional replaceable artwork. Empty entries use the Full Alpha canvas placeholders.",
+  "description": "STAR ADVENTURE character artwork integrated from the approved 8-character sprite sheets.",
   "characters": {
     "吉伊卡哇": {
       "idle": {
         "src": "/assets/characters/chiikawa/idle.png",
-        "frames": 4,
+        "frames": 6,
         "fps": 4,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
-          "columns": 4,
-          "count": 4
-        }
-      },
-      "run": {
-        "src": "/assets/characters/chiikawa/run.png",
-        "frames": 6,
-        "fps": 10,
-        "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
           "columns": 6,
           "count": 6
         }
       },
+      "run": {
+        "src": "/assets/characters/chiikawa/run.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "runLeft": {
+        "src": "/assets/characters/chiikawa/runLeft.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
       "jump": {
         "src": "/assets/characters/chiikawa/jump.png",
+        "frames": 8,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "fall": {
+        "src": "/assets/characters/chiikawa/fall.png",
         "frames": 4,
         "fps": 8,
         "sheet": {
@@ -35,14 +57,21 @@
           "count": 4
         }
       },
-      "fall": null,
-      "down": null,
-      "rescue": null,
-      "happy": null,
+      "land": {
+        "src": "/assets/characters/chiikawa/land.png",
+        "frames": 4,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 4,
+          "count": 4
+        }
+      },
       "emote": {
         "src": "/assets/characters/chiikawa/emote.png",
         "frames": 6,
-        "fps": 8,
+        "fps": 7,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
@@ -50,6 +79,9 @@
           "count": 6
         }
       },
+      "down": null,
+      "rescue": null,
+      "happy": null,
       "visual": {
         "width": 64,
         "height": 76,
@@ -59,45 +91,67 @@
       },
       "flattened": {
         "src": "/assets/characters/chiikawa/flattened.png",
-        "frames": 2,
-        "fps": 4,
+        "frames": 4,
+        "fps": 5,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
-          "columns": 2,
-          "count": 2
+          "columns": 4,
+          "count": 4
         },
         "visual": {
-          "width": 64,
-          "height": 18
+          "width": 68,
+          "height": 28
         }
       }
     },
     "小八": {
       "idle": {
         "src": "/assets/characters/hachiware/idle.png",
-        "frames": 4,
+        "frames": 6,
         "fps": 4,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
-          "columns": 4,
-          "count": 4
-        }
-      },
-      "run": {
-        "src": "/assets/characters/hachiware/run.png",
-        "frames": 6,
-        "fps": 10,
-        "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
           "columns": 6,
           "count": 6
         }
       },
+      "run": {
+        "src": "/assets/characters/hachiware/run.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "runLeft": {
+        "src": "/assets/characters/hachiware/runLeft.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
       "jump": {
         "src": "/assets/characters/hachiware/jump.png",
+        "frames": 8,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "fall": {
+        "src": "/assets/characters/hachiware/fall.png",
         "frames": 4,
         "fps": 8,
         "sheet": {
@@ -107,14 +161,21 @@
           "count": 4
         }
       },
-      "fall": null,
-      "down": null,
-      "rescue": null,
-      "happy": null,
+      "land": {
+        "src": "/assets/characters/hachiware/land.png",
+        "frames": 4,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 4,
+          "count": 4
+        }
+      },
       "emote": {
         "src": "/assets/characters/hachiware/emote.png",
         "frames": 6,
-        "fps": 8,
+        "fps": 7,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
@@ -122,6 +183,9 @@
           "count": 6
         }
       },
+      "down": null,
+      "rescue": null,
+      "happy": null,
       "visual": {
         "width": 64,
         "height": 76,
@@ -131,45 +195,67 @@
       },
       "flattened": {
         "src": "/assets/characters/hachiware/flattened.png",
-        "frames": 2,
-        "fps": 4,
+        "frames": 4,
+        "fps": 5,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
-          "columns": 2,
-          "count": 2
+          "columns": 4,
+          "count": 4
         },
         "visual": {
-          "width": 64,
-          "height": 18
+          "width": 68,
+          "height": 28
         }
       }
     },
     "兔兔": {
       "idle": {
         "src": "/assets/characters/usagi/idle.png",
-        "frames": 4,
+        "frames": 6,
         "fps": 4,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
-          "columns": 4,
-          "count": 4
-        }
-      },
-      "run": {
-        "src": "/assets/characters/usagi/run.png",
-        "frames": 6,
-        "fps": 10,
-        "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
           "columns": 6,
           "count": 6
         }
       },
+      "run": {
+        "src": "/assets/characters/usagi/run.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "runLeft": {
+        "src": "/assets/characters/usagi/runLeft.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
       "jump": {
         "src": "/assets/characters/usagi/jump.png",
+        "frames": 8,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "fall": {
+        "src": "/assets/characters/usagi/fall.png",
         "frames": 4,
         "fps": 8,
         "sheet": {
@@ -179,14 +265,21 @@
           "count": 4
         }
       },
-      "fall": null,
-      "down": null,
-      "rescue": null,
-      "happy": null,
+      "land": {
+        "src": "/assets/characters/usagi/land.png",
+        "frames": 4,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 4,
+          "count": 4
+        }
+      },
       "emote": {
         "src": "/assets/characters/usagi/emote.png",
         "frames": 6,
-        "fps": 8,
+        "fps": 7,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
@@ -194,6 +287,9 @@
           "count": 6
         }
       },
+      "down": null,
+      "rescue": null,
+      "happy": null,
       "visual": {
         "width": 64,
         "height": 76,
@@ -203,36 +299,25 @@
       },
       "flattened": {
         "src": "/assets/characters/usagi/flattened.png",
-        "frames": 2,
-        "fps": 4,
+        "frames": 4,
+        "fps": 5,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
-          "columns": 2,
-          "count": 2
+          "columns": 4,
+          "count": 4
         },
         "visual": {
-          "width": 64,
-          "height": 18
+          "width": 68,
+          "height": 28
         }
       }
     },
     "小桃": {
       "idle": {
         "src": "/assets/characters/momonga/idle.png",
-        "frames": 4,
-        "fps": 4,
-        "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 4,
-          "count": 4
-        }
-      },
-      "run": {
-        "src": "/assets/characters/momonga/run.png",
         "frames": 6,
-        "fps": 10,
+        "fps": 4,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
@@ -240,8 +325,41 @@
           "count": 6
         }
       },
+      "run": {
+        "src": "/assets/characters/momonga/run.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "runLeft": {
+        "src": "/assets/characters/momonga/runLeft.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
       "jump": {
         "src": "/assets/characters/momonga/jump.png",
+        "frames": 8,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "fall": {
+        "src": "/assets/characters/momonga/fall.png",
         "frames": 4,
         "fps": 8,
         "sheet": {
@@ -251,11 +369,31 @@
           "count": 4
         }
       },
-      "fall": null,
+      "land": {
+        "src": "/assets/characters/momonga/land.png",
+        "frames": 4,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 4,
+          "count": 4
+        }
+      },
+      "emote": {
+        "src": "/assets/characters/momonga/emote.png",
+        "frames": 6,
+        "fps": 7,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 6,
+          "count": 6
+        }
+      },
       "down": null,
       "rescue": null,
       "happy": null,
-      "emote": null,
       "visual": {
         "width": 64,
         "height": 76,
@@ -265,80 +403,67 @@
       },
       "flattened": {
         "src": "/assets/characters/momonga/flattened.png",
-        "frames": 2,
-        "fps": 4,
-        "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 2,
-          "count": 2
-        }
-      },
-      "cry": {
-        "src": "/assets/characters/momonga/cry.png",
-        "frames": 6,
-        "fps": 8,
-        "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "count": 6
-        }
-      },
-      "portrait": {
-        "src": "/assets/characters/momonga/portrait.png"
-      },
-      "icon": {
-        "src": "/assets/characters/momonga/icon.png"
-      },
-      "runLeft": {
-        "src": "/assets/characters/momonga/run_left.png",
-        "frames": 6,
-        "fps": 10,
-        "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "count": 6
-        }
-      },
-      "jumpLeft": {
-        "src": "/assets/characters/momonga/jump_left.png",
         "frames": 4,
-        "fps": 8,
+        "fps": 5,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
           "columns": 4,
           "count": 4
+        },
+        "visual": {
+          "width": 68,
+          "height": 28
         }
       }
     },
     "栗子饅頭": {
       "idle": {
         "src": "/assets/characters/kurimanju/idle.png",
-        "frames": 4,
+        "frames": 6,
         "fps": 4,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
-          "columns": 4,
-          "count": 4
-        }
-      },
-      "run": {
-        "src": "/assets/characters/kurimanju/run.png",
-        "frames": 6,
-        "fps": 10,
-        "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
           "columns": 6,
           "count": 6
         }
       },
+      "run": {
+        "src": "/assets/characters/kurimanju/run.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "runLeft": {
+        "src": "/assets/characters/kurimanju/runLeft.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
       "jump": {
         "src": "/assets/characters/kurimanju/jump.png",
+        "frames": 8,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "fall": {
+        "src": "/assets/characters/kurimanju/fall.png",
         "frames": 4,
         "fps": 8,
         "sheet": {
@@ -348,14 +473,21 @@
           "count": 4
         }
       },
-      "fall": null,
-      "down": null,
-      "rescue": null,
-      "happy": null,
+      "land": {
+        "src": "/assets/characters/kurimanju/land.png",
+        "frames": 4,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 4,
+          "count": 4
+        }
+      },
       "emote": {
         "src": "/assets/characters/kurimanju/emote.png",
         "frames": 6,
-        "fps": 8,
+        "fps": 7,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
@@ -363,6 +495,9 @@
           "count": 6
         }
       },
+      "down": null,
+      "rescue": null,
+      "happy": null,
       "visual": {
         "width": 64,
         "height": 76,
@@ -372,45 +507,67 @@
       },
       "flattened": {
         "src": "/assets/characters/kurimanju/flattened.png",
-        "frames": 2,
-        "fps": 4,
+        "frames": 4,
+        "fps": 5,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
-          "columns": 2,
-          "count": 2
+          "columns": 4,
+          "count": 4
         },
         "visual": {
-          "width": 64,
-          "height": 18
+          "width": 68,
+          "height": 28
         }
       }
     },
     "海獺師傅": {
       "idle": {
         "src": "/assets/characters/rakko/idle.png",
-        "frames": 4,
+        "frames": 6,
         "fps": 4,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
-          "columns": 4,
-          "count": 4
-        }
-      },
-      "run": {
-        "src": "/assets/characters/rakko/run.png",
-        "frames": 6,
-        "fps": 10,
-        "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
           "columns": 6,
           "count": 6
         }
       },
+      "run": {
+        "src": "/assets/characters/rakko/run.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "runLeft": {
+        "src": "/assets/characters/rakko/runLeft.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
       "jump": {
         "src": "/assets/characters/rakko/jump.png",
+        "frames": 8,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "fall": {
+        "src": "/assets/characters/rakko/fall.png",
         "frames": 4,
         "fps": 8,
         "sheet": {
@@ -420,14 +577,21 @@
           "count": 4
         }
       },
-      "fall": null,
-      "down": null,
-      "rescue": null,
-      "happy": null,
+      "land": {
+        "src": "/assets/characters/rakko/land.png",
+        "frames": 4,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 4,
+          "count": 4
+        }
+      },
       "emote": {
         "src": "/assets/characters/rakko/emote.png",
         "frames": 6,
-        "fps": 8,
+        "fps": 7,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
@@ -435,6 +599,9 @@
           "count": 6
         }
       },
+      "down": null,
+      "rescue": null,
+      "happy": null,
       "visual": {
         "width": 64,
         "height": 76,
@@ -444,45 +611,67 @@
       },
       "flattened": {
         "src": "/assets/characters/rakko/flattened.png",
-        "frames": 2,
-        "fps": 4,
+        "frames": 4,
+        "fps": 5,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
-          "columns": 2,
-          "count": 2
+          "columns": 4,
+          "count": 4
         },
         "visual": {
-          "width": 64,
-          "height": 18
+          "width": 68,
+          "height": 28
         }
       }
     },
     "風獅爺": {
       "idle": {
         "src": "/assets/characters/shisa/idle.png",
-        "frames": 4,
+        "frames": 6,
         "fps": 4,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
-          "columns": 4,
-          "count": 4
-        }
-      },
-      "run": {
-        "src": "/assets/characters/shisa/run.png",
-        "frames": 6,
-        "fps": 10,
-        "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
           "columns": 6,
           "count": 6
         }
       },
+      "run": {
+        "src": "/assets/characters/shisa/run.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "runLeft": {
+        "src": "/assets/characters/shisa/runLeft.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
       "jump": {
         "src": "/assets/characters/shisa/jump.png",
+        "frames": 8,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "fall": {
+        "src": "/assets/characters/shisa/fall.png",
         "frames": 4,
         "fps": 8,
         "sheet": {
@@ -492,14 +681,21 @@
           "count": 4
         }
       },
-      "fall": null,
-      "down": null,
-      "rescue": null,
-      "happy": null,
+      "land": {
+        "src": "/assets/characters/shisa/land.png",
+        "frames": 4,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 4,
+          "count": 4
+        }
+      },
       "emote": {
         "src": "/assets/characters/shisa/emote.png",
         "frames": 6,
-        "fps": 8,
+        "fps": 7,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
@@ -507,6 +703,9 @@
           "count": 6
         }
       },
+      "down": null,
+      "rescue": null,
+      "happy": null,
       "visual": {
         "width": 64,
         "height": 76,
@@ -516,45 +715,67 @@
       },
       "flattened": {
         "src": "/assets/characters/shisa/flattened.png",
-        "frames": 2,
-        "fps": 4,
+        "frames": 4,
+        "fps": 5,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
-          "columns": 2,
-          "count": 2
+          "columns": 4,
+          "count": 4
         },
         "visual": {
-          "width": 64,
-          "height": 18
+          "width": 68,
+          "height": 28
         }
       }
     },
     "古本屋": {
       "idle": {
         "src": "/assets/characters/furuhonya/idle.png",
-        "frames": 4,
+        "frames": 6,
         "fps": 4,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
-          "columns": 4,
-          "count": 4
-        }
-      },
-      "run": {
-        "src": "/assets/characters/furuhonya/run.png",
-        "frames": 6,
-        "fps": 10,
-        "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
           "columns": 6,
           "count": 6
         }
       },
+      "run": {
+        "src": "/assets/characters/furuhonya/run.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "runLeft": {
+        "src": "/assets/characters/furuhonya/runLeft.png",
+        "frames": 8,
+        "fps": 12,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
       "jump": {
         "src": "/assets/characters/furuhonya/jump.png",
+        "frames": 8,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "count": 8
+        }
+      },
+      "fall": {
+        "src": "/assets/characters/furuhonya/fall.png",
         "frames": 4,
         "fps": 8,
         "sheet": {
@@ -564,14 +785,21 @@
           "count": 4
         }
       },
-      "fall": null,
-      "down": null,
-      "rescue": null,
-      "happy": null,
+      "land": {
+        "src": "/assets/characters/furuhonya/land.png",
+        "frames": 4,
+        "fps": 10,
+        "sheet": {
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 4,
+          "count": 4
+        }
+      },
       "emote": {
         "src": "/assets/characters/furuhonya/emote.png",
         "frames": 6,
-        "fps": 8,
+        "fps": 7,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
@@ -579,6 +807,9 @@
           "count": 6
         }
       },
+      "down": null,
+      "rescue": null,
+      "happy": null,
       "visual": {
         "width": 64,
         "height": 76,
@@ -588,17 +819,17 @@
       },
       "flattened": {
         "src": "/assets/characters/furuhonya/flattened.png",
-        "frames": 2,
-        "fps": 4,
+        "frames": 4,
+        "fps": 5,
         "sheet": {
           "frameWidth": 128,
           "frameHeight": 128,
-          "columns": 2,
-          "count": 2
+          "columns": 4,
+          "count": 4
         },
         "visual": {
-          "width": 64,
-          "height": 18
+          "width": 68,
+          "height": 28
         }
       }
     }
