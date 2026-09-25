@@ -18,3 +18,310 @@
 
 #objective{white-space:pre-line;line-height:1.45}
 @media(max-height:500px) and (orientation:landscape){#puzzlePanel{padding:5px 8px}#privateClue{font-size:19px}#environmentClue{font-size:20px}#puzzlePanel h3{font-size:10px}}
+
+/* === Mid-Autumn UI background v1 (2026-09-24) ===
+   Visual-only layer. Gameplay canvas / physics / network logic are untouched. */
+body{
+  min-height:100vh;
+  background-color:#dce4ef;
+  background-image:
+    linear-gradient(180deg,rgba(22,37,75,.10),rgba(255,244,218,.08)),
+    url('/assets/ui/midautumn-ui-background.png');
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+#connection{
+  background:rgba(239,244,224,.88);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,255,255,.48);
+}
+#menu h1,
+#menu .subtitle,
+#menu .eyebrow,
+#lobby>.section-head h1,
+#lobby>.section-head .eyebrow{
+  text-shadow:0 2px 10px rgba(255,250,232,.95),0 1px 2px rgba(45,53,80,.20);
+}
+#menu .menu-card,
+#lobby .panel,
+#lobby .player{
+  background:rgba(255,252,245,.91);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  box-shadow:0 16px 42px rgba(34,49,76,.13),inset 0 1px 0 rgba(255,255,255,.75);
+}
+#lobby .room-banner{
+  background:rgba(224,238,204,.91);
+  backdrop-filter:blur(9px);
+  -webkit-backdrop-filter:blur(9px);
+  box-shadow:0 12px 32px rgba(34,49,76,.10);
+}
+#play{
+  background:rgba(246,242,233,.90);
+  border-radius:20px;
+  padding:12px;
+  backdrop-filter:blur(7px);
+  -webkit-backdrop-filter:blur(7px);
+  box-shadow:0 16px 44px rgba(34,49,76,.14);
+}
+@media(max-width:700px){
+  body{background-attachment:scroll;background-position:58% center}
+  #play{border-radius:14px;padding:7px}
+}
+
+/* === Mid-Autumn UI Kit v2 (generated 2026-09-24) ===
+   Uses the approved moonlit floral UI kit. Visual layer only: game state,
+   hitboxes, physics, networking and level rules remain untouched. */
+:root{
+  --moon-ink:#51685f;
+  --moon-deep:#304d63;
+  --moon-cream:#fff1cf;
+  --moon-gold:#e9b958;
+  --moon-green:#8ea888;
+  --moon-pink:#e78686;
+  --moon-lav:#a3a1bf;
+}
+
+/* Menu hero */
+#menu{padding-top:20px}
+#menu .menu-art{
+  height:122px;
+  margin:4px auto 0;
+  max-width:300px;
+  background:url('/assets/ui/midautumn/decor-moon.png') center/contain no-repeat;
+  filter:drop-shadow(0 9px 13px rgba(46,58,90,.20));
+}
+#menu .menu-art>*{display:none}
+#menu h1{
+  color:#435e66;
+  margin-bottom:8px;
+  text-shadow:0 3px 0 rgba(255,245,210,.95),0 7px 18px rgba(35,54,82,.22);
+}
+#menu .subtitle{color:#657873;font-weight:750}
+
+/* Ornate panels from the approved kit. The transparent art is deliberately
+   stretched only in the calm center area; rounded corners remain visually strong. */
+#menu .menu-card,
+#lobby .panel,
+#devPanel,
+#instructions,
+#chestPanel,
+dialog{
+  background-color:transparent!important;
+  background-image:url('/assets/ui/midautumn/panel-cream-large.png')!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-size:100% 100%!important;
+  border:0!important;
+  box-shadow:0 16px 36px rgba(34,49,76,.16)!important;
+}
+#menu .menu-card{padding:34px 42px 38px;max-width:500px}
+#lobby .panel{padding:32px 38px}
+#devPanel{padding:30px 38px}
+dialog{padding:40px 46px}
+
+/* Lobby header/banner */
+#lobby .room-banner{
+  position:relative;
+  overflow:visible;
+  background:rgba(255,246,221,.90)!important;
+  border:3px solid rgba(230,187,101,.62);
+  box-shadow:0 12px 28px rgba(40,55,78,.13),inset 0 0 0 2px rgba(255,255,255,.66);
+}
+#lobby .room-banner::after{
+  content:'';
+  position:absolute;
+  width:54px;height:54px;
+  right:-12px;top:-19px;
+  background:url('/assets/ui/midautumn/decor-mooncake.png') center/contain no-repeat;
+  pointer-events:none;
+}
+#roomCode{color:#8e6647;text-shadow:0 2px #fff7de}
+
+/* Reusable Moon Festival buttons. Text remains live HTML and accessible. */
+button{
+  border:0!important;
+  background-color:transparent!important;
+  background-image:url('/assets/ui/midautumn/button-green.png')!important;
+  background-size:100% 100%!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  color:#52665d!important;
+  text-shadow:0 1px rgba(255,255,255,.75);
+  box-shadow:none!important;
+  transition:transform .12s ease,filter .12s ease;
+}
+button:hover:not(:disabled){background-color:transparent!important;filter:brightness(1.06);transform:translateY(-1px)}
+button:active:not(:disabled){transform:translateY(1px) scale(.99)}
+button:disabled{filter:grayscale(.22);opacity:.52}
+button.primary{
+  background-image:url('/assets/ui/midautumn/button-gold.png')!important;
+  color:#75503d!important;
+}
+button.devbtn,#devToggle{
+  background-image:url('/assets/ui/midautumn/button-lavender.png')!important;
+  color:#565978!important;
+}
+#resetGame,#resetLevel{
+  background-image:url('/assets/ui/midautumn/button-red.png')!important;
+  color:#7a4a4a!important;
+}
+#leave,#introClose,.close{
+  background-image:url('/assets/ui/midautumn/button-red.png')!important;
+}
+.links button{
+  min-height:40px;
+  padding:8px 18px;
+  background-image:url('/assets/ui/midautumn/button-blue.png')!important;
+  color:#4c6280!important;
+}
+
+/* Inputs */
+input:not([type=checkbox]){
+  border:2px solid #dec895;
+  background:rgba(255,250,232,.93);
+  box-shadow:inset 0 2px 8px rgba(119,91,52,.07);
+  color:#5c625d;
+}
+input:not([type=checkbox]):focus{outline:3px solid rgba(236,190,98,.32);border-color:#d3ab5c}
+
+/* Players and character selectors */
+.player{
+  position:relative;
+  background:rgba(255,248,226,.88)!important;
+  border:2px solid rgba(222,197,145,.75)!important;
+  box-shadow:0 8px 18px rgba(47,64,83,.09);
+}
+.player::before{
+  content:'';
+  position:absolute;
+  width:28px;height:28px;
+  top:-9px;right:-7px;
+  background:url('/assets/ui/midautumn/decor-rabbit.png') center/contain no-repeat;
+  opacity:.78;
+}
+.chars button{
+  background-image:url('/assets/ui/midautumn/button-blue.png')!important;
+  color:#50627d!important;
+  min-height:52px;
+}
+.chars .mine{
+  background-image:url('/assets/ui/midautumn/button-gold.png')!important;
+  outline:3px solid rgba(239,190,84,.60)!important;
+}
+
+/* In-game HUD / popup language */
+#objective,#toast,#contextHint{
+  border:2px solid rgba(223,192,127,.65)!important;
+  background:rgba(255,247,222,.93)!important;
+  color:#52655f!important;
+  box-shadow:0 6px 18px rgba(38,54,78,.12);
+}
+#objective::before{content:'☾  ';color:#dcaa4f;font-weight:900}
+#contextHint{color:#5b635b!important}
+#stageClear{
+  background:rgba(255,244,218,.92)!important;
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+}
+.big-star{color:#e4b64e!important;filter:drop-shadow(0 3px 6px rgba(171,125,39,.2))}
+#levelIntro{
+  background-image:url('/assets/ui/midautumn/panel-cream-large.png')!important;
+  background-size:100% 100%!important;
+}
+#levelIntro::before{
+  content:'';
+  display:block;
+  width:58px;height:58px;
+  margin:-12px auto 2px;
+  background:url('/assets/ui/midautumn/decor-mooncake.png') center/contain no-repeat;
+}
+#levelIntro::backdrop,dialog::backdrop{background:rgba(32,48,70,.46);backdrop-filter:blur(5px)}
+
+/* Controls: keep large hit areas, only change their visual shell. */
+.controlbar button{min-height:50px}
+.movement button{background-image:url('/assets/ui/midautumn/button-blue.png')!important;color:#50627d!important}
+#interaction{background-image:url('/assets/ui/midautumn/button-gold.png')!important}
+#emote{background-image:url('/assets/ui/midautumn/button-lavender.png')!important}
+
+/* Small decorative floral divider under menu card. */
+#menu .fine::before{
+  content:'';
+  display:block;
+  width:min(330px,80vw);
+  height:34px;
+  margin:4px auto 5px;
+  background:url('/assets/ui/midautumn/divider-floral.png') center/contain no-repeat;
+}
+
+@media(max-width:700px){
+  #menu .menu-art{height:90px;max-width:230px}
+  #menu .menu-card{padding:28px 27px 32px}
+  #lobby .panel{padding:27px 24px}
+  dialog{padding:34px 28px}
+  .links{gap:2px;flex-wrap:wrap}
+  .links button{padding:7px 12px}
+  .player::before{width:23px;height:23px}
+}
+
+/* === Initial complete Mid-Autumn UI integration v4 === */
+#menu{min-height:calc(100dvh - 56px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 0 26px}
+#menu .eyebrow{color:#fff5d9;text-shadow:0 2px 8px rgba(28,43,78,.75);font-size:12px}
+#menu .menu-art{display:none}
+#menu h1{width:min(790px,92vw);height:clamp(155px,22vw,280px);margin:0 auto;background:url('/assets/ui/midautumn/menu-logo-banner.png') center/contain no-repeat;text-indent:-9999px;overflow:hidden;filter:drop-shadow(0 14px 24px rgba(26,42,76,.28))}
+#menu .subtitle{margin:-8px 0 10px;color:#fff4cf;text-shadow:0 2px 7px rgba(28,43,78,.82);font-size:clamp(14px,1.8vw,18px)}
+#menu .menu-card{margin:8px auto 10px;width:min(520px,92vw)}
+#menu .fine{color:#fff7de;text-shadow:0 2px 6px rgba(25,40,70,.9)}
+#lobby{padding-top:0}
+#lobby>.section-head{position:relative;min-height:145px;justify-content:flex-end;padding:10px 0 0}
+#lobby>.section-head>div{position:absolute;inset:0 120px 0 0;display:flex;align-items:center;justify-content:center}
+#lobby>.section-head .eyebrow{display:none}
+#lobby>.section-head h1{width:min(650px,78vw);height:135px;margin:0;background:url('/assets/ui/midautumn/lobby-title-banner.png') center/contain no-repeat;text-indent:-9999px;overflow:hidden;filter:drop-shadow(0 10px 20px rgba(28,43,78,.22))}
+#lobby>.section-head>#leave{z-index:2;align-self:flex-start;margin-top:14px}
+#lobby .room-banner{max-width:920px;margin:0 auto 12px;justify-content:center;flex-wrap:wrap}
+#lobby #count{text-align:center;font-weight:800;color:#fff4d3;text-shadow:0 2px 7px rgba(25,40,70,.9);margin:8px 0 14px}
+.lobby-grid{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(430px,1.6fr);gap:16px;align-items:stretch}
+.lobby-roster{background:rgba(255,248,226,.88);border:2px solid rgba(222,197,145,.75);border-radius:20px;padding:12px;box-shadow:0 12px 26px rgba(47,64,83,.10);backdrop-filter:blur(7px)}
+#lobby .players{grid-template-columns:1fr;gap:8px;height:100%}
+#lobby .player{display:grid;grid-template-columns:44px 1fr auto;grid-template-rows:auto auto;align-items:center;text-align:left;padding:9px 12px;min-height:58px}
+#lobby .player .face{grid-row:1/3;margin:0;font-size:24px}
+#lobby .player b{align-self:end}
+#lobby .player small{margin:0;font-size:10px}
+#lobby .player small:last-child{grid-column:3;grid-row:1/3;align-self:center;padding-left:8px}
+#lobby .lobby-character-panel{margin:0!important;min-width:0}
+#lobby .lobby-character-panel h2{text-align:left;margin-bottom:4px}
+#lobby .chars{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#lobby .chars button{min-width:0;min-height:62px;padding:9px 7px;font-size:13px}
+.lobby-actions{justify-content:flex-end;margin-top:14px}
+.lobby-actions #start{min-width:220px}
+#lobbyMsg{min-height:24px;text-align:center;color:#fff3cf;text-shadow:0 2px 7px rgba(25,40,70,.9);font-weight:800}
+#lobby>.fine{color:#fff3d1;text-shadow:0 2px 7px rgba(25,40,70,.9);text-align:center}
+.game-head{background:rgba(37,60,101,.82);border:1px solid rgba(255,226,157,.55);border-radius:15px;padding:8px 12px;color:#fff4d8;box-shadow:0 7px 18px rgba(25,39,69,.16)}
+.game-head .eyebrow{color:#ffe4a6}.game-head h2{color:#fff8e7}
+#inventory{color:#ffe7ae;font-weight:800}
+#objective{border-radius:13px!important;background:rgba(35,58,99,.88)!important;color:#fff8e6!important;border:1px solid rgba(255,225,153,.66)!important;text-shadow:0 1px 2px rgba(18,35,66,.65)}
+#objective::before{color:#ffd969}
+#levelIntro{max-width:min(560px,90vw);text-align:center}
+#levelIntro h2{font-size:clamp(22px,4vw,34px);color:#715244}
+#levelIntro #introCopy{font-size:clamp(14px,2vw,17px);line-height:1.8}
+@media(max-width:850px){#lobby>.section-head{min-height:110px}#lobby>.section-head>div{right:90px}#lobby>.section-head h1{height:100px}.lobby-grid{grid-template-columns:1fr}#lobby .players{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){#menu h1{height:145px;width:96vw}#menu .subtitle{margin-top:-3px}#lobby>.section-head{min-height:86px}#lobby>.section-head>div{right:72px}#lobby>.section-head h1{height:78px;width:78vw}#lobby>.section-head>#leave{font-size:0;min-width:48px;padding:8px}#lobby>.section-head>#leave::after{content:'←';font-size:22px}#lobby .room-banner{gap:8px;padding:14px}#lobby .room-banner b{font-size:25px}#lobby .players{grid-template-columns:1fr}#lobby .chars{grid-template-columns:repeat(2,minmax(0,1fr))}.lobby-actions{justify-content:stretch}.lobby-actions>*{flex:1}.lobby-actions #start{min-width:0}}
+
+/* === Level 2 Mid-Autumn cave art integration v5 === */
+#puzzlePanel{
+  background-color:transparent!important;
+  background-image:url('/assets/ui/midautumn/panel-cream-large.png')!important;
+  background-size:100% 100%!important;
+  background-repeat:no-repeat!important;
+  border:0!important;
+  box-shadow:0 10px 24px rgba(22,41,70,.20)!important;
+  padding:14px 22px 16px!important;
+  min-width:190px;
+  color:#5d675d!important;
+}
+#puzzlePanel h3{color:#536d63!important;font-size:12px!important;letter-spacing:1px}
+#privateClue{font-size:clamp(22px,3.4vw,31px)!important;letter-spacing:4px;filter:drop-shadow(0 2px 1px #fff7da)}
+#environmentClue{display:inline-block;min-width:48px;margin-top:4px!important;padding:2px 10px;border-radius:999px;background:#385c72;color:#fff2c8!important;font-size:18px!important;font-weight:900}

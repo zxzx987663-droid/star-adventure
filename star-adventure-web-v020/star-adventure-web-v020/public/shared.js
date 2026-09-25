@@ -2,7 +2,7 @@
 (function(root){
 const D=typeof module!=='undefined'?require('./geometry'):root.Geometry;
 const CHARS=['吉伊卡哇','小八','兔兔','小桃','栗子饅頭','海獺師傅','風獅爺','古本屋'];
-const TITLES={1:'今天也要去工作！',2:'奇怪的洞穴',3:'超級搬運工',4:'討伐 BOSS',5:'星空之塔',ending:'冒險完成。',party:'Party Room'};
+const TITLES={1:'今天也要去工作！',2:'奇怪的洞穴',3:'推月亮',4:'月兔來襲',5:'星空之塔',ending:'冒險完成。',party:'Party Room'};
 const WIDTH={1:2900,2:5300,3:5600,4:3900,5:5700,ending:1400,party:1800};
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 function platforms(s,t){
