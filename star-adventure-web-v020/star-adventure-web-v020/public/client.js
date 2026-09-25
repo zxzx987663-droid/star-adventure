@@ -115,11 +115,20 @@ function drawWorld(){if(!room)return;const s=room.stage,t=clientTime;if(s.id==='
  ctx.save();ctx.translate(-camera,-cameraY);
  const width=W.WIDTH[s.id];
  // Ground follows the exact collision height, including mountain slopes.
- let segment=[];const fillGround=()=>{if(!segment.length)return;ctx.beginPath();ctx.moveTo(segment[0][0],560+cameraY);for(const [x,y] of segment)ctx.lineTo(x,y);ctx.lineTo(segment.at(-1)[0],560+cameraY);ctx.closePath();ctx.fillStyle=s.id===1?'#5e7565':s.id===2?'#667e72':s.id===5?'#99a0bf':'#b7cc9d';ctx.fill();ctx.beginPath();segment.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.strokeStyle=s.id===1?'#bdd49d':s.id===2?'#a9b798':s.id===5?'#e2d5e0':'#dce6b7';ctx.lineWidth=9;ctx.stroke();segment=[];};for(let x=Math.max(0,Math.floor(camera/10)*10-20);x<=Math.min(width,camera+viewW+30);x+=10){const y=W.floor(s,x);if(y<700)segment.push([x,y+4]);else fillGround();}fillGround();
+ // LV1 uses dedicated modular cliff art instead of the old green debug-like fill.
+ if(s.id!==1){let segment=[];const fillGround=()=>{if(!segment.length)return;ctx.beginPath();ctx.moveTo(segment[0][0],560+cameraY);for(const [x,y] of segment)ctx.lineTo(x,y);ctx.lineTo(segment.at(-1)[0],560+cameraY);ctx.closePath();ctx.fillStyle=s.id===2?'#667e72':s.id===5?'#99a0bf':'#b7cc9d';ctx.fill();ctx.beginPath();segment.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.strokeStyle=s.id===2?'#a9b798':s.id===5?'#e2d5e0':'#dce6b7';ctx.lineWidth=9;ctx.stroke();segment=[];};for(let x=Math.max(0,Math.floor(camera/10)*10-20);x<=Math.min(width,camera+viewW+30);x+=10){const y=W.floor(s,x);if(y<700)segment.push([x,y+4]);else fillGround();}fillGround();}
  if(s.id===1){
   /* LV1 Mid-Autumn layered art. Physics stays in shared.js; art is visual-only. */
-  const l1FloorArt=(x,y,w)=>{const sc=Math.max(.72,Math.min(1.18,w/300));return Art.draw(ctx,'levels','l1Ground','idle',x+w/2,y+64*sc-4,t,sc);};
-  for(let x=Math.max(0,Math.floor((camera-120)/220)*220);x<Math.min(width,camera+viewW+260);x+=220){const a=W.floor(s,x+15),b=W.floor(s,x+110),c=W.floor(s,x+205);if(a<700&&b<700&&c<700)l1FloorArt(x,Math.min(a,b,c),220);}
+  const levelAsset=key=>artwork(assets.levels?.[key]?.animations?.idle);
+  const drawGroundSegment=(x1,x2,y=420)=>{
+   const left=levelAsset('l1GroundLeft'),mid=levelAsset('l1GroundMid'),right=levelAsset('l1GroundRight');if(!left||!mid||!right)return;
+   const len=x2-x1,endW=Math.min(120,Math.max(76,len*.28)),bodyX=x1+endW,bodyEnd=x2-endW,top=y-9,h=118;
+   ctx.drawImage(left,x1,top,endW,h);
+   for(let x=bodyX;x<bodyEnd-1;){const w=Math.min(164,bodyEnd-x+2);ctx.drawImage(mid,x,top,w,h);x+=w-2;}
+   ctx.drawImage(right,x2-endW,top,endW,h);
+  };
+  // Four continuous walkable land masses match the actual LV1 floor collision gaps exactly.
+  for(const [a,b] of [[0,410],[565,1420],[1680,1960],[2170,2900]])drawGroundSegment(a,b,420);
   Art.draw(ctx,'levels','l1Start','idle',135,424,t,.92);sign('今晚也要把星星送到另一邊！',235,260);
   for(const [i,x] of [650,770,890].entries()){if(!Art.draw(ctx,'levels','l1Plate',s.plates[i]?'on':'off',x,430,t))plateDraw(x,s.plates[i]);text(String(i+1),x,378,12,'#fff4d5');}
   if(!Art.draw(ctx,'levels','l1Gate',s.gateOpen?'open':'closed',1040,426,t))gate(1040,s.gateOpen);
@@ -130,7 +139,14 @@ function drawWorld(){if(!room)return;const s=room.stage,t=clientTime;if(s.id==='
   if(!Art.draw(ctx,'levels','l1Bridge',s.bridgeBroken?'broken':'intact',1555,500,t)){rect(1410,420,290,14,'#b99470',4);}
   sign(s.bridgeBroken?'斷層橋已斷！改走移動平台':'斷層橋 · 承重似乎不太妙…',1555,245);
   if(s.bridgeBroken){text('喀啦！',1555,380,22,'#ffe2a1');for(let i=0;i<4;i++)text('✦',1460+i*62,405+Math.sin(t*6+i)*8,14,'#ffd98c');}
-  for(const b of W.platforms(s,t)){if(b.w===290)continue;const sc=Math.max(.55,Math.min(1.35,b.w/120));if(!Art.draw(ctx,'levels','l1Platform','idle',b.x+b.w/2,b.y+58*sc-4,t,sc)){rect(b.x,b.y,b.w,16,'#b99470',4);}if(b.id==='first-step')text('↟',b.x+b.w/2,b.y-18,15,'#fff0bd');}
+  const drawFloatPlatform=b=>{
+   const key=b.w<=75?'l1PlatformSmall':b.w<=135?'l1PlatformMedium':'l1PlatformLarge',img=levelAsset(key);
+   if(!img){rect(b.x,b.y,b.w,16,'#b99470',4);return;}
+   const extra=key==='l1PlatformSmall'?12:key==='l1PlatformMedium'?16:20,dw=b.w+extra,ratio=img.naturalHeight/img.naturalWidth,dh=dw*ratio;
+   // The collision surface is b.y. The art is independent and sinks only a few pixels into the grass cap.
+   ctx.drawImage(img,b.x-extra/2,b.y-8,dw,dh);
+  };
+  for(const b of W.platforms(s,t)){if(b.w===290)continue;drawFloatPlatform(b);if(b.id==='first-step')text('↟',b.x+b.w/2,b.y-18,15,'#fff0bd');}
   /* Checkpoint lanterns correspond to the real respawn checkpoints already used by the server. */
   Art.draw(ctx,'levels','l1Checkpoint','idle',1760,424,t,.78);text('CHECKPOINT',1760,326,12,'#fff0c8');
   Art.draw(ctx,'levels','l1Goal','idle',2730,425,t,.95);text('⭐',2730,343+Math.sin(t*4)*4,34,'#ffe79b');sign('六位冒險者集合',2730,245);
