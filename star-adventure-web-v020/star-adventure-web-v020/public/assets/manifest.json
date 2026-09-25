@@ -1723,6 +1723,102 @@
           "fps": 1
         }
       }
+    },
+    "l1GroundLeft": {
+      "visual": {
+        "width": 180,
+        "height": 118,
+        "scale": 1,
+        "anchorX": 0,
+        "anchorY": 0
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level1/ground-left.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1GroundMid": {
+      "visual": {
+        "width": 180,
+        "height": 118,
+        "scale": 1,
+        "anchorX": 0,
+        "anchorY": 0
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level1/ground-mid.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1GroundRight": {
+      "visual": {
+        "width": 180,
+        "height": 118,
+        "scale": 1,
+        "anchorX": 0,
+        "anchorY": 0
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level1/ground-right.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1PlatformSmall": {
+      "visual": {
+        "width": 78,
+        "height": 60,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 0
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level1/platform-small.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1PlatformMedium": {
+      "visual": {
+        "width": 128,
+        "height": 78,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 0
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level1/platform-medium.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1PlatformLarge": {
+      "visual": {
+        "width": 158,
+        "height": 90,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 0
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level1/platform-large.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
     }
   }
 }
