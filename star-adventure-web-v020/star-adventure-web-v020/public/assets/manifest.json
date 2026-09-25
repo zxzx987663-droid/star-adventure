@@ -835,7 +835,7 @@
     }
   },
   "backgrounds": {
-    "1": null,
+    "1": "/assets/levels/level1/background-backdrop.jpg",
     "2": "/assets/levels/level2/background-panorama.png",
     "3": "/assets/levels/level3/background.png",
     "4": "/assets/levels/level4/l4-bridge-background.jpg",
@@ -1539,6 +1539,186 @@
       "animations": {
         "idle": {
           "src": "/assets/levels/level5/decor-lantern-spirit.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1Platform": {
+      "visual": {
+        "width": 120,
+        "height": 58,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level1/platform-grass.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1Ground": {
+      "visual": {
+        "width": 300,
+        "height": 64,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level1/ground-edge.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1Plate": {
+      "visual": {
+        "width": 78,
+        "height": 48,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "off": {
+          "src": "/assets/levels/level1/pressure-plate-off.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "on": {
+          "src": "/assets/levels/level1/pressure-plate-on.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1Gate": {
+      "visual": {
+        "width": 125,
+        "height": 112,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "closed": {
+          "src": "/assets/levels/level1/gate-closed.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "open": {
+          "src": "/assets/levels/level1/gate-open.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1Lever": {
+      "visual": {
+        "width": 72,
+        "height": 88,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "off": {
+          "src": "/assets/levels/level1/lever-off.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "on": {
+          "src": "/assets/levels/level1/lever-on.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1Bridge": {
+      "visual": {
+        "width": 290,
+        "height": 118,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "intact": {
+          "src": "/assets/levels/level1/bridge-intact.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "broken": {
+          "src": "/assets/levels/level1/bridge-broken.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1Checkpoint": {
+      "visual": {
+        "width": 118,
+        "height": 82,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level1/checkpoint.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1Goal": {
+      "visual": {
+        "width": 180,
+        "height": 112,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level1/goal-gate.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1Start": {
+      "visual": {
+        "width": 95,
+        "height": 62,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level1/start-lantern.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l1Decor": {
+      "visual": {
+        "width": 62,
+        "height": 42,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "lantern": {
+          "src": "/assets/levels/level1/decor-lantern.png",
           "frames": 1,
           "fps": 1
         }
