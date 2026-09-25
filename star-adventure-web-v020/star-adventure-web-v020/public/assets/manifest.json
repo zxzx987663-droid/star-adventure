@@ -1,5 +1,5 @@
 {
-  "description": "STAR ADVENTURE character artwork integrated from the approved 8-character sprite sheets — corrected transparent PNG pass.",
+  "description": "STAR ADVENTURE Mid-Autumn visual package through Level 5 initial art integration.",
   "characters": {
     "吉伊卡哇": {
       "idle": {
@@ -7,8 +7,8 @@
         "frames": 6,
         "fps": 4,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -18,8 +18,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -29,8 +29,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -40,8 +40,8 @@
         "frames": 8,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -51,8 +51,8 @@
         "frames": 4,
         "fps": 8,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -62,8 +62,8 @@
         "frames": 4,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -73,8 +73,8 @@
         "frames": 6,
         "fps": 7,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -94,8 +94,8 @@
         "frames": 4,
         "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         },
@@ -111,8 +111,8 @@
         "frames": 6,
         "fps": 4,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -122,8 +122,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -133,8 +133,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -144,8 +144,8 @@
         "frames": 8,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -155,8 +155,8 @@
         "frames": 4,
         "fps": 8,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -166,8 +166,8 @@
         "frames": 4,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -177,8 +177,8 @@
         "frames": 6,
         "fps": 7,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -198,8 +198,8 @@
         "frames": 4,
         "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         },
@@ -215,8 +215,8 @@
         "frames": 6,
         "fps": 4,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -226,8 +226,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -237,8 +237,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -248,8 +248,8 @@
         "frames": 8,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -259,8 +259,8 @@
         "frames": 4,
         "fps": 8,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -270,8 +270,8 @@
         "frames": 4,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -281,8 +281,8 @@
         "frames": 6,
         "fps": 7,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -302,8 +302,8 @@
         "frames": 4,
         "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         },
@@ -319,8 +319,8 @@
         "frames": 6,
         "fps": 4,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -330,8 +330,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -341,8 +341,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -352,8 +352,8 @@
         "frames": 8,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -363,8 +363,8 @@
         "frames": 4,
         "fps": 8,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -374,8 +374,8 @@
         "frames": 4,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -385,8 +385,8 @@
         "frames": 6,
         "fps": 7,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -406,8 +406,8 @@
         "frames": 4,
         "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         },
@@ -423,8 +423,8 @@
         "frames": 6,
         "fps": 4,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -434,8 +434,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -445,8 +445,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -456,8 +456,8 @@
         "frames": 8,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -467,8 +467,8 @@
         "frames": 4,
         "fps": 8,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -478,8 +478,8 @@
         "frames": 4,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -489,8 +489,8 @@
         "frames": 6,
         "fps": 7,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -510,8 +510,8 @@
         "frames": 4,
         "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         },
@@ -527,8 +527,8 @@
         "frames": 6,
         "fps": 4,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -538,8 +538,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -549,8 +549,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -560,8 +560,8 @@
         "frames": 8,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -571,8 +571,8 @@
         "frames": 4,
         "fps": 8,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -582,8 +582,8 @@
         "frames": 4,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -593,8 +593,8 @@
         "frames": 6,
         "fps": 7,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -614,8 +614,8 @@
         "frames": 4,
         "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         },
@@ -631,8 +631,8 @@
         "frames": 6,
         "fps": 4,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -642,8 +642,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -653,8 +653,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -664,8 +664,8 @@
         "frames": 8,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -675,8 +675,8 @@
         "frames": 4,
         "fps": 8,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -686,8 +686,8 @@
         "frames": 4,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -697,8 +697,8 @@
         "frames": 6,
         "fps": 7,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -718,8 +718,8 @@
         "frames": 4,
         "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         },
@@ -735,8 +735,8 @@
         "frames": 6,
         "fps": 4,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -746,8 +746,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -757,8 +757,8 @@
         "frames": 8,
         "fps": 12,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -768,8 +768,8 @@
         "frames": 8,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 8,
           "count": 8
         }
@@ -779,8 +779,8 @@
         "frames": 4,
         "fps": 8,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -790,8 +790,8 @@
         "frames": 4,
         "fps": 10,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         }
@@ -801,8 +801,8 @@
         "frames": 6,
         "fps": 7,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 6,
           "count": 6
         }
@@ -822,8 +822,8 @@
         "frames": 4,
         "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
+          "frameWidth": 256,
+          "frameHeight": 256,
           "columns": 4,
           "count": 4
         },
@@ -836,76 +836,96 @@
   },
   "backgrounds": {
     "1": null,
-    "2": null,
-    "3": null,
-    "4": null,
-    "5": null,
+    "2": "/assets/levels/level2/background-panorama.png",
+    "3": "/assets/levels/level3/background.png",
+    "4": "/assets/levels/level4/l4-bridge-background.jpg",
+    "5": "/assets/levels/level5/background.jpg",
     "party": null
   },
   "boss": {
     "bridge": {
       "visual": {
-        "width": 140,
-        "height": 130,
+        "width": 170,
+        "height": 155,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
       },
       "animations": {
         "idle": {
-          "src": "",
+          "src": "/assets/boss/midautumn/actions/idle.png",
           "frames": 1,
           "fps": 8
         },
         "crouch": {
-          "src": "",
+          "src": "/assets/boss/midautumn/actions/crouch.png",
           "frames": 1,
           "fps": 8
         },
         "leap": {
-          "src": "",
+          "src": "/assets/boss/midautumn/actions/leap.png",
           "frames": 1,
           "fps": 8
         },
         "slamWarning": {
-          "src": "",
+          "src": "/assets/boss/midautumn/actions/slamWarning.png",
           "frames": 1,
-          "fps": 8
+          "fps": 8,
+          "visual": {
+            "width": 185,
+            "height": 160
+          }
         },
         "slam": {
-          "src": "",
+          "src": "/assets/boss/midautumn/actions/slam.png",
           "frames": 1,
-          "fps": 8
+          "fps": 8,
+          "visual": {
+            "width": 200,
+            "height": 165
+          }
         },
         "chargeWarning": {
-          "src": "",
+          "src": "/assets/boss/midautumn/actions/chargeWarning.png",
           "frames": 1,
           "fps": 8
         },
         "charge": {
-          "src": "",
+          "src": "/assets/boss/midautumn/actions/charge.png",
           "frames": 1,
           "fps": 8
         },
         "fall": {
-          "src": "",
+          "src": "/assets/boss/midautumn/actions/fall.png",
           "frames": 1,
-          "fps": 8
+          "fps": 8,
+          "visual": {
+            "width": 170,
+            "height": 145
+          }
         },
         "recovery": {
-          "src": "",
+          "src": "/assets/boss/midautumn/actions/recovery.png",
           "frames": 1,
           "fps": 8
         },
         "stompWarning": {
-          "src": "",
+          "src": "/assets/boss/midautumn/actions/stompWarning.png",
           "frames": 1,
-          "fps": 8
+          "fps": 8,
+          "visual": {
+            "width": 185,
+            "height": 160
+          }
         },
         "stomp": {
-          "src": "",
+          "src": "/assets/boss/midautumn/actions/stomp.png",
           "frames": 1,
-          "fps": 8
+          "fps": 8,
+          "visual": {
+            "width": 205,
+            "height": 165
+          }
         }
       }
     }
@@ -954,89 +974,89 @@
     },
     "patrol": {
       "visual": {
-        "width": 48,
-        "height": 40,
+        "width": 58,
+        "height": 48,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
       },
       "animations": {
         "idle": {
-          "src": "",
+          "src": "/assets/levels/level5/enemy-patrol-cloud.png",
           "frames": 1,
-          "fps": 8
+          "fps": 1
         },
         "patrol": {
-          "src": "",
+          "src": "/assets/levels/level5/enemy-patrol-cloud.png",
           "frames": 1,
-          "fps": 8
+          "fps": 1
         },
         "turn": {
-          "src": "",
+          "src": "/assets/levels/level5/enemy-patrol-cloud.png",
           "frames": 1,
-          "fps": 8
+          "fps": 1
         }
       }
     },
     "hopper": {
       "visual": {
-        "width": 48,
-        "height": 40,
+        "width": 58,
+        "height": 48,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
       },
       "animations": {
         "idle": {
-          "src": "",
+          "src": "/assets/levels/level5/enemy-hopper-rabbit.png",
           "frames": 1,
-          "fps": 8
+          "fps": 1
         },
         "crouch": {
-          "src": "",
+          "src": "/assets/levels/level5/enemy-hopper-rabbit.png",
           "frames": 1,
-          "fps": 8
+          "fps": 1
         },
         "jump": {
-          "src": "",
+          "src": "/assets/levels/level5/enemy-hopper-rabbit.png",
           "frames": 1,
-          "fps": 8
+          "fps": 1
         },
         "rest": {
-          "src": "",
+          "src": "/assets/levels/level5/enemy-hopper-rabbit.png",
           "frames": 1,
-          "fps": 8
+          "fps": 1
         }
       }
     },
     "charger": {
       "visual": {
-        "width": 48,
-        "height": 40,
+        "width": 62,
+        "height": 48,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
       },
       "animations": {
         "idle": {
-          "src": "",
+          "src": "/assets/levels/level5/enemy-charger-mooncake.png",
           "frames": 1,
-          "fps": 8
+          "fps": 1
         },
         "warning": {
-          "src": "",
+          "src": "/assets/levels/level5/enemy-charger-mooncake.png",
           "frames": 1,
-          "fps": 8
+          "fps": 1
         },
         "charge": {
-          "src": "",
+          "src": "/assets/levels/level5/enemy-charger-mooncake.png",
           "frames": 1,
-          "fps": 8
+          "fps": 1
         },
         "recovery": {
-          "src": "",
+          "src": "/assets/levels/level5/enemy-charger-mooncake.png",
           "frames": 1,
-          "fps": 8
+          "fps": 1
         }
       }
     }
@@ -1044,17 +1064,17 @@
   "cargo": {
     "pink": {
       "visual": {
-        "width": 110,
-        "height": 110,
+        "width": 120,
+        "height": 120,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
       },
       "animations": {
         "idle": {
-          "src": "",
+          "src": "/assets/cargo/midautumn/push-moon.png",
           "frames": 1,
-          "fps": 8
+          "fps": 1
         }
       }
     }
@@ -1062,115 +1082,127 @@
   "platforms": {
     "hop": {
       "visual": {
-        "width": 65,
-        "height": 14,
+        "width": 110,
+        "height": 48,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
       },
       "animations": {
         "idle": {
-          "src": "",
-          "frames": 1
+          "src": "/assets/levels/level5/platform-grass.png",
+          "frames": 1,
+          "fps": 1
         },
         "falling": {
-          "src": "",
-          "frames": 1
+          "src": "/assets/levels/level5/platform-grass.png",
+          "frames": 1,
+          "fps": 1
         }
       }
     },
     "moving1": {
       "visual": {
         "width": 110,
-        "height": 14,
+        "height": 48,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
       },
       "animations": {
         "idle": {
-          "src": "",
-          "frames": 1
+          "src": "/assets/levels/level5/platform-grass.png",
+          "frames": 1,
+          "fps": 1
         },
         "falling": {
-          "src": "",
-          "frames": 1
+          "src": "/assets/levels/level5/platform-grass.png",
+          "frames": 1,
+          "fps": 1
         }
       }
     },
     "narrow": {
       "visual": {
-        "width": 70,
-        "height": 14,
+        "width": 110,
+        "height": 48,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
       },
       "animations": {
         "idle": {
-          "src": "",
-          "frames": 1
+          "src": "/assets/levels/level5/platform-grass.png",
+          "frames": 1,
+          "fps": 1
         },
         "falling": {
-          "src": "",
-          "frames": 1
+          "src": "/assets/levels/level5/platform-grass.png",
+          "frames": 1,
+          "fps": 1
         }
       }
     },
     "moving2": {
       "visual": {
-        "width": 100,
-        "height": 14,
+        "width": 110,
+        "height": 48,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
       },
       "animations": {
         "idle": {
-          "src": "",
-          "frames": 1
+          "src": "/assets/levels/level5/platform-grass.png",
+          "frames": 1,
+          "fps": 1
         },
         "falling": {
-          "src": "",
-          "frames": 1
+          "src": "/assets/levels/level5/platform-grass.png",
+          "frames": 1,
+          "fps": 1
         }
       }
     },
     "fall1": {
       "visual": {
-        "width": 95,
-        "height": 14,
+        "width": 110,
+        "height": 48,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
       },
       "animations": {
         "idle": {
-          "src": "",
-          "frames": 1
+          "src": "/assets/levels/level5/platform-grass.png",
+          "frames": 1,
+          "fps": 1
         },
         "falling": {
-          "src": "",
-          "frames": 1
+          "src": "/assets/levels/level5/platform-grass.png",
+          "frames": 1,
+          "fps": 1
         }
       }
     },
     "fall2": {
       "visual": {
-        "width": 85,
-        "height": 14,
+        "width": 110,
+        "height": 48,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
       },
       "animations": {
         "idle": {
-          "src": "",
-          "frames": 1
+          "src": "/assets/levels/level5/platform-grass.png",
+          "frames": 1,
+          "fps": 1
         },
         "falling": {
-          "src": "",
-          "frames": 1
+          "src": "/assets/levels/level5/platform-grass.png",
+          "frames": 1,
+          "fps": 1
         }
       }
     }
@@ -1266,5 +1298,251 @@
       }
     }
   },
-  "ending": {}
+  "ending": {
+    "birthdayFinal": "/assets/ending/birthday_final.png"
+  },
+  "levels": {
+    "l2Reader": {
+      "visual": {
+        "width": 118,
+        "height": 84,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "normal": {
+          "src": "/assets/levels/level2/reader-normal.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "special": {
+          "src": "/assets/levels/level2/reader-special.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l2Gate": {
+      "visual": {
+        "width": 122,
+        "height": 86,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "closed": {
+          "src": "/assets/levels/level2/gate-closed.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "open": {
+          "src": "/assets/levels/level2/gate-open.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l2Result": {
+      "visual": {
+        "width": 108,
+        "height": 78,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "success": {
+          "src": "/assets/levels/level2/result-success.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "fail": {
+          "src": "/assets/levels/level2/result-fail.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l3Switch": {
+      "visual": {
+        "width": 76,
+        "height": 48,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "off": {
+          "src": "/assets/levels/level3/switch-off.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "on": {
+          "src": "/assets/levels/level3/switch-on.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l3Platform": {
+      "visual": {
+        "width": 110,
+        "height": 48,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level3/platform-ground.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l3Bridge": {
+      "visual": {
+        "width": 210,
+        "height": 84,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "closed": {
+          "src": "/assets/levels/level3/bridge-broken.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "open": {
+          "src": "/assets/levels/level3/bridge-safe.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "rope": {
+          "src": "/assets/levels/level3/bridge-rope.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l3Gate": {
+      "visual": {
+        "width": 110,
+        "height": 105,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "closed": {
+          "src": "/assets/levels/level3/obstacle-fence.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "open": {
+          "src": "/assets/levels/level3/gate-arch.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l3Obstacle": {
+      "visual": {
+        "width": 88,
+        "height": 86,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "stone": {
+          "src": "/assets/levels/level3/obstacle-stone.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "crate": {
+          "src": "/assets/levels/level3/obstacle-crate.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "fence": {
+          "src": "/assets/levels/level3/obstacle-fence.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l3Checkpoint": {
+      "visual": {
+        "width": 120,
+        "height": 82,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "mid": {
+          "src": "/assets/levels/level3/checkpoint.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "final": {
+          "src": "/assets/levels/level3/goal-shrine.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l5Checkpoint": {
+      "visual": {
+        "width": 145,
+        "height": 92,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level5/checkpoint.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l5Final": {
+      "visual": {
+        "width": 185,
+        "height": 96,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level5/final-altar.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l5LanternSpirit": {
+      "visual": {
+        "width": 48,
+        "height": 58,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "idle": {
+          "src": "/assets/levels/level5/decor-lantern-spirit.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    }
+  }
 }
