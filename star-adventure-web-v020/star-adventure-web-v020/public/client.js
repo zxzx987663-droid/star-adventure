@@ -58,7 +58,7 @@ socket.on('frame',packet=>{net++;if(!room||packet.epoch!==room.stage.epoch)retur
 socket.on('clue',c=>{clue=c;whiteUI();updatePuzzle();});socket.on('toast',toast);socket.on('emote',e=>{emotes.set(e.token,{emoji:e.emoji,until:performance.now()+1600});tone(900,.06);});
 function updateUI(){if(!room?.started)return;const s=room.stage;const host=room.hostToken===myId;$('stageTag').textContent=typeof s.id==='number'?`LEVEL 0${s.id} / 05 · FULL ALPHA`:'STAR ADVENTURE · FULL ALPHA';$('stageTitle').textContent=W.TITLES[s.id];$('inventory').textContent=`${[1,2,3,4].map(n=>room.fragments.includes(n)?'★':'☆').join(' ')} · 房號 ${room.code}`;
  if(devOpen)$('devRuntime').textContent=JSON.stringify({level:s.id,cave:s.cave,mode:s.mode,hold:s.hold,completed:s.completed,players:room.players.map(p=>({char:p.char,life:p.down?'dead':p.flat?'flattened':'alive',flattenSeconds:p.flat?+(clientTime-p.flatAt).toFixed(2):0,checkpoint:p.checkpoint,rescue:p.rescue}))},null,2);
- let obj='',help='';if(s.id===1){obj=!s.leverOn?`三塊獨立壓力板 ${s.plates.filter(Boolean).length} / 3 · 過門後拉遠端機關`:'遠端機關已鎖定 · 全員前往右側星星站';help='<h3>草原 · 今天也要去工作！</h3><p>NPC：今天的工作是把星星送到另一邊！</p><p>先練習跳躍與移動木板。三人各站一塊壓力板，讓另外三人過門；過門的人到 🔧 按 E，留下的人才可以離開壓板。橋的承重……好像不太可靠。</p><p>終點要等所有在線冒險者。離線的位置仍會保留，重連即可回來。</p>';}
+ let obj='',help='';if(s.id===1){obj=!s.leverOn?`三塊獨立壓力板 ${s.plates.filter(Boolean).length} / 3 · 過門後拉遠端機關`:'遠端機關已鎖定 · 全員前往右側星星站';help='<h3>月下啟程 · 今天也要去工作！</h3><p>NPC：今晚的工作是把星星送到月光門的另一邊！</p><p>先練習跳躍與移動平台。三人各站一塊月紋壓板，讓另外三人穿過花燈門；過門的人到遠端月光機關按 E，留下的人才可以離開壓板。前面的斷層橋承重……好像不太可靠。</p><p>終點要等所有在線冒險者。離線的位置仍會保留，重連即可回來。</p>';}
  if([2,3,4,5].includes(s.id)){const h=LevelView.hud(s,room.players,clientTime);obj=h.objective;help=h.help;if(s.id===2&&s.cave>=4)obj+='\n'+s.rule;}
  if(s.id==='party'){obj='留在這裡玩吧！跑、跳、碰撞、表情 · 煙火持續放送';help='<h3>🎂 HAPPY BELATED BIRTHDAY！小桃！</h3><p>生日祝福傳送成功。<br>延遲原因：製作人嚴重拖延。</p><p>🏆《為了一句生日快樂，叫五個人陪妳闖了五關》</p><p>蛋糕 ×1 · 盟友 ×5 · 遲到的禮物 ×1 · 精神損失賠償 ×0</p><button id="partyCredits">解鎖製作人頁面</button>';unlock();}
  $('objective').textContent=obj;show('objective',s.id!=='ending');$('instructions').innerHTML=s.id==='party'?help:'';if($('partyCredits'))$('partyCredits').onclick=$('creditBtn').onclick;
@@ -115,8 +115,27 @@ function drawWorld(){if(!room)return;const s=room.stage,t=clientTime;if(s.id==='
  ctx.save();ctx.translate(-camera,-cameraY);
  const width=W.WIDTH[s.id];
  // Ground follows the exact collision height, including mountain slopes.
- let segment=[];const fillGround=()=>{if(!segment.length)return;ctx.beginPath();ctx.moveTo(segment[0][0],560+cameraY);for(const [x,y] of segment)ctx.lineTo(x,y);ctx.lineTo(segment.at(-1)[0],560+cameraY);ctx.closePath();ctx.fillStyle=s.id===2?'#667e72':s.id===5?'#99a0bf':'#b7cc9d';ctx.fill();ctx.beginPath();segment.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.strokeStyle=s.id===2?'#a9b798':s.id===5?'#e2d5e0':'#dce6b7';ctx.lineWidth=9;ctx.stroke();segment=[];};for(let x=Math.max(0,Math.floor(camera/10)*10-20);x<=Math.min(width,camera+viewW+30);x+=10){const y=W.floor(s,x);if(y<700)segment.push([x,y+4]);else fillGround();}fillGround();
- if(s.id===1){for(let x=80;x<width;x+=175){if(W.floor(s,x)<600){text(x%2?'🌼':'🌷',x,417,20);}}sign('今天的工作是把星星送到另一邊！',220,270);text('🏡',130,345,50);text('🐹',230,415,44);[650,770,890].forEach((x,i)=>{plateDraw(x,s.plates[i]);text(String(i+1),x,400,12);});gate(1040,s.gateOpen);text(s.leverOn?'✅':'🔧',1200,400,38);sign('過門後按 E 拉機關',1200,270);sign('限重……六位？',1520,270);if(s.bridgeBroken){text('喀啦！',1540,405,23);line(1420,430,1550,490,'#b18b65',14);}for(const b of W.platforms(s,t)){rect(b.x,b.y,b.w,16,'#b99470',4);line(b.x+6,b.y+5,b.x+b.w-6,b.y+5,'#efdab1',2);}text('⭐',2730,380,60);sign('全員集合',2720);}
+ let segment=[];const fillGround=()=>{if(!segment.length)return;ctx.beginPath();ctx.moveTo(segment[0][0],560+cameraY);for(const [x,y] of segment)ctx.lineTo(x,y);ctx.lineTo(segment.at(-1)[0],560+cameraY);ctx.closePath();ctx.fillStyle=s.id===1?'#5e7565':s.id===2?'#667e72':s.id===5?'#99a0bf':'#b7cc9d';ctx.fill();ctx.beginPath();segment.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.strokeStyle=s.id===1?'#bdd49d':s.id===2?'#a9b798':s.id===5?'#e2d5e0':'#dce6b7';ctx.lineWidth=9;ctx.stroke();segment=[];};for(let x=Math.max(0,Math.floor(camera/10)*10-20);x<=Math.min(width,camera+viewW+30);x+=10){const y=W.floor(s,x);if(y<700)segment.push([x,y+4]);else fillGround();}fillGround();
+ if(s.id===1){
+  /* LV1 Mid-Autumn layered art. Physics stays in shared.js; art is visual-only. */
+  const l1FloorArt=(x,y,w)=>{const sc=Math.max(.72,Math.min(1.18,w/300));return Art.draw(ctx,'levels','l1Ground','idle',x+w/2,y+64*sc-4,t,sc);};
+  for(let x=Math.max(0,Math.floor((camera-120)/220)*220);x<Math.min(width,camera+viewW+260);x+=220){const a=W.floor(s,x+15),b=W.floor(s,x+110),c=W.floor(s,x+205);if(a<700&&b<700&&c<700)l1FloorArt(x,Math.min(a,b,c),220);}
+  Art.draw(ctx,'levels','l1Start','idle',135,424,t,.92);sign('今晚也要把星星送到另一邊！',235,260);
+  for(const [i,x] of [650,770,890].entries()){if(!Art.draw(ctx,'levels','l1Plate',s.plates[i]?'on':'off',x,430,t))plateDraw(x,s.plates[i]);text(String(i+1),x,378,12,'#fff4d5');}
+  if(!Art.draw(ctx,'levels','l1Gate',s.gateOpen?'open':'closed',1040,426,t))gate(1040,s.gateOpen);
+  if(!Art.draw(ctx,'levels','l1Lever',s.leverOn?'on':'off',1200,426,t)){text(s.leverOn?'✅':'🔧',1200,400,38);}
+  sign(s.leverOn?'月光機關已鎖定':'靠近月光機關按 E',1200,255);
+  if(s.gateOpen&&!s.leverOn)text('✦',1040,300+Math.sin(t*5)*4,28,'#ffe8a0');
+  /* The fragile bridge is a separate gameplay object: intact for the first crossings, visibly broken after the fourth. */
+  if(!Art.draw(ctx,'levels','l1Bridge',s.bridgeBroken?'broken':'intact',1555,500,t)){rect(1410,420,290,14,'#b99470',4);}
+  sign(s.bridgeBroken?'斷層橋已斷！改走移動平台':'斷層橋 · 承重似乎不太妙…',1555,245);
+  if(s.bridgeBroken){text('喀啦！',1555,380,22,'#ffe2a1');for(let i=0;i<4;i++)text('✦',1460+i*62,405+Math.sin(t*6+i)*8,14,'#ffd98c');}
+  for(const b of W.platforms(s,t)){if(b.w===290)continue;const sc=Math.max(.55,Math.min(1.35,b.w/120));if(!Art.draw(ctx,'levels','l1Platform','idle',b.x+b.w/2,b.y+58*sc-4,t,sc)){rect(b.x,b.y,b.w,16,'#b99470',4);}if(b.id==='first-step')text('↟',b.x+b.w/2,b.y-18,15,'#fff0bd');}
+  /* Checkpoint lanterns correspond to the real respawn checkpoints already used by the server. */
+  Art.draw(ctx,'levels','l1Checkpoint','idle',1760,424,t,.78);text('CHECKPOINT',1760,326,12,'#fff0c8');
+  Art.draw(ctx,'levels','l1Goal','idle',2730,425,t,.95);text('⭐',2730,343+Math.sin(t*4)*4,34,'#ffe79b');sign('六位冒險者集合',2730,245);
+  for(const [x,sc] of [[350,.55],[2280,.62],[2550,.5]])Art.draw(ctx,'levels','l1Decor','lantern',x,424,t,sc);
+ }
  if([2,3,4,5].includes(s.id))LevelView.draw(s,t,room,{ctx,rect,text,line,ellipse,sign,gate,cargo});
  if(s.id==='party'||s.id==='ending'){drawParty(t);}
  for(const [index,p] of room.players.entries()){if(!p.connected&&!p.bot)continue;if(s.id==='ending'&&s.phase==='celebrate'){avatar(p,750+index*60,410+Math.sin(t*6+index)*8);continue;}let x=p.x,y=p.y;if(p.token===myId&&own){x=own.x+smooth.x;y=own.y+smooth.y;}else{const a=remote.get(p.token);if(a){x=a.rx;y=a.ry;}}avatar(p,x,y);}
