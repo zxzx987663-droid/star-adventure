@@ -39,12 +39,38 @@ window.LevelView={
  }
  if(s.id===5){
  /* L5 Mid-Autumn obstacle-course skin. Visual-only: collision, enemy FSM, checkpoints and 3-second final hold remain authoritative. */
+ const badge=(label,x,y)=>{ctx.save();ctx.globalAlpha=.96;rect(x-74,y-18,148,36,'#fff6dd',8);text(label,x,y+6,14,'#576a67');ctx.restore();};
+ const floatingMark=(x,y,str)=>{text(str,x,y+Math.sin(t*3+x*.01)*3,15,'#ffe39c');};
  sign('最後一段路 · 月光障礙賽',420,230);
- D.checkpoints.forEach((x,i)=>{const y=D.raceFloor(x);if(!Art.draw(ctx,'levels','l5Checkpoint','idle',x,y+7,t,.78)){line(x,y,x,y-95,'#e8d3a2',5);text('⚑',x+14,y-70,40,'#f7d28c');}text(`CHECKPOINT ${i+1}`,x+58,y-104,12,'#fff0d0');});
- for(const b of World.platforms(s,t)){const state=b.id.startsWith('fall')?'falling':'idle',sc=Math.max(.62,Math.min(1.35,b.w/110));if(!Art.draw(ctx,'platforms',b.id,state,b.x+b.w/2,b.y+21,t,sc))rect(b.x,b.y,b.w,14,b.id.startsWith('fall')?'#d6a4a8':'#b6b9d2',4);if(b.id.startsWith('fall'))text('✦',b.x+b.w/2,b.y-10,13,'#ffd98a');}
- for(const raw of s.enemies){const m={...raw,...D.enemyPose(raw,t)};if(!Art.draw(ctx,'enemies',m.type,m.mode,m.x,m.y,t,1,m.dir<0)){ellipse(m.x,m.y-18,20,18,{patrol:'#b3c4aa',hopper:'#c9afdc',charger:'#e1a68b'}[m.type]);text(m.type==='hopper'?'↟':m.dir>0?'›':'‹',m.x,m.y-7,24,'#554957');}if(m.mode==='warning'){ellipse(m.x,m.y-48,18,18,'#f06f7a');text('！',m.x,m.y-42,22,'#fff6d6');}if(m.mode==='crouch')text('↟',m.x,m.y-50,18,'#ffe19b');}
- /* Decorative lantern spirits keep the Mid-Autumn language consistent without changing mechanics. */
- for(const [x,y] of [[1160,300],[3060,292],[4550,255]])Art.draw(ctx,'levels','l5LanternSpirit','idle',x,y,t,.72);
- Art.draw(ctx,'levels','l5Final','idle',5530,401,t,.9);text('全員集合 · 按住 E 3 秒',5530,284,18,'#fff1c9');if(s.arrivals.length===6)text(`${Math.min(3,s.hold).toFixed(1)} / 3 秒`,5530,315,18,'#ffe69c');else text(`${s.arrivals.length} / 6 抵達`,5530,315,18,'#ffe69c');
- } }
+ badge('起跑平台',230,330); badge('移動浮台區',1460,250); badge('陷阱平台區',3230,232); badge('終點祭壇',5530,242);
+ // checkpoint shrines
+ D.checkpoints.forEach((x,i)=>{const y=D.raceFloor(x);if(!Art.draw(ctx,'levels','l5Checkpoint','idle',x,y+7,t,.78)){line(x,y,x,y-95,'#e8d3a2',5);text('⚑',x+14,y-70,40,'#f7d28c');}text(`CHECKPOINT ${i+1}`,x+58,y-104,12,'#fff0d0');if(i<3)floatingMark(x+85,y-128,'✦');});
+ // runway and special platforms
+ for(const b of World.platforms(s,t)){
+  const state=b.id.startsWith('fall')?'falling':'idle',sc=Math.max(.62,Math.min(1.35,b.w/110));
+  if(!Art.draw(ctx,'platforms',b.id,state,b.x+b.w/2,b.y+21,t,sc))rect(b.x,b.y,b.w,14,b.id.startsWith('fall')?'#d6a4a8':'#b6b9d2',4);
+  if(b.id.startsWith('moving')){text('↔',b.x+b.w/2,b.y-16,18,'#fff0ad');ellipse(b.x+b.w/2,b.y+18,32,6,'#fff2c144');}
+  if(b.id==='narrow'){text('小心跳躍',b.x+b.w/2,b.y-18,10,'#fff1c8');}
+  if(b.id.startsWith('fall')){text('✦',b.x+b.w/2,b.y-12,13,'#ffd98a');text('踩久會落下',b.x+b.w/2,b.y-28,10,'#fff0cc');}
+ }
+ // enemies with themed hints
+ for(const raw of s.enemies){
+  const m={...raw,...D.enemyPose(raw,t)};
+  if(!Art.draw(ctx,'enemies',m.type,m.mode,m.x,m.y,t,1,m.dir<0)){
+   ellipse(m.x,m.y-18,20,18,{patrol:'#b3c4aa',hopper:'#c9afdc',charger:'#e1a68b'}[m.type]);
+   text(m.type==='hopper'?'↟':m.dir>0?'›':'‹',m.x,m.y-7,24,'#554957');
+  }
+  if(m.mode==='warning'){ellipse(m.x,m.y-48,18,18,'#f06f7a');text('！',m.x,m.y-42,22,'#fff6d6');}
+  if(m.mode==='crouch')text('↟',m.x,m.y-50,18,'#ffe19b');
+ }
+ // decorative guides and lantern spirits to tie the route together
+ for(const [x,y] of [[1160,300],[3060,292],[4550,255]]) Art.draw(ctx,'levels','l5LanternSpirit','idle',x,y,t,.72);
+ for(const [x,y,msg] of [[760,278,'跨過斷崖'],[2050,195,'跟著浮台節奏'],[3920,200,'避開月餅衝刺'],[4970,182,'最後集合！']]){floatingMark(x,y,'✦');text(msg,x,y+24,13,'#fff1cd');}
+ // final altar / hold feedback
+ Art.draw(ctx,'levels','l5Final','idle',5530,401,t,.9);
+ text('全員集合 · 按住 E 3 秒',5530,284,18,'#fff1c9');
+ if(s.arrivals.length===6){text(`${Math.min(3,s.hold).toFixed(1)} / 3 秒`,5530,315,18,'#ffe69c');if(s.hold>0){ellipse(5530,360,48+Math.min(3,s.hold)*12,16,'#fff0a433');text('月光聚集中…',5530,338,13,'#fff5d2');}}
+ else text(`${s.arrivals.length} / 6 抵達`,5530,315,18,'#ffe69c');
+ }
+ }
 };

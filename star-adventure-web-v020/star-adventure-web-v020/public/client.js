@@ -58,9 +58,9 @@ socket.on('frame',packet=>{net++;if(!room||packet.epoch!==room.stage.epoch)retur
 socket.on('clue',c=>{clue=c;whiteUI();updatePuzzle();});socket.on('toast',toast);socket.on('emote',e=>{emotes.set(e.token,{emoji:e.emoji,until:performance.now()+1600});tone(900,.06);});
 function updateUI(){if(!room?.started)return;const s=room.stage;const host=room.hostToken===myId;$('stageTag').textContent=typeof s.id==='number'?`LEVEL 0${s.id} / 05 · FULL ALPHA`:'STAR ADVENTURE · FULL ALPHA';$('stageTitle').textContent=W.TITLES[s.id];$('inventory').textContent=`${[1,2,3,4].map(n=>room.fragments.includes(n)?'★':'☆').join(' ')} · 房號 ${room.code}`;
  if(devOpen)$('devRuntime').textContent=JSON.stringify({level:s.id,cave:s.cave,mode:s.mode,hold:s.hold,completed:s.completed,players:room.players.map(p=>({char:p.char,life:p.down?'dead':p.flat?'flattened':'alive',flattenSeconds:p.flat?+(clientTime-p.flatAt).toFixed(2):0,checkpoint:p.checkpoint,rescue:p.rescue}))},null,2);
- let obj='',help='';if(s.id===1){obj=!s.leverOn?`三塊獨立壓力板 ${s.plates.filter(Boolean).length} / 3 · 過門後拉遠端機關`:'遠端機關已鎖定 · 全員前往右側星星站';help='<h3>月下啟程 · 今天也要去工作！</h3><p>NPC：今晚的工作是把星星送到月光門的另一邊！</p><p>先練習跳躍與移動平台。三人各站一塊月紋壓板，讓另外三人穿過花燈門；過門的人到遠端月光機關按 E，留下的人才可以離開壓板。前面的斷層橋承重……好像不太可靠。</p><p>終點要等所有在線冒險者。離線的位置仍會保留，重連即可回來。</p>';}
+ let obj='',help='';if(s.id===1){obj=!s.leverOn?`三塊獨立壓力板 ${s.plates.filter(Boolean).length} / 3 · 過門後拉遠端機關`:'遠端機關已鎖定 · 全員前往右側星星站';help='<h3>草原 · 今天也要去工作！</h3><p>NPC：今天的工作是把星星送到另一邊！</p><p>先練習跳躍與移動木板。三人各站一塊壓力板，讓另外三人過門；過門的人到 🔧 按 E，留下的人才可以離開壓板。橋的承重……好像不太可靠。</p><p>終點要等所有在線冒險者。離線的位置仍會保留，重連即可回來。</p>';}
  if([2,3,4,5].includes(s.id)){const h=LevelView.hud(s,room.players,clientTime);obj=h.objective;help=h.help;if(s.id===2&&s.cave>=4)obj+='\n'+s.rule;}
- if(s.id==='party'){obj='留在這裡玩吧！跑、跳、碰撞、表情 · 煙火持續放送';help='<h3>🎂 HAPPY BELATED BIRTHDAY！小桃！</h3><p>生日祝福傳送成功。<br>延遲原因：製作人嚴重拖延。</p><p>🏆《為了一句生日快樂，叫五個人陪妳闖了五關》</p><p>蛋糕 ×1 · 盟友 ×5 · 遲到的禮物 ×1 · 精神損失賠償 ×0</p><button id="partyCredits">解鎖製作人頁面</button>';unlock();}
+ if(s.id==='party'){obj='生日月夜庭園 · 自由活動時間！跑、跳、碰撞、表情、拍照區、蛋糕舞台與煙火持續開放';help='<h3>🎂 小桃生日月夜庭園</h3><p>生日結局之後，大家來到自由活動區。<br>可以一起跑跑跳跳、擠在一起拍照、看煙火、逛月餅與禮物佈景。</p><p>場景包含：蛋糕舞台、拍照鞦韆、帳篷閱讀角、禮物區與月餅點心區。</p><p>🏆《為了一句生日快樂，叫五個人陪妳闖了五關》</p><button id="partyCredits">解鎖製作人頁面</button>';unlock();}
  $('objective').textContent=obj;show('objective',s.id!=='ending');$('instructions').innerHTML=s.id==='party'?help:'';if($('partyCredits'))$('partyCredits').onclick=$('creditBtn').onclick;
  show('stageClear',!!s.cleared);if(s.cleared){$('clearText').textContent=`⭐ 星星碎片${['','①','②','③','④'][s.id]} GET！`;show('next',host);}
  show('chestPanel',s.id===5&&s.arrivals.length===6);if(s.id===5){$('holdProgress').value=s.hold;$('holdStatus').textContent=`${s.hold.toFixed(1)} / 3 秒 · ${s.arrivals.length} / 6 位抵達`;}
@@ -106,7 +106,7 @@ function avatar(p,x,y,scale=1){if(sprite(p,x,y,scale))return;const ci=W.CHARS.in
  text(p.char||p.name,x,y+20,12,p.connected===false?'#969b91':'#3b574c');const em=emotes.get(p.token);if(em?.until>performance.now())text(em.emoji,x,y-95,28);if((p.down||p.flat)&&p.rescue)rect(x-25,y-25,50*p.rescue/(p.flat?.5:2),5,'#fff6a8',2);
 }
 function cargo(c,star=false){ctx.save();ctx.translate(c.x,c.y);ctx.rotate(c.angle||0);ellipse(0,0,c.r,c.r,star?'#f3d273':'#eab4c6');ctx.strokeStyle=star?'#bb9f52':'#b4849f';ctx.lineWidth=3;ctx.stroke();text(star?'★':'◕ ᴗ ◕',0,10,star?42:22);line(-c.r*.65,-c.r*.45,c.r*.7,c.r*.4,star?'#ffeeb8':'#fce0ea',4);ctx.restore();}
-function background(s){const art=artwork(assets.backgrounds[s.id]);if(art){if(s.id===2){const g=ctx.createLinearGradient(0,0,0,550);g.addColorStop(0,'#263d60');g.addColorStop(1,'#7d8f86');ctx.fillStyle=g;ctx.fillRect(0,0,viewW,550);const h=Math.min(300,art.naturalHeight*viewW/art.naturalWidth);ctx.drawImage(art,0,58,viewW,h);return;}if(s.id===3){const g=ctx.createLinearGradient(0,0,0,550);g.addColorStop(0,'#203f73');g.addColorStop(.58,'#8aa8a4');g.addColorStop(1,'#dce1b8');ctx.fillStyle=g;ctx.fillRect(0,0,viewW,550);ctx.globalAlpha=.92;ctx.drawImage(art,0,38,viewW,250);ctx.globalAlpha=1;return;}if(s.id===4){const g=ctx.createLinearGradient(0,0,0,550);g.addColorStop(0,'#172d5b');g.addColorStop(.55,'#6f78a1');g.addColorStop(1,'#e4c8ba');ctx.fillStyle=g;ctx.fillRect(0,0,viewW,550);const h=Math.min(245,art.naturalHeight*viewW/art.naturalWidth);ctx.globalAlpha=.96;ctx.drawImage(art,0,22,viewW,h);ctx.globalAlpha=1;return;}ctx.drawImage(art,0,0,viewW,viewH);return;}let sky={1:['#cae6df','#f4ebcd'],2:['#778f86','#c1c2a3'],3:['#e7d9cd','#f4eccb'],4:['#cfd4e4','#efe0c9'],5:['#d99dab','#3a4672'],party:['#e5dcee','#fff1cf'],ending:['#171b30','#262b43']}[s.id]||['#cee2d6','#fff'];const g=ctx.createLinearGradient(0,0,0,550);g.addColorStop(0,sky[0]);g.addColorStop(1,sky[1]);ctx.fillStyle=g;ctx.fillRect(0,0,viewW,550);
+function background(s){const art=artwork(assets.backgrounds[s.id]);if(art){if(s.id===2){const g=ctx.createLinearGradient(0,0,0,550);g.addColorStop(0,'#263d60');g.addColorStop(1,'#7d8f86');ctx.fillStyle=g;ctx.fillRect(0,0,viewW,550);const h=Math.min(300,art.naturalHeight*viewW/art.naturalWidth);ctx.drawImage(art,0,58,viewW,h);return;}if(s.id===3){const g=ctx.createLinearGradient(0,0,0,550);g.addColorStop(0,'#203f73');g.addColorStop(.58,'#8aa8a4');g.addColorStop(1,'#dce1b8');ctx.fillStyle=g;ctx.fillRect(0,0,viewW,550);ctx.globalAlpha=.92;ctx.drawImage(art,0,38,viewW,250);ctx.globalAlpha=1;return;}if(s.id===4){const g=ctx.createLinearGradient(0,0,0,550);g.addColorStop(0,'#172d5b');g.addColorStop(.55,'#6f78a1');g.addColorStop(1,'#e4c8ba');ctx.fillStyle=g;ctx.fillRect(0,0,viewW,550);const h=Math.min(245,art.naturalHeight*viewW/art.naturalWidth);ctx.globalAlpha=.96;ctx.drawImage(art,0,22,viewW,h);ctx.globalAlpha=1;return;}if(s.id===5){const g=ctx.createLinearGradient(0,0,0,550);g.addColorStop(0,'#1d2d69');g.addColorStop(.48,'#7d88c8');g.addColorStop(.78,'#d7b9ca');g.addColorStop(1,'#efe1c7');ctx.fillStyle=g;ctx.fillRect(0,0,viewW,550);const h=Math.max(330,Math.min(420,art.naturalHeight*viewW/art.naturalWidth));ctx.globalAlpha=.98;ctx.drawImage(art,0,16,viewW,h);ctx.globalAlpha=1;const mist=ctx.createLinearGradient(0,250,0,550);mist.addColorStop(0,'rgba(255,245,226,0)');mist.addColorStop(1,'rgba(255,245,226,.5)');ctx.fillStyle=mist;ctx.fillRect(0,230,viewW,320);return;}if(s.id==='party'){const g=ctx.createLinearGradient(0,0,0,550);g.addColorStop(0,'#1d2e6d');g.addColorStop(.55,'#798ad0');g.addColorStop(1,'#f1e7d4');ctx.fillStyle=g;ctx.fillRect(0,0,viewW,550);ctx.drawImage(art,0,0,viewW,viewH);const glow=ctx.createLinearGradient(0,320,0,550);glow.addColorStop(0,'rgba(255,244,225,0)');glow.addColorStop(1,'rgba(255,244,225,.18)');ctx.fillStyle=glow;ctx.fillRect(0,300,viewW,250);return;}ctx.drawImage(art,0,0,viewW,viewH);return;}let sky={1:['#cae6df','#f4ebcd'],2:['#778f86','#c1c2a3'],3:['#e7d9cd','#f4eccb'],4:['#cfd4e4','#efe0c9'],5:['#d99dab','#3a4672'],party:['#e5dcee','#fff1cf'],ending:['#171b30','#262b43']}[s.id]||['#cee2d6','#fff'];const g=ctx.createLinearGradient(0,0,0,550);g.addColorStop(0,sky[0]);g.addColorStop(1,sky[1]);ctx.fillStyle=g;ctx.fillRect(0,0,viewW,550);
  if(s.id===5){for(let i=0;i<50;i++){const x=(i*173.3-camera*.15)%viewW;ellipse((x+viewW)%viewW,70+(i*53)%270,1.5,1.5,'#fff4cf');}ellipse(viewW*.8,105,33,33,'#ffdfbe');}
  else if(s.id!==2&&s.id!=='ending'){for(let i=0;i<9;i++){const x=i*300-camera*.22;ellipse(x,350,210,120,'#aec3a466');ellipse(x+120,120+(i%3)*35,75,18,'#ffffff80');}}
 }
@@ -115,50 +115,21 @@ function drawWorld(){if(!room)return;const s=room.stage,t=clientTime;if(s.id==='
  ctx.save();ctx.translate(-camera,-cameraY);
  const width=W.WIDTH[s.id];
  // Ground follows the exact collision height, including mountain slopes.
- // LV1 uses dedicated modular cliff art instead of the old green debug-like fill.
- if(s.id!==1){let segment=[];const fillGround=()=>{if(!segment.length)return;ctx.beginPath();ctx.moveTo(segment[0][0],560+cameraY);for(const [x,y] of segment)ctx.lineTo(x,y);ctx.lineTo(segment.at(-1)[0],560+cameraY);ctx.closePath();ctx.fillStyle=s.id===2?'#667e72':s.id===5?'#99a0bf':'#b7cc9d';ctx.fill();ctx.beginPath();segment.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.strokeStyle=s.id===2?'#a9b798':s.id===5?'#e2d5e0':'#dce6b7';ctx.lineWidth=9;ctx.stroke();segment=[];};for(let x=Math.max(0,Math.floor(camera/10)*10-20);x<=Math.min(width,camera+viewW+30);x+=10){const y=W.floor(s,x);if(y<700)segment.push([x,y+4]);else fillGround();}fillGround();}
- if(s.id===1){
-  /* LV1 Mid-Autumn layered art. Physics stays in shared.js; art is visual-only. */
-  const levelAsset=key=>artwork(assets.levels?.[key]?.animations?.idle);
-  const drawGroundSegment=(x1,x2,y=420)=>{
-   const left=levelAsset('l1GroundLeft'),mid=levelAsset('l1GroundMid'),right=levelAsset('l1GroundRight');if(!left||!mid||!right)return;
-   const len=x2-x1,endW=Math.min(120,Math.max(76,len*.28)),bodyX=x1+endW,bodyEnd=x2-endW,top=y-9,h=118;
-   ctx.drawImage(left,x1,top,endW,h);
-   for(let x=bodyX;x<bodyEnd-1;){const w=Math.min(164,bodyEnd-x+2);ctx.drawImage(mid,x,top,w,h);x+=w-2;}
-   ctx.drawImage(right,x2-endW,top,endW,h);
-  };
-  // Four continuous walkable land masses match the actual LV1 floor collision gaps exactly.
-  for(const [a,b] of [[0,410],[565,1420],[1680,1960],[2170,2900]])drawGroundSegment(a,b,420);
-  Art.draw(ctx,'levels','l1Start','idle',135,424,t,.92);sign('今晚也要把星星送到另一邊！',235,260);
-  for(const [i,x] of [650,770,890].entries()){if(!Art.draw(ctx,'levels','l1Plate',s.plates[i]?'on':'off',x,430,t))plateDraw(x,s.plates[i]);text(String(i+1),x,378,12,'#fff4d5');}
-  if(!Art.draw(ctx,'levels','l1Gate',s.gateOpen?'open':'closed',1040,426,t))gate(1040,s.gateOpen);
-  if(!Art.draw(ctx,'levels','l1Lever',s.leverOn?'on':'off',1200,426,t)){text(s.leverOn?'✅':'🔧',1200,400,38);}
-  sign(s.leverOn?'月光機關已鎖定':'靠近月光機關按 E',1200,255);
-  if(s.gateOpen&&!s.leverOn)text('✦',1040,300+Math.sin(t*5)*4,28,'#ffe8a0');
-  /* The fragile bridge is a separate gameplay object: intact for the first crossings, visibly broken after the fourth. */
-  if(!Art.draw(ctx,'levels','l1Bridge',s.bridgeBroken?'broken':'intact',1555,500,t)){rect(1410,420,290,14,'#b99470',4);}
-  sign(s.bridgeBroken?'斷層橋已斷！改走移動平台':'斷層橋 · 承重似乎不太妙…',1555,245);
-  if(s.bridgeBroken){text('喀啦！',1555,380,22,'#ffe2a1');for(let i=0;i<4;i++)text('✦',1460+i*62,405+Math.sin(t*6+i)*8,14,'#ffd98c');}
-  const drawFloatPlatform=b=>{
-   const key=b.w<=75?'l1PlatformSmall':b.w<=135?'l1PlatformMedium':'l1PlatformLarge',img=levelAsset(key);
-   if(!img){rect(b.x,b.y,b.w,16,'#b99470',4);return;}
-   const extra=key==='l1PlatformSmall'?12:key==='l1PlatformMedium'?16:20,dw=b.w+extra,ratio=img.naturalHeight/img.naturalWidth,dh=dw*ratio;
-   // The collision surface is b.y. The art is independent and sinks only a few pixels into the grass cap.
-   ctx.drawImage(img,b.x-extra/2,b.y-8,dw,dh);
-  };
-  for(const b of W.platforms(s,t)){if(b.w===290)continue;drawFloatPlatform(b);if(b.id==='first-step')text('↟',b.x+b.w/2,b.y-18,15,'#fff0bd');}
-  /* Checkpoint lanterns correspond to the real respawn checkpoints already used by the server. */
-  Art.draw(ctx,'levels','l1Checkpoint','idle',1760,424,t,.78);text('CHECKPOINT',1760,326,12,'#fff0c8');
-  Art.draw(ctx,'levels','l1Goal','idle',2730,425,t,.95);text('⭐',2730,343+Math.sin(t*4)*4,34,'#ffe79b');sign('六位冒險者集合',2730,245);
-  for(const [x,sc] of [[350,.55],[2280,.62],[2550,.5]])Art.draw(ctx,'levels','l1Decor','lantern',x,424,t,sc);
- }
+ let segment=[];const fillGround=()=>{if(!segment.length)return;ctx.beginPath();ctx.moveTo(segment[0][0],560+cameraY);for(const [x,y] of segment)ctx.lineTo(x,y);ctx.lineTo(segment.at(-1)[0],560+cameraY);ctx.closePath();ctx.fillStyle=s.id===2?'#667e72':s.id===5?'#7e88a5':'#b7cc9d';ctx.fill();ctx.beginPath();segment.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.strokeStyle=s.id===2?'#a9b798':s.id===5?'#e9dfae':'#dce6b7';ctx.lineWidth=9;ctx.stroke();segment=[];};for(let x=Math.max(0,Math.floor(camera/10)*10-20);x<=Math.min(width,camera+viewW+30);x+=10){const y=W.floor(s,x);if(y<700)segment.push([x,y+4]);else fillGround();}fillGround();
+ if(s.id===1){for(let x=80;x<width;x+=175){if(W.floor(s,x)<600){text(x%2?'🌼':'🌷',x,417,20);}}sign('今天的工作是把星星送到另一邊！',220,270);text('🏡',130,345,50);text('🐹',230,415,44);[650,770,890].forEach((x,i)=>{plateDraw(x,s.plates[i]);text(String(i+1),x,400,12);});gate(1040,s.gateOpen);text(s.leverOn?'✅':'🔧',1200,400,38);sign('過門後按 E 拉機關',1200,270);sign('限重……六位？',1520,270);if(s.bridgeBroken){text('喀啦！',1540,405,23);line(1420,430,1550,490,'#b18b65',14);}for(const b of W.platforms(s,t)){rect(b.x,b.y,b.w,16,'#b99470',4);line(b.x+6,b.y+5,b.x+b.w-6,b.y+5,'#efdab1',2);}text('⭐',2730,380,60);sign('全員集合',2720);}
  if([2,3,4,5].includes(s.id))LevelView.draw(s,t,room,{ctx,rect,text,line,ellipse,sign,gate,cargo});
  if(s.id==='party'||s.id==='ending'){drawParty(t);}
  for(const [index,p] of room.players.entries()){if(!p.connected&&!p.bot)continue;if(s.id==='ending'&&s.phase==='celebrate'){avatar(p,750+index*60,410+Math.sin(t*6+index)*8);continue;}let x=p.x,y=p.y;if(p.token===myId&&own){x=own.x+smooth.x;y=own.y+smooth.y;}else{const a=remote.get(p.token);if(a){x=a.rx;y=a.ry;}}avatar(p,x,y);}
  ctx.restore();
 }
 function fireworks(t){if(reduced)return;for(let j=0;j<5;j++){const f=(t*.5+j*.21)%1,x=120+j*(viewW-200)/5,y=100+(j%2)*65;for(let i=0;i<12;i++){const a=i*Math.PI/6,r=f*70;ellipse(x+Math.cos(a)*r,y+Math.sin(a)*r,2.5,2.5,['#fff2b9','#f8b4c9','#c5edd4'][j%3]);}}}
-function drawParty(t){rect(0,420,1800,130,'#dce4bb');for(let x=100;x<1800;x+=100){text('⚑',x,160+Math.sin(x)*20,34,['#c9b9df','#eabfca','#e6cb8e'][x%3]);}ellipse(900,420,77,9,'#fff8e6');rect(840,360,120,60,'#e9b6c6',10);rect(840,359,120,17,'#fff2d6',8);for(let i=0;i<5;i++){rect(856+i*21,340,6,22,i%2?'#b4d4c0':'#cbb7df',2);ellipse(859+i*21,333,4,7,'#efca70');}text('HAPPY BELATED',900,215,28,'#805b77');text('BIRTHDAY！',900,248,30,'#805b77');text('小桃！',900,285,24);text('🐹　🐹　🐹',620,409,41);ellipse(1180,370,55,50,'#d7bbc6');text('◕ ᴗ ◕',1180,380,23);ctx.fillStyle='#eebac7';ctx.beginPath();ctx.moveTo(1151,328);ctx.lineTo(1180,273);ctx.lineTo(1208,328);ctx.closePath();ctx.fill();ellipse(1180,270,8,8,'#f5d683');ctx.save();ctx.translate(camera,0);fireworks(t);ctx.restore();}
+function drawParty(t){
+ const spark=(x,y,s=18,a='#fff5c8')=>{text('✦',x,y+Math.sin(t*2+x*.01)*3,s,a);};
+ for(const [x,y,s] of [[150,120,16],[320,150,18],[540,110,14],[760,135,16],[990,118,15],[1230,148,17],[1480,112,16],[1660,140,18]]) spark(x,y,s,['#ffe9a8','#ffd8f1','#fff5c8','#ffdca8'][Math.floor(x/100)%4]);
+ rect(20,22,250,38,'#fff7dfd9',10);text('生日月夜庭園 · 自由活動中',145,47,15,'#6e6762');
+ rect(1415,22,355,38,'#fff7dfd9',10);text('蛋糕舞台 · 拍照鞦韆 · 閱讀帳篷 · 禮物區',1592,47,13,'#6e6762');
+ ctx.save();ctx.translate(camera,0);fireworks(t);ctx.restore();
+}
 function drawContainedImage(img){const scale=Math.min(viewW/img.naturalWidth,viewH/img.naturalHeight),w=img.naturalWidth*scale,h=img.naturalHeight*scale,x=(viewW-w)/2,y=(viewH-h)/2;ctx.fillStyle='#171b30';ctx.fillRect(0,0,viewW,viewH);ctx.drawImage(img,x,y,w,h);}
 function drawEndingScene(s){const t=clientTime;if(s.phase==='celebrate'){const art=artwork(assets.ending?.birthdayFinal);if(art){drawContainedImage(art);return;}background(s);return;}const target=room.players.find(p=>p.token===s.target)||{char:'小桃',connected:true};if(['recipient','send','merge'].includes(s.phase)){avatar(target,viewW/2,470,1.4);if(s.phase==='merge'){const f=W.clamp((t-s.mergeAt)/2,0,1);for(let i=0;i<5;i++){const a=i*Math.PI*2/5;text('⭐',viewW/2+Math.cos(a)*70*(1-f),405+Math.sin(a)*45*(1-f),26);}text('✦',viewW/2,405,20+f*65,'#fff0bb');return;}s.stars.forEach((st,i)=>{const fromX=70+i*(viewW-140)/4,fromY=100+(i%2)*80;const f=st.sentAt===null?0:W.clamp((t-st.sentAt)/1.2,0,1);const x=fromX+(viewW/2-fromX)*f,y=fromY+(405-fromY)*f;if(st.sentAt!==null)text('⭐',x,y,30);else text('☆',fromX,fromY,25,'#69718d');if(st.arrivedAt!==null)text('✦',viewW/2+Math.cos(i*Math.PI*.4+t)*55,408+Math.sin(i*Math.PI*.4+t)*30,20,'#fff1ac');});}}
 function loop(now){const dt=Math.min((now-lastFrame)/1000,.05);lastFrame=now;frames++;clientTime+=dt;
