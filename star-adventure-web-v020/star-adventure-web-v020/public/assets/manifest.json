@@ -840,7 +840,7 @@
     "3": "/assets/levels/level3/background.png",
     "4": "/assets/levels/level4/l4-bridge-background.jpg",
     "5": "/assets/levels/level5/background.jpg",
-    "party": null
+    "party": "/assets/party/background-birthday-garden.png"
   },
   "boss": {
     "bridge": {
