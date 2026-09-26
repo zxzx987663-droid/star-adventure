@@ -1819,6 +1819,90 @@
           "fps": 1
         }
       }
+    },
+    "l2PadFlower": {
+      "visual": {
+        "width": 72,
+        "height": 72,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "off": {
+          "src": "/assets/levels/level2/pad-flower-off.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "on": {
+          "src": "/assets/levels/level2/pad-flower-on.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l2PadStar": {
+      "visual": {
+        "width": 72,
+        "height": 72,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "off": {
+          "src": "/assets/levels/level2/pad-star-off.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "on": {
+          "src": "/assets/levels/level2/pad-star-on.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l2PadMushroom": {
+      "visual": {
+        "width": 72,
+        "height": 72,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "off": {
+          "src": "/assets/levels/level2/pad-mushroom-off.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "on": {
+          "src": "/assets/levels/level2/pad-mushroom-on.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
+    },
+    "l2PadMoon": {
+      "visual": {
+        "width": 72,
+        "height": 72,
+        "scale": 1,
+        "anchorX": 0.5,
+        "anchorY": 1
+      },
+      "animations": {
+        "off": {
+          "src": "/assets/levels/level2/pad-moon-off.png",
+          "frames": 1,
+          "fps": 1
+        },
+        "on": {
+          "src": "/assets/levels/level2/pad-moon-on.png",
+          "frames": 1,
+          "fps": 1
+        }
+      }
     }
   }
 }
