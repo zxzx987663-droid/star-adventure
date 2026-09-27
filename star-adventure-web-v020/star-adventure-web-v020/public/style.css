@@ -271,8 +271,8 @@ input:not([type=checkbox]):focus{outline:3px solid rgba(236,190,98,.32);border-c
 #menu{min-height:calc(100dvh - 56px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 0 26px}
 #menu .eyebrow{color:#fff5d9;text-shadow:0 2px 8px rgba(28,43,78,.75);font-size:12px}
 #menu .menu-art{display:none}
-#menu h1{width:min(790px,92vw);height:clamp(155px,22vw,280px);margin:0 auto;background:url('/assets/ui/midautumn/menu-logo-banner.png') center/contain no-repeat;text-indent:-9999px;overflow:hidden;filter:drop-shadow(0 14px 24px rgba(26,42,76,.28))}
-#menu .subtitle{margin:-8px 0 10px;color:#fff4cf;text-shadow:0 2px 7px rgba(28,43,78,.82);font-size:clamp(14px,1.8vw,18px)}
+#menu h1{width:min(900px,96vw);height:clamp(190px,34vw,340px);margin:0 auto;background:url('/assets/ui/midautumn/menu-logo-banner.png') center/contain no-repeat;text-indent:-9999px;overflow:hidden;filter:drop-shadow(0 14px 24px rgba(26,42,76,.28))}
+#menu .subtitle{margin:-2px 0 10px;color:#fff4cf;text-shadow:0 2px 7px rgba(28,43,78,.82);font-size:clamp(14px,1.8vw,18px)}
 #menu .menu-card{margin:8px auto 10px;width:min(520px,92vw)}
 #menu .fine{color:#fff7de;text-shadow:0 2px 6px rgba(25,40,70,.9)}
 #lobby{padding-top:0}
@@ -308,7 +308,7 @@ input:not([type=checkbox]):focus{outline:3px solid rgba(236,190,98,.32);border-c
 #levelIntro h2{font-size:clamp(22px,4vw,34px);color:#715244}
 #levelIntro #introCopy{font-size:clamp(14px,2vw,17px);line-height:1.8}
 @media(max-width:850px){#lobby>.section-head{min-height:110px}#lobby>.section-head>div{right:90px}#lobby>.section-head h1{height:100px}.lobby-grid{grid-template-columns:1fr}#lobby .players{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){#menu h1{height:145px;width:96vw}#menu .subtitle{margin-top:-3px}#lobby>.section-head{min-height:86px}#lobby>.section-head>div{right:72px}#lobby>.section-head h1{height:78px;width:78vw}#lobby>.section-head>#leave{font-size:0;min-width:48px;padding:8px}#lobby>.section-head>#leave::after{content:'←';font-size:22px}#lobby .room-banner{gap:8px;padding:14px}#lobby .room-banner b{font-size:25px}#lobby .players{grid-template-columns:1fr}#lobby .chars{grid-template-columns:repeat(2,minmax(0,1fr))}.lobby-actions{justify-content:stretch}.lobby-actions>*{flex:1}.lobby-actions #start{min-width:0}}
+@media(max-width:600px){#menu h1{height:190px;width:98vw}#menu .subtitle{margin-top:-2px}#lobby>.section-head{min-height:86px}#lobby>.section-head>div{right:72px}#lobby>.section-head h1{height:78px;width:78vw}#lobby>.section-head>#leave{font-size:0;min-width:48px;padding:8px}#lobby>.section-head>#leave::after{content:'←';font-size:22px}#lobby .room-banner{gap:8px;padding:14px}#lobby .room-banner b{font-size:25px}#lobby .players{grid-template-columns:1fr}#lobby .chars{grid-template-columns:repeat(2,minmax(0,1fr))}.lobby-actions{justify-content:stretch}.lobby-actions>*{flex:1}.lobby-actions #start{min-width:0}}
 
 /* === Level 2 Mid-Autumn cave art integration v5 === */
 #puzzlePanel{

@@ -140,10 +140,11 @@ window.LevelView={
    }
    for(const [x,y] of [[1160,300],[3060,292],[4550,255]])Art.draw(ctx,'levels','l5LanternSpirit','idle',x,y,t,.72);
    for(const [x,y,msg] of [[760,278,'跨過斷崖'],[2050,195,'小心雲怪＋跳兔'],[3920,200,'避開月餅衝刺'],[4700,170,'最後組合怪！'],[4970,182,'最後集合！']]){floatingMark(x,y,'✦');text(msg,x,y+24,13,'#fff1cd');}
-   Art.draw(ctx,'levels','l5Final','idle',5530,401,t,.9);
-   text('全員集合 · 按住 E 3 秒',5530,284,18,'#fff1c9');
-   if(s.arrivals.length===6){text(`${Math.min(3,s.hold).toFixed(1)} / 3 秒`,5530,315,18,'#ffe69c');if(s.hold>0){ellipse(5530,360,48+Math.min(3,s.hold)*12,16,'#fff0a433');text('月光聚集中…',5530,338,13,'#fff5d2');}}
-   else text(`${s.arrivals.length} / 6 抵達`,5530,315,18,'#ffe69c');
+   const finalY=D.raceFloor(5530);
+   Art.draw(ctx,'levels','l5Final','idle',5530,finalY+2,t,.9);
+   text('全員集合 · 按住 E 3 秒',5530,finalY-128,18,'#fff1c9');
+   if(s.arrivals.length===6){text(`${Math.min(3,s.hold).toFixed(1)} / 3 秒`,5530,finalY-96,18,'#ffe69c');if(s.hold>0){ellipse(5530,finalY-46,48+Math.min(3,s.hold)*12,16,'#fff0a433');text('月光聚集中…',5530,finalY-70,13,'#fff5d2');}}
+   else text(`${s.arrivals.length} / 6 抵達`,5530,finalY-96,18,'#ffe69c');
   }
  }
 };
