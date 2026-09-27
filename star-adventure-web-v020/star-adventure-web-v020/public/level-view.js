@@ -75,7 +75,7 @@ window.LevelView={
     if(!Art.draw(ctx,'levels','l3Platform','idle',b.x+b.w/2,b.y-3*sc,t,sc))rect(b.x,b.y,b.w,14,'#ab9488',4);
    }
    sign('🌕 推月亮任務',400,240);sign('3 人推 · 放手會倒滾',660,180);sign('前跑組 ↑ 跳上高台按 E',1130,100);sign('下坡！放手，小心月亮！',2770,100);
-   D.cargo.switches.forEach(k=>{const on=s.switches[k.id];if(!Art.draw(ctx,'levels','l3Switch',on?'on':'off',k.x,k.y+10,t)){rect(k.x-17,k.y-38,34,38,on?'#9ed7ac':'#e8c378',5);line(k.x,k.y-18,k.x+(on?13:-13),k.y-45,'#5c4c5b',5);}text(on?'✓':'E',k.x,k.y-58,18);});
+   D.cargo.switches.forEach(k=>{const on=s.switches[k.id];if(!Art.draw(ctx,'levels','l3Switch',on?'on':'off',k.x,k.y,t)){rect(k.x-17,k.y-38,34,38,on?'#9ed7ac':'#e8c378',5);line(k.x,k.y-18,k.x+(on?13:-13),k.y-45,'#5c4c5b',5);}text(on?'✓':'E',k.x,k.y-58,18);});
    D.cargo.obstacles.forEach((o,i)=>{const y=D.mountain(o.x),open=s.obstacles[i];if(o.kind==='bridge'){const cx=(o.x+o.end)/2,w=o.end-o.x,sc=Math.max(.72,Math.min(1.3,w/210));if(!Art.draw(ctx,'levels','l3Bridge',open?'open':'closed',cx,y+24,t,sc)){if(open)rect(o.x,y,w,14,'#b6c995');else{line(o.x,y-35,o.x,y,'#f6cb75',5);text('⚠',o.x,y-55,24);}}}else{if(!Art.draw(ctx,'levels','l3Gate',open?'open':'closed',o.x,y+8,t)){rect(o.x-12,open?y-150:y-90,24,open?40:90,open?'#84a991':'#cf8591',4);}text(open?'✓':'A + B',o.x,y-118,18);}});
    for(const x of [2500,4100]){const y=D.mountain(x),state=x===2500?'mid':'final';if(!Art.draw(ctx,'levels','l3Checkpoint',state,x,y+8,t)){line(x,y,x,y-90,'#eddfa8',5);text('⚑',x+17,y-62,36);}text(x===2500?'中途檢查點':'六人集合 · 最後大坡',x+80,y-110,16);}   
    const deco=[[1840,'crate'],[2670,'stone'],[3470,'fence']];for(const [x,state] of deco){const y=D.mountain(x);Art.draw(ctx,'levels','l3Obstacle',state,x,y+5,t,.72);}   
