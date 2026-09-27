@@ -56,7 +56,15 @@ function bots(r,dt){
  }
  if(!r.dev.assist)return;
  if(s.id===2){if(s.mode==='waiting'){const ri=s.readers.findIndex(t=>r.players.get(t)?.bot);if(ri>=0){const b=r.players.get(s.readers[ri]);warp(b,W.D.caves[s.cave-1].readers[ri]);L.action(r,b,{},module.exports);}}const b=r.players.get(s.executors[s.leg]);if(b?.bot&&['discussion','input'].includes(s.mode)&&r.time-(s.botStep||0)>.4){warp(b,W.D.caves[s.cave-1].pads[s._legs[s.leg].truth[s.entered.length]]);L.action(r,b,{},module.exports);s.botStep=r.time;}}
- if(s.id===3){bs.forEach((b,i)=>{if(s.finalCheckpoint){warp(b,s.cargo.x-82-i*3,W.floor(s,s.cargo.x-82));b.input={right:!!host.input.right};}else if(i<3){const k=W.D.cargo.switches.filter(k=>!s.switches[k.id])[i];if(k){warp(b,k.x,k.y);L.action(r,b,{},module.exports);b.input={};}}else{warp(b,s.cargo.x-82-i*3,W.floor(s,s.cargo.x-82));b.input={right:!!host.input.right};}});}
+ if(s.id===3){
+  const pushBots=bs.filter(b=>s.pushTeam?.includes(b.token)),runnerBots=bs.filter(b=>s.runnerTeam?.includes(b.token));
+  const humanPusher=active(r).find(p=>!p.bot&&s.pushTeam?.includes(p.token)),pushHeld=!!(humanPusher?.input?.right&&!humanPusher?.input?.left);
+  if(s.finalCheckpoint){bs.forEach((b,i)=>{if(b.flat||b.down)return;const x=s.cargo.x-84-i*4;if(Math.abs(b.x-x)>120||Math.abs(b.y-W.floor(s,x))>80)warp(b,x,W.floor(s,x));b.input={right:!!host.input.right&&!host.input.left};});}
+  else{
+   pushBots.forEach(b=>{if(b.flat||b.down)return;const slot=Math.max(0,s.pushTeam.indexOf(b.token)),x=s.cargo.x-84-slot*8;if(Math.abs(b.x-x)>120||Math.abs(b.y-W.floor(s,x))>80)warp(b,x,W.floor(s,x));b.input=pushHeld?{right:true}:{left:b.x>x+8,right:b.x<x-8};});
+   runnerBots.forEach(b=>{if(b.flat||b.down)return;const assigned=Object.entries(s.runnerAssignments||{}).find(([,token])=>token===b.token)?.[0],k=W.D.cargo.switches.find(q=>q.id===assigned);if(k&&!s.switches[k.id]){warp(b,k.x,k.y);L.action(r,b,{},module.exports);b.input={};return;}const brake=W.D.cargo.switches.find(q=>q.id==='brake');if(b.token===s.runnerTeam?.[0]&&!s.switches.brake&&s.cargo.x>3150&&brake){warp(b,brake.x,brake.y);L.action(r,b,{},module.exports);b.input={};return;}b.input={};});
+  }
+ }
  if(s.id===4)for(const b of bs){const fallen=active(r).find(p=>p.flat);if(fallen){warp(b,fallen.x+40,fallen.y);b.input={interact:true};}else if(host.x>3500){warp(b,W.D.boss.buttons[s.participants.indexOf(b.token)]);L.action(r,b,{},module.exports);}}
  if(s.id===5&&host.x>5390)bs.forEach((b,i)=>{warp(b,5450+i*30,350);b.input={interact:!!host.input.interact};});
  if(s.id==='ending'&&s.phase==='send')s.stars.forEach((st,i)=>{const p=r.players.get(st.token);if((p?.bot||st.simulated)&&r.time-s.at>18+i*.65&&st.sentAt===null)st.sentAt=r.time;});
