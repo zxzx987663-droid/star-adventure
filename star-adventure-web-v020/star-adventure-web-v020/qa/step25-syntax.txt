@@ -1,0 +1,24 @@
+STEP 25 production/source syntax validation
+Node v22.16.0
+PASS engine.js
+PASS levels.js
+PASS server.js
+PASS public/asset-registry.js
+PASS public/client.js
+PASS public/geometry.js
+PASS public/level-view.js
+PASS public/shared.js
+PASS client.js
+PASS asset-registry.js
+PASS test/engine.test.js
+PASS test/l1.test.js
+PASS test/mechanics.test.js
+PASS test/network.test.js
+PASS test/qa-fix.test.js
+PASS test/step25-final.test.js
+PASS test/browser-extra.cjs
+PASS test/browser-multiplayer.cjs
+PASS test/browser.cjs
+PASS test/production-smoke.cjs
+PASS test/traffic.cjs
+PASS test/visual-qa.cjs

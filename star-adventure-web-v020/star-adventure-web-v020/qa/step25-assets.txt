@@ -1,0 +1,10 @@
+STEP 25 asset validation
+manifest refs: 195
+unique manifest refs: 175
+missing: 0
+bad images: 0
+normal 128x128 states: 56
+emote groups: 24
+menu logo: (900, 365)
+party background: (1774, 887)
+RESULT: PASS

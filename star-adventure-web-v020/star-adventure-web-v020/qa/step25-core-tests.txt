@@ -1,0 +1,278 @@
+
+> star-adventure-web@0.4.1-step25-final.1 test:core
+> node --test test/l1.test.js test/mechanics.test.js test/qa-fix.test.js test/step25-final.test.js
+
+TAP version 13
+# Subtest: six slots, unique character picks and momo identity
+ok 1 - six slots, unique character picks and momo identity
+  ---
+  duration_ms: 1.139658
+  type: 'test'
+  ...
+# Subtest: L1 pressure plates are spatially distinct; gate closes until far lever latches
+ok 2 - L1 pressure plates are spatially distinct; gate closes until far lever latches
+  ---
+  duration_ms: 2.629853
+  type: 'test'
+  ...
+# Subtest: L1 bridge breaks at fourth distinct crossing, not first
+ok 3 - L1 bridge breaks at fourth distinct crossing, not first
+  ---
+  duration_ms: 0.398276
+  type: 'test'
+  ...
+# Subtest: L1 completion requires gathered active players and preserves fragment
+ok 4 - L1 completion requires gathered active players and preserves fragment
+  ---
+  duration_ms: 1.50093
+  type: 'test'
+  ...
+# Subtest: moving planks provide actual collision support and falling respawns in ~3 seconds
+ok 5 - moving planks provide actual collision support and falling respawns in ~3 seconds
+  ---
+  duration_ms: 3.656455
+  type: 'test'
+  ...
+# Subtest: jump reaches 160–180px; all L2 gates block air movement
+ok 6 - jump reaches 160–180px; all L2 gates block air movement
+  ---
+  duration_ms: 7.086246
+  type: 'test'
+  ...
+# Subtest: L2 every leg manual / distinct executors / reader excluded
+ok 7 - L2 every leg manual / distinct executors / reader excluded
+  ---
+  duration_ms: 11.004617
+  type: 'test'
+  ...
+# Subtest: L2 private timed display, discussion has no countdown, first physical input starts timer, timeout preserves prior caves
+ok 8 - L2 private timed display, discussion has no countdown, first physical input starts timer, timeout preserves prior caves
+  ---
+  duration_ms: 12.791138
+  type: 'test'
+  ...
+# Subtest: L2 5,000 generated true/fake pairs validate exactly one, differ by <=2; simultaneous reader starts lock
+ok 9 - L2 5,000 generated true/fake pairs validate exactly one, differ by <=2; simultaneous reader starts lock
+  ---
+  duration_ms: 67.854522
+  type: 'test'
+  ...
+# Subtest: L2 all 20 physical-input legs and six-player exit; wrong input restarts cave only
+ok 10 - L2 all 20 physical-input legs and six-player exit; wrong input restarts cave only
+  ---
+  duration_ms: 16.802176
+  type: 'test'
+  ...
+# Subtest: L3 fixed 3+3 roles: only push team contributes before final slope
+ok 11 - L3 fixed 3+3 roles: only push team contributes before final slope
+  ---
+  duration_ms: 2.722209
+  type: 'test'
+  ...
+# Subtest: L3 route mechanisms enforce A/B/C owners; major pit resets route
+ok 12 - L3 route mechanisms enforce A/B/C owners; major pit resets route
+  ---
+  duration_ms: 6.415448
+  type: 'test'
+  ...
+# Subtest: L3 final slope requires all six; rollback resets to slope checkpoint only
+ok 13 - L3 final slope requires all six; rollback resets to slope checkpoint only
+  ---
+  duration_ms: 6.106443
+  type: 'test'
+  ...
+# Subtest: L3 cargo supports rider; summit mushroom then fragment
+ok 14 - L3 cargo supports rider; summit mushroom then fragment
+  ---
+  duration_ms: 8.86131
+  type: 'test'
+  ...
+# Subtest: L4 direct jump and airborne underpass physically feasible across timing margins
+ok 15 - L4 direct jump and airborne underpass physically feasible across timing margins
+  ---
+  duration_ms: 8.899707
+  type: 'test'
+  ...
+# Subtest: L4 flattened slow movement/no automatic revive/0.5s rescue/0.5s protection
+ok 16 - L4 flattened slow movement/no automatic revive/0.5s rescue/0.5s protection
+  ---
+  duration_ms: 5.95414
+  type: 'test'
+  ...
+# Subtest: L4 per-person completion persists through hit; 6/6 bridge opens; falling player respawns far end
+ok 17 - L4 per-person completion persists through hit; 6/6 bridge opens; falling player respawns far end
+  ---
+  duration_ms: 1.954228
+  type: 'test'
+  ...
+# Subtest: L5 cliff death restores personal checkpoint only
+ok 18 - L5 cliff death restores personal checkpoint only
+  ---
+  duration_ms: 4.052177
+  type: 'test'
+  ...
+# Subtest: L5 flatten >3 seconds dies, rescue prevents death
+ok 19 - L5 flatten >3 seconds dies, rescue prevents death
+  ---
+  duration_ms: 22.005448
+  type: 'test'
+  ...
+# Subtest: L5 final hold needs all six alive/connected, releases reset; transitions directly white
+ok 20 - L5 final hold needs all six alive/connected, releases reset; transitions directly white
+  ---
+  duration_ms: 13.899621
+  type: 'test'
+  ...
+# Subtest: ending five-second blank and personalized text; five idempotent senders; persistent party
+ok 21 - ending five-second blank and personalized text; five idempotent senders; persistent party
+  ---
+  duration_ms: 17.616164
+  type: 'test'
+  ...
+# Subtest: Reset current preserves previous fragments; RESET GAME clears run, keeps identities/momo/room
+ok 22 - Reset current preserves previous fragments; RESET GAME clears run, keeps identities/momo/room
+  ---
+  duration_ms: 0.764716
+  type: 'test'
+  ...
+# Subtest: DEV level actions host-only
+ok 23 - DEV level actions host-only
+  ---
+  duration_ms: 0.709094
+  type: 'test'
+  ...
+# Subtest: L5 every gap and moving/falling platform has a physical jump path at multiple phases
+ok 24 - L5 every gap and moving/falling platform has a physical jump path at multiple phases
+  ---
+  duration_ms: 8.824696
+  type: 'test'
+  ...
+# Subtest: L2 generated answers fit estimated physical traversal budget
+ok 25 - L2 generated answers fit estimated physical traversal budget
+  ---
+  duration_ms: 31.860708
+  type: 'test'
+  ...
+# Subtest: all six flattened can slowly regroup and rescue each other without restarting L4
+ok 26 - all six flattened can slowly regroup and rescue each other without restarting L4
+  ---
+  duration_ms: 0.62444
+  type: 'test'
+  ...
+# Subtest: L2 physical stone authorization, no passive input, repeat symbol E and single read
+ok 27 - L2 physical stone authorization, no passive input, repeat symbol E and single read
+  ---
+  duration_ms: 6.38314
+  type: 'test'
+  ...
+# Subtest: L2 dual stones private simultaneous time window, truth independently drawn per leg
+ok 28 - L2 dual stones private simultaneous time window, truth independently drawn per leg
+  ---
+  duration_ms: 12.6839
+  type: 'test'
+  ...
+# Subtest: L3 release rolls uphill cargo down; downhill accelerates without pushers
+ok 29 - L3 release rolls uphill cargo down; downhill accelerates without pushers
+  ---
+  duration_ms: 4.16542
+  type: 'test'
+  ...
+# Subtest: L3 three actual player inputs move cargo; rider, mechanisms and slopes remain shared geometry
+ok 30 - L3 three actual player inputs move cargo; rider, mechanisms and slopes remain shared geometry
+  ---
+  duration_ms: 5.187735
+  type: 'test'
+  ...
+# Subtest: L3 flatten slow/rescue/auto recovery and protection; individual nearest checkpoint fall
+ok 31 - L3 flatten slow/rescue/auto recovery and protection; individual nearest checkpoint fall
+  ---
+  duration_ms: 11.25739
+  type: 'test'
+  ...
+# Subtest: L3 route platform jumps are physically reachable at four animation phases
+ok 32 - L3 route platform jumps are physically reachable at four animation phases
+  ---
+  duration_ms: 16.277042
+  type: 'test'
+  ...
+# Subtest: L4 FSM bounded continuous movement, locked charge direction, telegraphs and recovery
+ok 33 - L4 FSM bounded continuous movement, locked charge direction, telegraphs and recovery
+  ---
+  duration_ms: 32.428148
+  type: 'test'
+  ...
+# Subtest: L4 personal buttons reject passive arrival and wrong owner; return hit keeps completion
+ok 34 - L4 personal buttons reject passive arrival and wrong owner; return hit keeps completion
+  ---
+  duration_ms: 0.686561
+  type: 'test'
+  ...
+# Subtest: L5 archetypes stay distinct, patrol pauses edges, hopper tracks within cap and charger locks direction
+ok 35 - L5 archetypes stay distinct, patrol pauses edges, hopper tracks within cap and charger locks direction
+  ---
+  duration_ms: 34.935701
+  type: 'test'
+  ...
+# Subtest: DEV new leg, downhill, checkpoint, all attack and completion controls work
+ok 36 - DEV new leg, downhill, checkpoint, all attack and completion controls work
+  ---
+  duration_ms: 1.121262
+  type: 'test'
+  ...
+# Subtest: full ordered six-player flow L1 → five caves → cargo entire route → boss → L5 → white → five sends → party
+ok 37 - full ordered six-player flow L1 → five caves → cargo entire route → boss → L5 → white → five sends → party
+  ---
+  duration_ms: 134.978409
+  type: 'test'
+  ...
+# Subtest: Cargo visual and prediction share bounded projection without changing authoritative state
+ok 38 - Cargo visual and prediction share bounded projection without changing authoritative state
+  ---
+  duration_ms: 0.469361
+  type: 'test'
+  ...
+# Subtest: STEP25 L5 final altar is tied to race floor and authoritative six-player hold remains 3 seconds
+ok 39 - STEP25 L5 final altar is tied to race floor and authoritative six-player hold remains 3 seconds
+  ---
+  duration_ms: 15.730246
+  type: 'test'
+  ...
+# Subtest: STEP25 Party is an open fixed full-scene playfield with no player air wall
+ok 40 - STEP25 Party is an open fixed full-scene playfield with no player air wall
+  ---
+  duration_ms: 1.523654
+  type: 'test'
+  ...
+# Subtest: STEP25 L1 bridge collision is unchanged while deep-pit and center-island visuals are present
+ok 41 - STEP25 L1 bridge collision is unchanged while deep-pit and center-island visuals are present
+  ---
+  duration_ms: 2.433013
+  type: 'test'
+  ...
+# Subtest: STEP25 all 8 characters use 128x128 normal frames and preserve 24 emote groups
+ok 42 - STEP25 all 8 characters use 128x128 normal frames and preserve 24 emote groups
+  ---
+  duration_ms: 4.396114
+  type: 'test'
+  ...
+# Subtest: STEP25 home hero uses cleaned enlarged STAR ADVENTURE artwork
+ok 43 - STEP25 home hero uses cleaned enlarged STAR ADVENTURE artwork
+  ---
+  duration_ms: 0.412387
+  type: 'test'
+  ...
+# Subtest: STEP25 duplicated served/root client copies stay byte-identical
+ok 44 - STEP25 duplicated served/root client copies stay byte-identical
+  ---
+  duration_ms: 0.157712
+  type: 'test'
+  ...
+1..44
+# tests 44
+# suites 0
+# pass 44
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 330.208193
