@@ -71,12 +71,19 @@
       "emote": {
         "src": "/assets/characters/chiikawa/emote.png",
         "frames": 6,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
           "frameWidth": 256,
           "frameHeight": 256,
           "columns": 6,
           "count": 6
+        },
+        "visual": {
+          "width": 84,
+          "height": 84,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1
         }
       },
       "down": null,
@@ -105,39 +112,63 @@
         }
       },
       "emote1": {
-        "src": "/assets/characters/chiikawa/emote.png",
+        "src": "/assets/characters/chiikawa/emote1.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 0,
+          "frameWidth": 270,
+          "frameHeight": 244,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 92.95,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote2": {
-        "src": "/assets/characters/chiikawa/emote.png",
+        "src": "/assets/characters/chiikawa/emote2.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 2,
+          "frameWidth": 270,
+          "frameHeight": 242,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 93.72,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote3": {
-        "src": "/assets/characters/chiikawa/emote.png",
+        "src": "/assets/characters/chiikawa/emote3.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 4,
+          "frameWidth": 248,
+          "frameHeight": 244,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 85.38,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       }
     },
@@ -211,12 +242,19 @@
       "emote": {
         "src": "/assets/characters/hachiware/emote.png",
         "frames": 6,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
           "frameWidth": 256,
           "frameHeight": 256,
           "columns": 6,
           "count": 6
+        },
+        "visual": {
+          "width": 84,
+          "height": 84,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1
         }
       },
       "down": null,
@@ -245,39 +283,63 @@
         }
       },
       "emote1": {
-        "src": "/assets/characters/hachiware/emote.png",
+        "src": "/assets/characters/hachiware/emote1.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 0,
+          "frameWidth": 242,
+          "frameHeight": 226,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 89.95,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote2": {
-        "src": "/assets/characters/hachiware/emote.png",
+        "src": "/assets/characters/hachiware/emote2.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 2,
+          "frameWidth": 206,
+          "frameHeight": 234,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 73.95,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote3": {
-        "src": "/assets/characters/hachiware/emote.png",
+        "src": "/assets/characters/hachiware/emote3.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 4,
+          "frameWidth": 220,
+          "frameHeight": 236,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 78.31,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       }
     },
@@ -351,12 +413,19 @@
       "emote": {
         "src": "/assets/characters/usagi/emote.png",
         "frames": 6,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
           "frameWidth": 256,
           "frameHeight": 256,
           "columns": 6,
           "count": 6
+        },
+        "visual": {
+          "width": 84,
+          "height": 84,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1
         }
       },
       "down": null,
@@ -385,39 +454,63 @@
         }
       },
       "emote1": {
-        "src": "/assets/characters/usagi/emote.png",
+        "src": "/assets/characters/usagi/emote1.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 0,
+          "frameWidth": 262,
+          "frameHeight": 270,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 81.51,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote2": {
-        "src": "/assets/characters/usagi/emote.png",
+        "src": "/assets/characters/usagi/emote2.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 2,
+          "frameWidth": 244,
+          "frameHeight": 270,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 75.91,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote3": {
-        "src": "/assets/characters/usagi/emote.png",
+        "src": "/assets/characters/usagi/emote3.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 4,
+          "frameWidth": 200,
+          "frameHeight": 270,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 62.22,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       }
     },
@@ -491,12 +584,19 @@
       "emote": {
         "src": "/assets/characters/momonga/emote.png",
         "frames": 6,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
           "frameWidth": 256,
           "frameHeight": 256,
           "columns": 6,
           "count": 6
+        },
+        "visual": {
+          "width": 84,
+          "height": 84,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1
         }
       },
       "down": null,
@@ -525,39 +625,63 @@
         }
       },
       "emote1": {
-        "src": "/assets/characters/momonga/emote.png",
+        "src": "/assets/characters/momonga/emote1.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 0,
+          "frameWidth": 270,
+          "frameHeight": 254,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 89.29,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote2": {
-        "src": "/assets/characters/momonga/emote.png",
+        "src": "/assets/characters/momonga/emote2.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 2,
+          "frameWidth": 270,
+          "frameHeight": 242,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 93.72,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote3": {
-        "src": "/assets/characters/momonga/emote.png",
+        "src": "/assets/characters/momonga/emote3.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 4,
+          "frameWidth": 270,
+          "frameHeight": 248,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 91.45,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       }
     },
@@ -631,12 +755,19 @@
       "emote": {
         "src": "/assets/characters/kurimanju/emote.png",
         "frames": 6,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
           "frameWidth": 256,
           "frameHeight": 256,
           "columns": 6,
           "count": 6
+        },
+        "visual": {
+          "width": 84,
+          "height": 84,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1
         }
       },
       "down": null,
@@ -665,39 +796,63 @@
         }
       },
       "emote1": {
-        "src": "/assets/characters/kurimanju/emote.png",
+        "src": "/assets/characters/kurimanju/emote1.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 0,
+          "frameWidth": 270,
+          "frameHeight": 252,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 90.0,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote2": {
-        "src": "/assets/characters/kurimanju/emote.png",
+        "src": "/assets/characters/kurimanju/emote2.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 2,
+          "frameWidth": 270,
+          "frameHeight": 260,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 87.23,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote3": {
-        "src": "/assets/characters/kurimanju/emote.png",
+        "src": "/assets/characters/kurimanju/emote3.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 4,
+          "frameWidth": 246,
+          "frameHeight": 256,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 80.72,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       }
     },
@@ -771,12 +926,19 @@
       "emote": {
         "src": "/assets/characters/rakko/emote.png",
         "frames": 6,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
           "frameWidth": 256,
           "frameHeight": 256,
           "columns": 6,
           "count": 6
+        },
+        "visual": {
+          "width": 84,
+          "height": 84,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1
         }
       },
       "down": null,
@@ -805,39 +967,63 @@
         }
       },
       "emote1": {
-        "src": "/assets/characters/rakko/emote.png",
+        "src": "/assets/characters/rakko/emote1.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 0,
+          "frameWidth": 262,
+          "frameHeight": 258,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 85.3,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote2": {
-        "src": "/assets/characters/rakko/emote.png",
+        "src": "/assets/characters/rakko/emote2.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 2,
+          "frameWidth": 252,
+          "frameHeight": 256,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 82.69,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote3": {
-        "src": "/assets/characters/rakko/emote.png",
+        "src": "/assets/characters/rakko/emote3.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 4,
+          "frameWidth": 222,
+          "frameHeight": 258,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 72.28,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       }
     },
@@ -911,12 +1097,19 @@
       "emote": {
         "src": "/assets/characters/shisa/emote.png",
         "frames": 6,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
           "frameWidth": 256,
           "frameHeight": 256,
           "columns": 6,
           "count": 6
+        },
+        "visual": {
+          "width": 84,
+          "height": 84,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1
         }
       },
       "down": null,
@@ -945,39 +1138,63 @@
         }
       },
       "emote1": {
-        "src": "/assets/characters/shisa/emote.png",
+        "src": "/assets/characters/shisa/emote1.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 0,
+          "frameWidth": 270,
+          "frameHeight": 258,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 87.91,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote2": {
-        "src": "/assets/characters/shisa/emote.png",
+        "src": "/assets/characters/shisa/emote2.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 2,
+          "frameWidth": 270,
+          "frameHeight": 260,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 87.23,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote3": {
-        "src": "/assets/characters/shisa/emote.png",
+        "src": "/assets/characters/shisa/emote3.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 4,
+          "frameWidth": 270,
+          "frameHeight": 252,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 90.0,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       }
     },
@@ -1051,12 +1268,19 @@
       "emote": {
         "src": "/assets/characters/furuhonya/emote.png",
         "frames": 6,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
           "frameWidth": 256,
           "frameHeight": 256,
           "columns": 6,
           "count": 6
+        },
+        "visual": {
+          "width": 84,
+          "height": 84,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1
         }
       },
       "down": null,
@@ -1085,39 +1309,63 @@
         }
       },
       "emote1": {
-        "src": "/assets/characters/furuhonya/emote.png",
+        "src": "/assets/characters/furuhonya/emote1.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 0,
+          "frameWidth": 258,
+          "frameHeight": 242,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 89.55,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote2": {
-        "src": "/assets/characters/furuhonya/emote.png",
+        "src": "/assets/characters/furuhonya/emote2.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 2,
+          "frameWidth": 252,
+          "frameHeight": 220,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 96.22,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       },
       "emote3": {
-        "src": "/assets/characters/furuhonya/emote.png",
+        "src": "/assets/characters/furuhonya/emote3.png",
         "frames": 2,
-        "fps": 7,
+        "fps": 5,
         "sheet": {
-          "frameWidth": 128,
-          "frameHeight": 128,
-          "columns": 6,
-          "start": 4,
+          "frameWidth": 238,
+          "frameHeight": 222,
+          "columns": 2,
           "count": 2
+        },
+        "visual": {
+          "width": 90.05,
+          "height": 84.0,
+          "scale": 1,
+          "anchorX": 0.5,
+          "anchorY": 1,
+          "offsetX": 0,
+          "offsetY": 0
         }
       }
     }
@@ -2110,8 +2358,8 @@
     },
     "l2PadFlower": {
       "visual": {
-        "width": 72,
-        "height": 72,
+        "width": 78,
+        "height": 82,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
@@ -2131,8 +2379,8 @@
     },
     "l2PadStar": {
       "visual": {
-        "width": 72,
-        "height": 72,
+        "width": 78,
+        "height": 82,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
@@ -2152,8 +2400,8 @@
     },
     "l2PadMushroom": {
       "visual": {
-        "width": 72,
-        "height": 72,
+        "width": 78,
+        "height": 82,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
@@ -2173,8 +2421,8 @@
     },
     "l2PadMoon": {
       "visual": {
-        "width": 72,
-        "height": 72,
+        "width": 78,
+        "height": 82,
         "scale": 1,
         "anchorX": 0.5,
         "anchorY": 1
