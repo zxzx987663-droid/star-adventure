@@ -47,7 +47,10 @@ window.LevelView={
     topGlow(x1,x2);
     ribbon(c.start+420,174,190,`洞穴 ${caveNo} ${cleared?'✓':''}`,cleared?'已通關':live?'進行中':'未解鎖');
     c.pads.forEach((x,j)=>{
-     const key='l2Pad'+padKeys[j],state=live?'on':'off';ctx.save();if(!live&&!cleared)ctx.globalAlpha=.72;if(cleared)ctx.globalAlpha=.9;if(!Art.draw(ctx,'levels',key,state,x,418,t,.78)){ellipse(x,412,34,12,live?'#fff0c7':'#d5d3b3');text(['🌸','⭐','🍄','🌙'][j],x,414,25);}ctx.restore();if(live)ellipse(x,423,26,7,'#fff6c166');
+     const key='l2Pad'+padKeys[j];
+     // STEP 14: stone mechanisms stay dim by default; a symbol lights only after it is actually entered (or the cave is cleared).
+     const pressed=cleared||(live&&['discussion','input'].includes(s.mode)&&Array.isArray(s.entered)&&s.entered.includes(j));
+     const state=pressed?'on':'off';ctx.save();if(!live&&!cleared)ctx.globalAlpha=.72;if(cleared)ctx.globalAlpha=.94;if(!Art.draw(ctx,'levels',key,state,x,420,t,1)){ellipse(x,410,31,25,pressed?'#ffefb8':'#7e8584');text(['🌸','⭐','🍄','🌙'][j],x,414,23);}ctx.restore();if(live&&!pressed)ellipse(x,424,24,5,'#fff6c144');if(pressed)ellipse(x,424,27,7,'#ffe78a66');
     });
     const readers=caveNo>=4?2:1;
     for(let j=0;j<readers;j++){
