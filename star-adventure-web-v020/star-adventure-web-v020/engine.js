@@ -88,7 +88,6 @@ function tick(r,dt){
  s.stars.forEach(st=>{if(st.sentAt!==null&&r.time-st.sentAt>=1.2&&st.arrivedAt===null){st.arrivedAt=r.time;s.sent.push(st.token);}});
  if(s.stars.every(st=>st.arrivedAt!==null)){s.mergeAt??=r.time;s.phase=r.time-s.mergeAt<2?'merge':'celebrate';if(r.time-s.mergeAt>9)enter(r,'party');}
  }
- if(s.id==='party'){const ps=alive(r);for(let i=0;i<ps.length;i++)for(let j=i+1;j<ps.length;j++){const a=ps[i],b=ps[j];if(Math.abs(a.x-b.x)<43&&Math.abs(a.y-b.y)<40){const d=a.x<=b.x?-1:1;a.x=W.clamp(a.x+d*1.5,26,1774);b.x=W.clamp(b.x-d*1.5,26,1774);}}}
 }
 function dev(r,p,{action,value}={}){
  if(r.hostToken!==p.token)return {ok:false,error:'只有房主能使用 DEV。'};

@@ -1,16 +1,17 @@
 {
   "name": "star-adventure-web",
-  "version": "0.4.1-qa-fix.1",
+  "version": "0.4.1-step25-final.1",
   "private": true,
-  "description": "星星大冒險 Build 0.4.1 QA Fix — gameplay polish on the existing 0.4.1 architecture",
+  "description": "星星大冒險 Build 0.4.1 STEP 25 Final — fully integrated gameplay, ending and party QA",
   "scripts": {
     "start": "node server.js",
-    "test": "node --test test/l1.test.js test/mechanics.test.js test/qa-fix.test.js test/network.test.js",
+    "test": "npm run test:core && node --test test/network.test.js",
     "test:browser": "node test/browser.cjs",
     "test:multiplayer": "node test/browser.cjs",
     "test:assets-mobile": "node test/browser-extra.cjs",
     "test:traffic": "node test/traffic.cjs",
-    "test:visual": "node test/visual-qa.cjs"
+    "test:visual": "node test/visual-qa.cjs",
+    "test:core": "node --test test/l1.test.js test/mechanics.test.js test/qa-fix.test.js test/step25-final.test.js"
   },
   "engines": {
     "node": ">=20"

@@ -1,8 +1,8 @@
-# 星星大冒險 · Build 0.4.1 QA Fix 1
+# 星星大冒險 · Build 0.4.1 STEP 25 Final
 
-版本：`0.4.1-qa-fix.1`。以完整 `star-adventure-build-0.4.1.zip` 原始碼原地修改，沿用 Express / Socket.IO / Canvas、房間、選角、身分、重連、生日 Ending 與 Party Room。**QA_FIX_FINAL.md > 0.4.1 Implementation FINAL > Master Spec**。這是完整專案，可整包取代，不需合併 patch。
+版本：`0.4.1-step25-final.1`。這是 STEP 1～25 的最終整合專案，沿用 Express / Socket.IO / Canvas、房間、選角、身分、重連、生日 Ending 與 Party Room。原 QA Fix 規格仍為基礎，後續已核准的 STEP 4～24 改動為最終行為；本 ZIP 可整包部署，不需再合併 patch。
 
-本輪完成可關閉 Intro、compact HUD、L2 實體 Reader / E 輸入、L3 坡道運輸與 E 開路機關、L4 清晰 Boss 狀態機與個人按鈕、L5 三類固定敵人；L1 只補入簡單起步平台。未引入 Nintendo 關卡或資產。
+最終版包含：L1 深谷斷橋／中央浮島視覺、L2 實體 Reader / E 輸入、L3 固定 3+3 分工與 A/B/C 專屬機關、L4 三段逃生斷橋與強化 Boss、L5 完整障礙／敵人／六人 3 秒終點、生日 Ending 與無中段空氣牆的固定全景 Party Room。8 位角色的 56 個一般動作狀態統一為 128×128 frame；24 組表情素材保留。
 
 ## Render 部署
 
@@ -10,7 +10,7 @@
 2. Render 建立 **Web Service** 並連接該 repository，或以隨附 `render.yaml` 建立 Blueprint。不要選 Static Site。
 3. 設定：Runtime `Node`；Build Command `npm ci --omit=dev`；Start Command `npm start`；Health Check `/health`；**單一 instance**。
 4. `NODE_ENV=production`；`ENABLE_DEV=true` 供朋友 Alpha 測試。關閉 DEV 可改成 `false`；一般房主 Reset 仍可使用。
-5. 等 `/health` 回傳 `version: "0.4.1-qa-fix.1"`，將 HTTPS 網址交給朋友。Socket.IO 與 HTTP 共用 Render 提供的 `PORT`，不用另開 WebSocket port。
+5. 等 `/health` 回傳 `version: "0.4.1-step25-final.1"`，將 HTTPS 網址交給朋友。Socket.IO 與 HTTP 共用 Render 提供的 `PORT`，不用另開 WebSocket port。
 
 Render 的部署入口是 repository，這份 ZIP 是完整 repository 內容，並非直接上傳 ZIP 的 Render 安裝器。部署步驟依 [Render Express 文件](https://render.com/docs/deploy-node-express-app)；WebSocket 設定依 [Render WebSockets 文件](https://render.com/docs/websocket)。
 
@@ -30,7 +30,7 @@ npm ci
 npm start
 ```
 
-開啟 `http://localhost:3000`。Node >= 20；本次測試環境 Node 24.19.0。
+開啟 `http://localhost:3000`。Node >= 20；STEP 25 最終 core QA 使用 Node 22.16.0。
 
 需要本機存檔時（bash）：
 
@@ -46,9 +46,9 @@ SAVE_PATH=./data/rooms.json npm start
 - 手機：方向、跳躍與互動支援多指同按；窄螢幕互動鍵簡寫為「互動／救援」。控制列會停在下緣。每關首次進入，按 Intro 的 X 開始操作；介紹不會留在畫面下方。
 - Level 1：三塊獨立壓板、遠端拉桿、第四人斷橋、全員集合拿碎片。
 - Level 2：五洞各四棒。Reader 靠近自己的石碑按 E；答案與閱讀倒數同時出現，僅授權 Reader 可見，時間到整塊面板消失且不可重看。Executor 靠近固定符號逐次按 E，連續相同符號可原地重按。走／跳／站上不會輸入；第一個有效 E 才開始作答計時。Cave 4/5 任一 Reader 在自己石碑啟動，兩人同時獲得各自答案，依公開規則辨真假。
-- Level 3：小坡教回滾 → 平台 E 開橋 → 上坡高台雙鎖 → 中途旗 → 下坡加速、提前開緩衝／接應橋 → 六人最後大坡。前段三人推正常，1–2 慢、4–6 危險；坡上放手會倒滾。最後六人穩定、五人慢、少於五人倒滾。貨物前段掉落回起點、中段掉落回中途旗、大坡失敗只回坡腳；個人掉落回個人旗子。被壓扁可慢走、隊友救援或約三秒自動站起，恢复後保護 0.5 秒。
-- Level 4：Boss 固定戰區，衝刺前 0.55 秒警告、方向鎖定、0.85 秒恢復；短蹲後真正跳起並重擊，另有近身踩踏。跳過 BOSS 或等牠躍起後從下方通過。被壓扁可慢走；隊友按住 0.5 秒救援。每人到橋尾按 E，完成紀錄永久保留至本關 Reset；6/6 開橋，BOSS 掉落。
-- Level 5：保留四段個人檢查點障礙賽，Patrol 固定巡邏／停下转頭、Hopper 固定節奏跳、Charger 近距警告後直衝／恢復；壓扁超過三秒回自己的檢查點。六人抵達普通終點平台後一起按住三秒。
+- Level 3：固定 **3+3 分工**。前三位為推月亮組，前段只有這三位能提供推力；後三位為前跑組，分別綁定 A／B／C 機關，不可互相代按。A/B/C 全部完成後橋面需 1.5 秒展開，太早把月亮推入會掉落並重跑前段。中途保留檢查點與緩衝機關；最後大坡重新集合 **6 人全推**，5 人或以下會倒退。
+- Level 4：Boss 固定戰區，衝刺前 0.45 秒警告、方向鎖定，衝刺後 0.65 秒恢復；另有可追蹤有限距離的躍擊、重擊→踩踏組合。越過 Boss 後要連跳三段破損橋到安全區；被壓扁不能跳，需隊友按住 0.5 秒救援。每人到橋尾按 E，6/6 開橋讓 Boss 掉落；已完成者仍可回頭救人。
+- Level 5：四段個人檢查點障礙賽；Patrol 會巡邏／停下轉向、Hopper 會在可讀前搖後追蹤有限距離跳躍、Charger 近距警告後鎖向直衝／恢復。壓扁超過三秒回自己的檢查點。六人都抵達最終祭壇後，**所有人持續按住 E 3 秒**才進入白畫面 Ending；任何人放開都會歸零。
 - 結尾：五秒純白無字 → 分身分台詞 → DELIVERY ERROR → 五位夥伴分別送出星星 → 合併祝福 → Party Room。小桃不能替自己送星。
 
 ## Reset 與 DEV
@@ -84,6 +84,14 @@ DEV 查看答案只回給提出要求的房主 socket。一般玩家收不到私
 
 ## 驗證與文件
 
+核心 gameplay／整合測試（不需要 Socket.IO client 依賴即可執行）：
+
+```bash
+npm run test:core
+```
+
+完整測試（先 `npm ci`，再包含 network suite）：
+
 ```bash
 npm test
 ```
@@ -95,9 +103,9 @@ PLAYWRIGHT_MODULE=/absolute/path/to/playwright CHROMIUM_PATH=/absolute/path/to/c
 PLAYWRIGHT_MODULE=/absolute/path/to/playwright CHROMIUM_PATH=/absolute/path/to/chromium npm run test:assets-mobile
 ```
 
-`TEST_RESULTS.md` 列實際結果、方法及規格 77 項逐項對照；`MANUAL_VERIFICATION_REQUIRED.md` 列真人／實機待驗；`CHANGELOG.md` 記錄變更；`qa/` 附原始輸出、JSON、截圖及修改前基準。
+`TEST_RESULTS.md` 是 STEP 25 最終測試紀錄；`MANUAL_VERIFICATION_REQUIRED.md` 列真人／實機待驗；`CHANGELOG.md` 記錄累積變更。`qa/` 內 Chromium 截圖／JSON 是較早 QA Fix 階段的歷史證據，不視為 STEP 25 修改後的新瀏覽器實測。
 
-本機 Node 測試涵蓋完整 L1 → L5 → 五秒白幕 → 五人送星 → Birthday Ending → Party Room；六個獨立 Chromium context 驗证私有答案、手機互動、重連及結局。流程腳本使用測試位置安排，不等於六位真人自然通關。真人手感與真實 Wi-Fi/5G 重連未宣稱完成。
+STEP 25 的 `npm run test:core` 涵蓋完整 L1 → L5 → 五秒白幕 → 五人送星 → Birthday Ending → Party Room，以及最後祭壇、Party 空氣牆、角色 sheet 與首頁主視覺專項檢查。流程腳本使用測試位置安排，不等於六位真人自然通關。這次隔離環境缺少 `socket.io-client`，因此 network suite 未重新執行；部署前在可 `npm ci` 的環境執行 `npm test` 即可補跑。真人手感、真實 Wi-Fi/5G 重連與 STEP 25 修改後的實機瀏覽器畫面仍需部署後驗收。
 
 其他可重現測試：
 
@@ -113,7 +121,7 @@ npm run test:visual
 - 美術仍為 placeholder，可獨立換 Sprite；真實六人語音與 Boss/Cargo 主觀難度待實玩。語音使用外部工具。
 - DEV 假人可傳送協助，不等於真人平台 AI；驗證正式互動時關閉「自動協助」和「跟隨」。
 - 單一 Node instance、記憶體房間；跨重啟保存必須另外配置持久磁碟及 SAVE_PATH。沒有多 instance adapter。
-- 只有本機與瀏覽器模擬結果；尚未在本次使用者的 Render 網址上驗證，需部署後驗收 HTTPS、實機及真實網路。
+- STEP 25 本次有 44/44 core 自動測試與資產／語法驗證；未重新執行 final network／Chromium suite，也尚未在 Render 網址驗證，需部署後補跑 `npm test` 並做 HTTPS、實機及真實網路驗收。
 - L3 舊布局無法原座標續玩，第一次升級的處理如上；新版的正常 reconnect 不會重置关卡。
 
 ## 維護者：這次改動的範圍

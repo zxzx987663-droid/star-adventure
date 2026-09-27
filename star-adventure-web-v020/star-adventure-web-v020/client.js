@@ -31,7 +31,7 @@ $('copyCode').onclick=async()=>{try{await navigator.clipboard.writeText(room.cod
 function modal(content){$('modalBody').innerHTML=content;$('modal').showModal();}
 $('closeModal').onclick=()=>$('modal').close();
 $('helpBtn').onclick=()=>modal('<h2>冒險者使用說明</h2><p>房主建立房間，把四碼房號給朋友。手機與電腦可以一起玩，最多六人，請使用外部語音溝通。</p><p>A / D 或 ← →：移動<br>Space：跳躍<br>E：互動；第三至五關按住 0.5 秒救起身旁夥伴<br>1 / 2 / 3：表情 1 / 2 / 3（Q 也可觸發表情 1）<br>手機使用下方三個表情按鈕，可同時按住方向與跳躍。</p><p>第四關壓扁需隊友救；第五關壓扁超過三秒回個人檢查點，沒有命數限制。每個人都要一起到集合點。關卡中的提示需要分工讀取。</p><p>人數不足時可用房主 DEV 假人補到六位，適合測試整款遊戲。</p>');
-$('creditBtn').onclick=()=>modal(`<h2>製作人</h2><p>製作人：Ollie<br>程式：Ollie ＆ AI<br>美術協力：AI<br>測試人員：製作人本人與一群假人<br>特別感謝：願意被騙進來玩的人<br>製作目的：${store.get('star.cleared')==='true'?'因為生日過了才想到要做生日禮物。':'？？？'}</p><p class="fine">Build 0.4.1 QA Fix 1</p>`);
+$('creditBtn').onclick=()=>modal(`<h2>製作人</h2><p>製作人：Ollie<br>程式：Ollie ＆ AI<br>美術協力：AI<br>測試人員：製作人本人與一群假人<br>特別感謝：願意被騙進來玩的人<br>製作目的：${store.get('star.cleared')==='true'?'因為生日過了才想到要做生日禮物。':'？？？'}</p><p class="fine">Build 0.4.1 STEP 25 Final</p>`);
 function settings(){modal(`<h2>設定</h2><p><label><input id="muteSetting" type="checkbox" ${muted?'checked':''}> 關閉音效／簡易音樂</label></p><p><label><input id="motionSetting" type="checkbox" ${reduced?'checked':''}> 減少閃光與煙火動畫</label></p><p class="fine">音效由瀏覽器合成，需先點擊畫面。設定儲存在本機。</p>`);$('muteSetting').onchange=e=>{muted=e.target.checked;store.set('star.muted',muted);};$('motionSetting').onchange=e=>{reduced=e.target.checked;store.set('star.reduced',reduced);};}
 $('settingsBtn').onclick=$('gameSettings').onclick=settings;
 function unlock(){store.set('star.cleared','true');$('title').textContent='星星大冒險：遲到的生日禮物';}if(store.get('star.cleared')==='true')unlock();
@@ -84,6 +84,7 @@ function contextual(){if(!room?.started||!own)return;const s=room.stage;let hint
  if(s.id===2){const c=W.D.caves[s.cave-1],ri=s.readers.indexOf(myId);if(ri>=0&&s.mode==='waiting'&&Math.abs(own.x-c.readers[ri])<48&&Math.abs(own.y-420)<65)hint='E｜讀取石碑';if(['discussion','input'].includes(s.mode)&&s.executors[s.leg]===myId){const i=c.pads.findIndex(x=>Math.abs(own.x-x)<31);if(i>=0&&Math.abs(own.y-420)<60)hint='E｜輸入 '+SYMBOLS[i];}}
  if(s.id===3){const k=W.D.cargo.switches.find(k=>!s.switches[k.id]&&Math.abs(own.x-k.x)<46&&Math.abs(own.y-k.y)<65);if(k)hint='E｜'+k.label;}
  if(s.id===4){const i=s.participants.indexOf(myId);if(!s.completed.includes(myId)&&Math.abs(own.x-W.D.boss.buttons[i])<25)hint='E｜完成突破';}
+ if(s.id===5&&own.x>5390&&own.y<400)hint=s.arrivals?.length===6?'按住 E｜六人一起持續 3 秒':`終點集合 ${s.arrivals?.length||0} / 6`;
  if(room.players.some(p=>p.token!==myId&&p.flat&&Math.abs(p.x-own.x)<75&&Math.abs(p.y-own.y)<65))hint='按住 E 0.5 秒｜救援';
  if(own.down||own.flat)hint=own.down?'回到檢查點…':s.id===3?'被壓扁了！可慢走，等待救援或站起':s.id===4?'被壓扁了！可慢走，請隊友按住互動救援':'被壓扁了！三秒內請隊友救援';show('contextHint',!!hint);$('contextHint').textContent=hint||'';}
 function sendInput(){if(!socket.connected||!room?.started)return;socket.emit('input',{seq:++seq,...keys});}
@@ -110,9 +111,10 @@ function avatar(p,x,y,scale=1){if(sprite(p,x,y,scale))return;const ci=W.CHARS.in
 function cargo(c,star=false){ctx.save();ctx.translate(c.x,c.y);ctx.rotate(c.angle||0);ellipse(0,0,c.r,c.r,star?'#f3d273':'#eab4c6');ctx.strokeStyle=star?'#bb9f52':'#b4849f';ctx.lineWidth=3;ctx.stroke();text(star?'★':'◕ ᴗ ◕',0,10,star?42:22);line(-c.r*.65,-c.r*.45,c.r*.7,c.r*.4,star?'#ffeeb8':'#fce0ea',4);ctx.restore();}
 function background(s){const art=artwork(assets.backgrounds[s.id]);
  const cover=img=>{const iw=img.naturalWidth||viewW,ih=img.naturalHeight||viewH,scale=Math.max(viewW/iw,viewH/ih),sw=viewW/scale,sh=viewH/scale,sx=(iw-sw)/2,sy=(ih-sh)/2;ctx.drawImage(img,sx,sy,sw,sh,0,0,viewW,viewH);};
+ const contain=img=>{const iw=img.naturalWidth||viewW,ih=img.naturalHeight||viewH,scale=Math.min(viewW/iw,viewH/ih),dw=iw*scale,dh=ih*scale,dx=(viewW-dw)/2,dy=(viewH-dh)/2;ctx.drawImage(img,0,0,iw,ih,dx,dy,dw,dh);};
  if(art){
   const fills={1:'#dbe7cc',2:'#596866',3:'#8596a0',4:'#27365f',5:'#28386f',party:'#293a78'};
-  ctx.fillStyle=fills[s.id]||'#d7e4d8';ctx.fillRect(0,0,viewW,viewH);cover(art);
+  ctx.fillStyle=fills[s.id]||'#d7e4d8';ctx.fillRect(0,0,viewW,viewH);if(s.id==='party')contain(art);else cover(art);
   if(s.id===2){const g=ctx.createLinearGradient(0,300,0,550);g.addColorStop(0,'rgba(53,69,66,0)');g.addColorStop(1,'rgba(45,56,54,.42)');ctx.fillStyle=g;ctx.fillRect(0,280,viewW,270);}
   if(s.id===3){const g=ctx.createLinearGradient(0,310,0,550);g.addColorStop(0,'rgba(238,232,200,0)');g.addColorStop(1,'rgba(214,211,174,.30)');ctx.fillStyle=g;ctx.fillRect(0,290,viewW,260);}
   if(s.id===4){const g=ctx.createLinearGradient(0,280,0,550);g.addColorStop(0,'rgba(230,218,220,0)');g.addColorStop(1,'rgba(230,218,220,.25)');ctx.fillStyle=g;ctx.fillRect(0,260,viewW,290);}
@@ -140,7 +142,13 @@ function drawWorld(){if(!room)return;const s=room.stage,t=clientTime;if(s.id==='
    for(let x=bodyX;x<bodyEnd-1;){const w=Math.min(164,bodyEnd-x+2);ctx.drawImage(mid,x,top,w,h);x+=w-2;}
    ctx.drawImage(right,x2-endW,top,endW,h);
   };
-  // Four continuous walkable land masses match the actual LV1 floor collision gaps exactly.
+  // The broken bridge spans a real deep valley. This layer is visual-only; collision gaps remain in shared.js.
+  const pit=ctx.createLinearGradient(0,420,0,550);pit.addColorStop(0,'rgba(23,58,78,.18)');pit.addColorStop(.28,'rgba(31,73,94,.64)');pit.addColorStop(1,'rgba(12,34,58,.94)');ctx.fillStyle=pit;ctx.fillRect(1420,420,260,130);
+  const water=ctx.createLinearGradient(1420,0,1680,0);water.addColorStop(0,'rgba(173,224,232,.18)');water.addColorStop(.48,'rgba(213,244,244,.72)');water.addColorStop(.52,'rgba(246,255,247,.92)');water.addColorStop(1,'rgba(173,224,232,.18)');ctx.fillStyle=water;ctx.fillRect(1540,424,28,126);
+  for(let i=0;i<5;i++){ctx.globalAlpha=.32-i*.045;ellipse(1554,466+i*20,18+i*8,5,'#dff9f0');}ctx.globalAlpha=1;
+  // Give the isolated middle land mass a tapered floating-island silhouette without changing its floor.
+  const islandRock=ctx.createLinearGradient(0,420,0,550);islandRock.addColorStop(0,'#9ca783');islandRock.addColorStop(.45,'#77866d');islandRock.addColorStop(1,'#485d5a');ctx.fillStyle=islandRock;ctx.beginPath();ctx.moveTo(1685,420);ctx.lineTo(1955,420);ctx.lineTo(1915,490);ctx.lineTo(1845,548);ctx.lineTo(1782,510);ctx.lineTo(1720,475);ctx.closePath();ctx.fill();
+  // Four continuous walkable land masses still match the actual LV1 floor collision gaps exactly.
   for(const [a,b] of [[0,410],[565,1420],[1680,1960],[2170,2900]])drawGroundSegment(a,b,420);
   Art.draw(ctx,'levels','l1Start','idle',135,424,t,.92);sign('今晚也要把星星送到另一邊！',235,260);
   for(const [i,x] of [650,770,890].entries()){if(!Art.draw(ctx,'levels','l1Plate',s.plates[i]?'on':'off',x,430,t))plateDraw(x,s.plates[i]);text(String(i+1),x,378,12,'#fff4d5');}
@@ -167,21 +175,24 @@ function drawWorld(){if(!room)return;const s=room.stage,t=clientTime;if(s.id==='
  }
  if([2,3,4,5].includes(s.id))LevelView.draw(s,t,room,{ctx,rect,text,line,ellipse,sign,gate,cargo});
  if(s.id==='party'||s.id==='ending'){drawParty(t);}
- for(const [index,p] of room.players.entries()){if(!p.connected&&!p.bot)continue;if(s.id==='ending'&&s.phase==='celebrate'){avatar(p,750+index*60,410+Math.sin(t*6+index)*8);continue;}let x=p.x,y=p.y;if(p.token===myId&&own){x=own.x+smooth.x;y=own.y+smooth.y;}else{const a=remote.get(p.token);if(a){x=a.rx;y=a.ry;}}avatar(p,x,y);}
+ for(const [index,p] of room.players.entries()){if(!p.connected&&!p.bot)continue;if(s.id==='ending'&&s.phase==='celebrate'){avatar(p,750+index*60,410+Math.sin(t*6+index)*8);continue;}let x=p.x,y=p.y;if(p.token===myId&&own){x=own.x+smooth.x;y=own.y+smooth.y;}else{const a=remote.get(p.token);if(a){x=a.rx;y=a.ry;}}if(s.id==='party'){x=partyX(x);y=partyY(y);}avatar(p,x,y);}
  ctx.restore();
 }
 function fireworks(t){if(reduced)return;for(let j=0;j<5;j++){const f=(t*.5+j*.21)%1,x=120+j*(viewW-200)/5,y=100+(j%2)*65;for(let i=0;i<12;i++){const a=i*Math.PI/6,r=f*70;ellipse(x+Math.cos(a)*r,y+Math.sin(a)*r,2.5,2.5,['#fff2b9','#f8b4c9','#c5edd4'][j%3]);}}}
+function partySceneRect(){const iw=1774,ih=887,scale=Math.min(viewW/iw,viewH/ih),dw=iw*scale,dh=ih*scale;return {x:(viewW-dw)/2,y:(viewH-dh)/2,w:dw,h:dh};}
+function partyX(x){const r=partySceneRect(),pad=Math.min(26,r.w*.035),span=Math.max(1,W.WIDTH.party-52);return r.x+pad+W.clamp((x-26)/span,0,1)*(r.w-pad*2);}
+function partyY(y){const r=partySceneRect(),floorY=r.y+r.h*.77;return floorY+(y-420)*(r.h/550);}
 function drawParty(t){
- const spark=(x,y,s=18,a='#fff5c8')=>{text('✦',x,y+Math.sin(t*2+x*.01)*3,s,a);};
+ const spark=(x,y,s=18,a='#fff5c8')=>{const sx=partyX(x);text('✦',sx,y+Math.sin(t*2+x*.01)*3,s,a);};
  for(const [x,y,s] of [[150,120,16],[320,150,18],[540,110,14],[760,135,16],[990,118,15],[1230,148,17],[1480,112,16],[1660,140,18]]) spark(x,y,s,['#ffe9a8','#ffd8f1','#fff5c8','#ffdca8'][Math.floor(x/100)%4]);
- rect(20,22,250,38,'#fff7dfd9',10);text('生日月夜庭園 · 自由活動中',145,47,15,'#6e6762');
- rect(1415,22,355,38,'#fff7dfd9',10);text('蛋糕舞台 · 拍照鞦韆 · 閱讀帳篷 · 禮物區',1592,47,13,'#6e6762');
+ const leftW=Math.min(250,viewW*.38);rect(20,22,leftW,38,'#fff7dfd9',10);text('生日月夜庭園 · 自由活動中',20+leftW/2,47,Math.min(15,viewW/46),'#6e6762');
+ if(viewW>760){const rightW=Math.min(355,viewW*.4);rect(viewW-rightW-20,22,rightW,38,'#fff7dfd9',10);text('蛋糕舞台 · 拍照鞦韆 · 閱讀帳篷 · 禮物區',viewW-rightW/2-20,47,13,'#6e6762');}
  ctx.save();ctx.translate(camera,0);fireworks(t);ctx.restore();
 }
 function drawContainedImage(img){const scale=Math.min(viewW/img.naturalWidth,viewH/img.naturalHeight),w=img.naturalWidth*scale,h=img.naturalHeight*scale,x=(viewW-w)/2,y=(viewH-h)/2;ctx.fillStyle='#171b30';ctx.fillRect(0,0,viewW,viewH);ctx.drawImage(img,x,y,w,h);}
 function drawEndingScene(s){const t=clientTime;if(s.phase==='celebrate'){const art=artwork(assets.ending?.birthdayFinal);if(art){drawContainedImage(art);return;}background(s);return;}const target=room.players.find(p=>p.token===s.target)||{char:'小桃',connected:true};if(['recipient','send','merge'].includes(s.phase)){avatar(target,viewW/2,470,1.4);if(s.phase==='merge'){const f=W.clamp((t-s.mergeAt)/2,0,1);for(let i=0;i<5;i++){const a=i*Math.PI*2/5;text('⭐',viewW/2+Math.cos(a)*70*(1-f),405+Math.sin(a)*45*(1-f),26);}text('✦',viewW/2,405,20+f*65,'#fff0bb');return;}s.stars.forEach((st,i)=>{const fromX=70+i*(viewW-140)/4,fromY=100+(i%2)*80;const f=st.sentAt===null?0:W.clamp((t-st.sentAt)/1.2,0,1);const x=fromX+(viewW/2-fromX)*f,y=fromY+(405-fromY)*f;if(st.sentAt!==null)text('⭐',x,y,30);else text('☆',fromX,fromY,25,'#69718d');if(st.arrivedAt!==null)text('✦',viewW/2+Math.cos(i*Math.PI*.4+t)*55,408+Math.sin(i*Math.PI*.4+t)*30,20,'#fff1ac');});}}
 function loop(now){const dt=Math.min((now-lastFrame)/1000,.05);lastFrame=now;frames++;clientTime+=dt;
- if(room?.started&&!$('play').hidden){if(own&&socket.connected){const predictionStage=room.stage.id===3?{...room.stage,cargo:{...room.stage.cargo,...W.D.cargoPose(room.stage.cargo,clientTime,room.stage.obstacles)}}:room.stage;W.step(own,keys,predictionStage,dt,clientTime);smooth.x*=Math.exp(-16*dt);smooth.y*=Math.exp(-16*dt);if(now-lastSend>=50){sendInput();lastSend=now;}const goal=W.clamp(own.x-viewW*.4,0,Math.max(0,W.WIDTH[room.stage.id]-viewW));camera+=(goal-camera)*Math.min(1,dt*8);}for(const a of remote.values()){const k=1-Math.exp(-14*dt);a.rx+=(a.x-a.rx)*k;a.ry+=(a.y-a.ry)*k;}const goalY=room.stage.id===3&&own?Math.min(0,own.y-360):0;cameraY+=(goalY-cameraY)*Math.min(1,dt*8);drawWorld();contextual();if(room.stage.id===2)updatePuzzle();}
+ if(room?.started&&!$('play').hidden){if(own&&socket.connected){const predictionStage=room.stage.id===3?{...room.stage,cargo:{...room.stage.cargo,...W.D.cargoPose(room.stage.cargo,clientTime,room.stage.obstacles)}}:room.stage;W.step(own,keys,predictionStage,dt,clientTime);smooth.x*=Math.exp(-16*dt);smooth.y*=Math.exp(-16*dt);if(now-lastSend>=50){sendInput();lastSend=now;}const goal=room.stage.id==='party'?0:W.clamp(own.x-viewW*.4,0,Math.max(0,W.WIDTH[room.stage.id]-viewW));camera=room.stage.id==='party'?0:camera+(goal-camera)*Math.min(1,dt*8);}for(const a of remote.values()){const k=1-Math.exp(-14*dt);a.rx+=(a.x-a.rx)*k;a.ry+=(a.y-a.ry)*k;}const goalY=room.stage.id===3&&own?Math.min(0,own.y-360):0;cameraY+=(goalY-cameraY)*Math.min(1,dt*8);drawWorld();contextual();if(room.stage.id===2)updatePuzzle();}
  if(now-perfAt>1000){fps=Math.round(frames*1000/(now-perfAt));frames=0;netHz=net;net=0;perfAt=now;$('perf').textContent=`FPS ${fps} · PING ${ping}ms · NET ${netHz}/s`;updatePuzzle();}
  requestAnimationFrame(loop);
 }
