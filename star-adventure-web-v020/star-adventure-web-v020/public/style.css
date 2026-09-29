@@ -339,3 +339,111 @@ input:not([type=checkbox]):focus{outline:3px solid rgba(236,190,98,.32);border-c
 @media (max-height: 520px) and (orientation: landscape){html,body{width:100%;min-height:100%;overflow-x:hidden}body:has(#play:not([hidden])){overflow:hidden}body:has(#play:not([hidden])) #connection:not(.off){display:none}body:has(#play:not([hidden])) main{max-width:none;width:100%;height:100dvh;margin:0;padding:4px max(5px,env(safe-area-inset-right)) 0 max(5px,env(safe-area-inset-left))}body:has(#play:not([hidden])) #hostControls{display:none!important}#play:not([hidden]){height:100%;padding:0!important;border-radius:10px;background:rgba(246,242,233,.94)}#play:not([hidden]) #viewport{width:100%;height:calc(100dvh - 66px - max(0px,env(safe-area-inset-bottom)));min-height:0!important;max-height:none;aspect-ratio:auto!important;border-radius:12px}.game-head{top:4px;left:6px;right:6px;padding:4px 7px;border-radius:11px;min-height:31px}.game-head h2{font-size:11px!important;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:48vw}.game-head button{font-size:10px!important;min-height:27px!important;padding:3px 7px!important;margin:0 0 0 3px!important}#inventory{display:none!important}#objective{top:39px!important;left:6px!important;right:auto!important;max-width:min(66%,430px)!important;padding:4px 7px!important;font-size:9.5px!important;line-height:1.3!important;border-radius:9px!important}#contextHint{bottom:7px!important;max-width:60%;padding:5px 9px!important;font-size:10px!important;line-height:1.25;white-space:normal!important;text-align:center}#toast{bottom:8px!important;padding:6px 10px!important;font-size:10px!important;max-width:70%}#puzzlePanel{max-width:min(260px,47vw)!important;min-width:150px!important;padding:7px 12px 8px!important}#puzzlePanel h3{font-size:9px!important}#privateClue{font-size:18px!important;letter-spacing:2px!important}#environmentClue{font-size:15px!important;min-width:38px;padding:1px 7px!important}#chestPanel{bottom:7px!important;max-width:250px!important;padding:6px 10px!important;font-size:11px}#chestPanel button{min-height:38px!important;padding:5px 10px!important}#levelIntro,#modal{width:min(92vw,520px);max-height:88dvh;overflow:auto;padding:20px 25px!important}#levelIntro::before{width:40px;height:40px;margin:-7px auto 0}#levelIntro h2{font-size:20px!important;margin-bottom:6px}#introNumber{margin:3px 0 7px!important}#introCopy{font-size:12px!important;line-height:1.55!important;margin-top:7px!important}#introClose,.close{min-height:30px!important;padding:2px 8px!important}#controlbar{position:fixed!important;left:0;right:0;bottom:0;z-index:30;height:calc(62px + max(0px,env(safe-area-inset-bottom)));margin:0!important;padding:5px max(7px,env(safe-area-inset-right)) max(5px,env(safe-area-inset-bottom)) max(7px,env(safe-area-inset-left))!important;display:flex;align-items:center;justify-content:space-between;gap:8px;background:linear-gradient(180deg,rgba(246,242,233,.90),rgba(246,242,233,.99));border-top:1px solid rgba(221,196,144,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}.movement{display:flex;gap:5px;flex:0 0 auto}.movement button{height:51px;min-height:51px!important;min-width:51px!important;padding:5px 10px!important;font-size:15px!important;border-radius:14px!important}.movement button[data-k="jump"]{min-width:70px!important;font-size:13px!important}.control-actions{margin-left:auto;display:flex!important;align-items:center;justify-content:flex-end;gap:5px!important;flex-wrap:nowrap!important;min-width:0}#interaction{height:51px;min-height:51px!important;min-width:116px!important;padding:5px 10px!important;font-size:0!important;border-radius:14px!important}#interaction::after{content:'互動／救援';font-size:12px!important;white-space:nowrap}.emote-group{gap:4px!important;flex-wrap:nowrap!important}.emote-btn{height:49px;min-height:49px!important;min-width:45px!important;width:45px;padding:4px!important;font-size:0!important;border-radius:13px!important}.emote-btn::after{font-size:12px!important}.below{margin:0}.below .panel{margin-top:6px}}
 @media (max-width: 680px) and (max-height: 520px) and (orientation: landscape){#play:not([hidden]) #viewport{height:calc(100dvh - 60px - max(0px,env(safe-area-inset-bottom)))}#controlbar{height:calc(57px + max(0px,env(safe-area-inset-bottom)));gap:4px;padding-top:4px!important}.movement{gap:3px}.movement button{height:46px;min-height:46px!important;min-width:44px!important;padding:3px 7px!important}.movement button[data-k="jump"]{min-width:59px!important;font-size:11px!important}#interaction{height:46px;min-height:46px!important;min-width:94px!important;padding:3px 7px!important}#interaction::after{font-size:10px!important}.emote-group{gap:2px!important}.emote-btn{height:44px;min-height:44px!important;min-width:38px!important;width:38px;padding:2px!important}.emote-btn::after{font-size:10px!important}#objective{max-width:61%!important;font-size:9px!important}#contextHint{max-width:54%;font-size:9px!important}}
 @media (max-width: 700px) and (orientation: portrait){main{padding-left:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right))}#play{padding:6px!important}#viewport{height:min(58dvh,520px);min-height:300px!important;aspect-ratio:auto!important}#controlbar{position:sticky!important;bottom:0;z-index:20;display:grid;grid-template-columns:1fr;gap:6px;margin:7px -2px 0!important;padding:6px 2px max(7px,env(safe-area-inset-bottom))!important;background:rgba(246,242,233,.96);backdrop-filter:blur(7px)}.movement{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:6px;width:100%}.movement button{min-height:52px!important;font-size:14px!important}.control-actions{display:flex!important;gap:5px!important;flex-wrap:nowrap!important;width:100%}#interaction{flex:1;min-height:52px!important;min-width:0!important;font-size:0!important}#interaction::after{content:'互動／救援';font-size:12px!important}.emote-group{flex:0 0 auto;gap:4px!important}.emote-btn{width:46px;min-width:46px!important;min-height:50px!important;padding:4px!important}#objective{max-width:calc(100% - 16px)!important}#contextHint{bottom:8px!important;max-width:calc(100% - 18px)!important}#levelIntro,#modal{max-height:78dvh;overflow:auto}}
+
+/* === STEP 35: Landscape Touch Controls Fix ===
+   Touch devices in landscape get larger thumb targets regardless of viewport height.
+   Portrait rules and desktop/mouse layouts are intentionally untouched. */
+@media (orientation: landscape) and (any-pointer: coarse){
+  #controlbar{
+    padding-left:max(10px,env(safe-area-inset-left))!important;
+    padding-right:max(10px,env(safe-area-inset-right))!important;
+    padding-bottom:max(7px,env(safe-area-inset-bottom))!important;
+    gap:12px!important;
+  }
+  #controlbar .movement{
+    display:flex!important;
+    align-items:center;
+    gap:8px!important;
+    flex:0 0 auto;
+  }
+  #controlbar .movement button{
+    width:64px!important;
+    min-width:64px!important;
+    height:60px!important;
+    min-height:60px!important;
+    padding:6px!important;
+    border-radius:16px!important;
+    font-size:22px!important;
+    line-height:1!important;
+  }
+  #controlbar .movement button[data-k="jump"]{
+    width:94px!important;
+    min-width:94px!important;
+    font-size:16px!important;
+    letter-spacing:.5px;
+  }
+  #controlbar .control-actions{
+    margin-left:auto!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    gap:8px!important;
+    flex-wrap:nowrap!important;
+    min-width:0;
+  }
+  #controlbar #interaction{
+    width:132px!important;
+    min-width:132px!important;
+    height:60px!important;
+    min-height:60px!important;
+    padding:6px 10px!important;
+    border-radius:16px!important;
+    font-size:0!important;
+  }
+  #controlbar #interaction::after{
+    content:'互動／救援'!important;
+    font-size:13px!important;
+    white-space:nowrap;
+  }
+  #controlbar .emote-group{
+    display:flex!important;
+    align-items:center!important;
+    gap:6px!important;
+    flex-wrap:nowrap!important;
+  }
+  #controlbar .emote-btn{
+    width:66px!important;
+    min-width:66px!important;
+    height:58px!important;
+    min-height:58px!important;
+    padding:4px 5px!important;
+    border-radius:15px!important;
+    font-size:0!important;
+    white-space:nowrap;
+  }
+  #controlbar .emote-btn::after{
+    font-size:12px!important;
+    line-height:1!important;
+  }
+  #controlbar .emote-btn[data-emote="emote1"]::after{content:'表情1'!important}
+  #controlbar .emote-btn[data-emote="emote2"]::after{content:'表情2'!important}
+  #controlbar .emote-btn[data-emote="emote3"]::after{content:'表情3'!important}
+  #controlbar button:active{
+    transform:translateY(1px) scale(.98)!important;
+    filter:brightness(.97)!important;
+  }
+}
+
+/* Small landscape phones keep the same thumb layout, scaled just enough to fit. */
+@media (max-width: 700px) and (orientation: landscape) and (any-pointer: coarse){
+  #controlbar{gap:6px!important;padding-left:max(6px,env(safe-area-inset-left))!important;padding-right:max(6px,env(safe-area-inset-right))!important}
+  #controlbar .movement{gap:4px!important}
+  #controlbar .movement button{width:54px!important;min-width:54px!important;height:52px!important;min-height:52px!important;font-size:19px!important}
+  #controlbar .movement button[data-k="jump"]{width:76px!important;min-width:76px!important;font-size:13px!important}
+  #controlbar .control-actions{gap:4px!important}
+  #controlbar #interaction{width:108px!important;min-width:108px!important;height:52px!important;min-height:52px!important}
+  #controlbar #interaction::after{font-size:11px!important}
+  #controlbar .emote-group{gap:3px!important}
+  #controlbar .emote-btn{width:54px!important;min-width:54px!important;height:50px!important;min-height:50px!important;padding:3px!important}
+  #controlbar .emote-btn::after{font-size:10.5px!important}
+}
+
+/* Keep the enlarged landscape controls inside their reserved bottom bar. */
+@media (max-height: 520px) and (orientation: landscape) and (any-pointer: coarse){
+  #controlbar{height:calc(72px + max(0px,env(safe-area-inset-bottom)))!important}
+  #play:not([hidden]) #viewport{height:calc(100dvh - 76px - max(0px,env(safe-area-inset-bottom)))!important}
+}
+@media (max-width: 700px) and (max-height: 520px) and (orientation: landscape) and (any-pointer: coarse){
+  #controlbar{height:calc(62px + max(0px,env(safe-area-inset-bottom)))!important}
+  #play:not([hidden]) #viewport{height:calc(100dvh - 66px - max(0px,env(safe-area-inset-bottom)))!important}
+}
